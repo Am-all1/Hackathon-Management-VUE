@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1>Création d'un event:</h1>
+    <h1>Création d'un évènement:</h1>
 
-    <form @submit.prevent="createEvents">
+    <form @submit.prevent="createEvent">
       <div>
         <label for="name">Nom:</label>
         <br />
@@ -40,7 +40,7 @@
 
     <p>{{ feedbackMessage }}</p>
 
-    <h2>Liste des Events:</h2>
+    <h2>Liste des évènements:</h2>
     <ul>
       <li v-for="event in events" :key="event.id">
         <p>Nom: {{ event.name }}</p>
@@ -104,6 +104,11 @@ export default {
       this.feedbackMessage = data.message;
 
       this.getEvents();
+
+      this.name = "";
+      this.start = "";
+      this.end = "";
+      this.location = "";
     },
   },
 
