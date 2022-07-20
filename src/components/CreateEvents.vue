@@ -47,6 +47,9 @@
         <p>Date de début: {{ event.start }}</p>
         <p>Date de fin: {{ event.end }}</p>
         <p>Lieu: {{ event.location }}</p>
+        <button>Voir</button>
+        <button>Supprimer</button>
+        <hr />
       </li>
     </ul>
   </div>
@@ -117,3 +120,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+li {
+  list-style-type: none;
+}
+</style>
