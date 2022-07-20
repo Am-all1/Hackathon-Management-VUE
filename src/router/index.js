@@ -1,28 +1,18 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import LoginView from "../views/LoginView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
-import HomeView from "../views/HomeView.vue";
-import NotFoundView from "../views/NotFoundView.vue";
 import CreateEventsView from "../views/CreateEventsView.vue";
 import GroupView from "../views/GroupView.vue";
 
 const routes = [
-  {
-    path: "/",
-    name: "home",
-    component: HomeView,
-    meta: {
-      title: "Accueil",
-    },
-  },
   {
     path: "/login",
     name: "connexion",
     component: LoginView,
     meta: {
       title: "Connexion",
-    }
-  }
+    },
+  },
 
   {
     path: "/group",
