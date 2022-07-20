@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import ConnexionView from "../views/ConnexionView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
+import CreateEventsView from "../views/CreateEventsView.vue";
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     meta: {
       title: "404 Not Found",
     },
+  },
+  {
+    path: "/create-event",
+    name: "createEventAdmin",
+    component: CreateEventsView,
   },
 ];
 
