@@ -1,18 +1,24 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
-import ConnexionView from "../views/ConnexionView.vue";
+import LoginView from "../views/LoginView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
 import CreateEventsView from "../views/CreateEventsView.vue";
 import CreateSlotsView from "../views/CreateSlotsView.vue";
+import GroupView from "../views/GroupView.vue";
 
 const routes = [
   {
-    path: "/",
-    name: "home",
-    component: HomeView,
+    path: "/login",
+    name: "connexion",
+    component: LoginView,
     meta: {
-      title: "Accueil",
+      title: "Connexion",
     },
+  },
+
+  {
+    path: "/group",
+    name: "group",
+    component: GroupView,
   },
   {
     path: "/about",
@@ -23,14 +29,7 @@ const routes = [
       title: "A propos",
     },
   },
-  {
-    path: "/connexion",
-    name: "Connexion",
-    component: ConnexionView,
-    meta: {
-      title: "Connexion",
-    },
-  },
+
   {
     path: "/:pathMatch(.*)",
     name: "NotFound",

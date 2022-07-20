@@ -2,7 +2,7 @@
   <nav>
     <router-link to="/">Accueil</router-link> |
     <router-link to="/about">A propos</router-link> |
-    <router-link to="/connexion">Connexion</router-link> |
+    <router-link to="/login">Connexion</router-link> |
     <router-link to="/create-event">Créer un évènement</router-link> |
     <router-link to="/slots">Créer un créneau</router-link>
   </nav>
