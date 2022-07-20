@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import ConnexionView from "../views/ConnexionView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
 import CreateEventsView from "../views/CreateEventsView.vue";
+import GroupView from '../views/GroupView.vue';
 
 const routes = [
   {
@@ -12,6 +13,12 @@ const routes = [
     meta: {
       title: "Accueil",
     },
+  },
+
+  {
+    path: '/group',
+    name: 'group',
+    component: GroupView,
   },
   {
     path: "/about",
