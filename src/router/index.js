@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import ConnexionView from "../views/ConnexionView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
 import CreateEventsView from "../views/CreateEventsView.vue";
+import CreateSlotsView from "../views/CreateSlotsView.vue";
 
 const routes = [
   {
@@ -42,6 +43,11 @@ const routes = [
     path: "/create-event",
     name: "createEventAdmin",
     component: CreateEventsView,
+  },
+  {
+    path: "/slots",
+    name: "createSlots",
+    component: CreateSlotsView,
   },
 ];
 
