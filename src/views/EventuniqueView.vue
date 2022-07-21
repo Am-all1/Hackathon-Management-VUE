@@ -10,6 +10,9 @@
     />
 
     <Formulaire :event_id="event.id" />
+    <div>
+      <!-- Ici on va faire un compnents en v-for pour afficher nos grp de l'event unique  -->
+    </div>
   </div>
 </template>
 

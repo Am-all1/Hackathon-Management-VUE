@@ -5,15 +5,15 @@
       <br />
 
       <form @submit.prevent="createGroup">
-        <p>Sujet du groupe</p>
+        <p>Sujet du groupe :</p>
         <input type="text" name="subject" v-model="subject" />
-        <p>Nom du groupe</p>
+        <p>Nom du groupe :</p>
         <input type="text" name="name" v-model="name" />
-        <p>Salle</p>
+        <p>Salle :</p>
         <input type="text" name="room" v-model="room" />
-        <p>Nombre de personne</p>
+        <p>Nombre de personne :</p>
         <input type="text" name="members" v-model="members" />
-        <p>Compétences</p>
+        <p>Compétences :</p>
         <input type="text" name="abilities" v-model="abilities" />
         <input type="hidden" name="event_id" />
         <input type="submit" value="s'inscrire" />
@@ -24,11 +24,14 @@
       <h1>Liste des groupes</h1>
       <ul>
         <li v-for="group in groups" :key="group.id">
-          <p>Sujet:{{ group.subject }}</p>
-          <p>Nom du Groupe:{{ group.name }}</p>
-          <p>Salle:{{ group.room }}</p>
-          <p>Nombre de membre{{ group.members }}</p>
-          <p>Nombre de membre{{ group.grpabilities }}</p>
+          <p>Sujet : {{ group.subject }}</p>
+          <p>Nom du Groupe : {{ group.name }}</p>
+          <p>Salle : {{ group.room }}</p>
+          <p>Nombre de membre : {{ group.members }}</p>
+          <p>
+            Compétences de qualité qualitative qualitantement parlant :
+            {{ group.abilities }}
+          </p>
           <button>Voir</button>
           <button>Supprimer</button>
           <hr />
