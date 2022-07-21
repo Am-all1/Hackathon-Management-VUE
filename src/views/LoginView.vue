@@ -1,28 +1,38 @@
 <template>
-  <h1>Connection</h1>
-  <!-- Login form -->
-  <form @submit.prevent="login">
-    <div>
-      <label for="email">Email</label>
-      <input
-        type="email"
-        id="email"
-        v-model="email"
-        placeholder="abcd@nomdomaine.com"
-      />
-    </div>
-    <div>
-      <label for="password">Password</label>
-      <input
-        type="password"
-        id="password"
-        v-model="password"
-        placeholder="1234"
-      />
-    </div>
-    <button>Se connecter</button>
-  </form>
-  <p v-show="errorMessage != null">{{ errorMessage }}</p>
+  <div id="mainContainer">
+    <!-- Formulaire de connexion -->
+    <form @submit.prevent="login">
+      <div class="input-container">
+        <label for="emailInput">Email : </label>
+        <input
+          type="email"
+          id="emailInput"
+          v-model="email"
+          placeholder="nom@domaine.com"
+          required
+        />
+      </div>
+      <br />
+      <div>
+        <label for="password">Password : </label>
+        <input
+          type="password"
+          id="password"
+          v-model="password"
+          placeholder="1234"
+          required
+        />
+      </div>
+      <br />
+      <input type="submit" value="Se connecter" />
+    </form>
+
+    <p v-if="result === true" class="success">
+      Connexion réussie
+      <br />
+    </p>
+    <p v-else-if="result === false" class="error">Connexion échouée</p>
+  </div>
 </template>
 
 <script>
@@ -31,31 +41,27 @@ export default {
     return {
       email: "",
       password: "",
-      errorMessage: null,
+      result: null,
+      token: "",
     };
   },
+
   methods: {
     async login() {
       const options = {
         method: "POST",
         headers: {
-          "content-Type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           email: this.email,
           password: this.password,
         }),
       };
-      const response = await fetch("XXX", options);
+
+      const response = await fetch("http://127.0.0.1:8000/api/users", options);
 
       const data = await response.json();
-
-      if (response.status === 200) {
-        localStorage.setItem("@Hackathons:token", data.token);
-        this.$router.replace("/");
-        return;
-      }
-      this.errorMessage = data.message;
     },
   },
 };
