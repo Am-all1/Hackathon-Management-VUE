@@ -1,22 +1,34 @@
 <template>
-  <h1>Profile here</h1>
+  <h1>Mon profil:</h1>
 
-  <ul>
-    <li v-for="data in dataProfil" :key="data.id">
-      <p>Prénom: {{ data.firstname }}</p>
-      <p>Nom: {{ data.lastname }}</p>
-      <p>Email: {{ data.email }}</p>
-      <p>Bio: {{ data.bio }}</p>
-      <hr />
-    </li>
-  </ul>
+  <span>{{ picture }}</span>
+
+  <p>Prénom: {{ firstname }}</p>
+  <p>Nom: {{ lastname }}</p>
+  <p>Email: {{ email }}</p>
+  <p>Bio: {{ bio }}</p>
+  <hr />
+  <p>LinkedIn: {{ linkedIn }}</p>
+  <p>Website: {{ website }}</p>
+  <p>PortFolio: {{ portfolio }}</p>
+  <p>GitHub: {{ github }}</p>
+
+  <button>Modifer le profil</button>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      dataProfil: [],
+      picture: this.picture,
+      lastname: this.lastname,
+      firstname: this.firstname,
+      email: this.email,
+      bio: this.bio,
+      linkedIn: this.linkedIn,
+      website: this.website,
+      portfolio: this.portfolio,
+      github: this.github,
     };
   },
 

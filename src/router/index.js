@@ -10,28 +10,9 @@ import CreateUserView from "../views/CreateUserView.vue";
 
 const routes = [
   {
-    path: "/",
-    name: "home",
-    component: HomeView,
-  },
-
-  {
     path: "/group",
     name: "group",
     component: GroupView,
-  },
-
-  // {
-  //   path: "/about",
-  //   name: "about",
-  //   component: () =>
-  //     import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
-  // },
-
-  {
-    path: "/connexion",
-    name: "Connexion",
-    component: ConnexionView,
   },
 
   {
