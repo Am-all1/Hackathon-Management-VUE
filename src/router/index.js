@@ -3,6 +3,7 @@ import LoginView from "../views/LoginView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
 import CreateEventsView from "../views/CreateEventsView.vue";
 import CreateSlotsView from "../views/CreateSlotsView.vue";
+import CreateUserView from "../views/CreateUserView.vue";
 import GroupView from "../views/GroupView.vue";
 import ProfilView from "../views/ProfilView.vue";
 
@@ -15,7 +16,14 @@ const routes = [
       title: "Connexion",
     },
   },
-
+  {
+    path: "/create-user",
+    name: "creation de compte",
+    component: CreateUserView,
+    meta: {
+      title: "création de compte",
+    },
+  },
   {
     path: "/group",
     name: "group",
