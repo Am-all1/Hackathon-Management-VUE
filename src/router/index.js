@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import LoginView from "../views/LoginView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
 import CreateEventsView from "../views/CreateEventsView.vue";
+import CreateSlotsView from "../views/CreateSlotsView.vue";
 import CreateUserView from "../views/CreateUserView.vue";
 import GroupView from "../views/GroupView.vue";
 
@@ -49,6 +50,11 @@ const routes = [
     path: "/create-event",
     name: "createEventAdmin",
     component: CreateEventsView,
+  },
+  {
+    path: "/slots",
+    name: "createSlots",
+    component: CreateSlotsView,
   },
 ];
 
