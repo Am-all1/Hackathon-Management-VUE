@@ -4,6 +4,7 @@ import NotFoundView from "../views/NotFoundView.vue";
 import CreateEventsView from "../views/CreateEventsView.vue";
 import CreateSlotsView from "../views/CreateSlotsView.vue";
 import GroupView from "../views/GroupView.vue";
+import ProfilView from "../views/ProfilView.vue";
 
 const routes = [
   {
@@ -21,15 +22,10 @@ const routes = [
     component: GroupView,
   },
   {
-    path: "/about",
-    name: "about",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
-    meta: {
-      title: "A propos",
-    },
+    path: "/profil",
+    name: "profil",
+    component: ProfilView,
   },
-
   {
     path: "/:pathMatch(.*)",
     name: "NotFound",
