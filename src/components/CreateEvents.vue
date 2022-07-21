@@ -39,19 +39,6 @@
     </form>
 
     <p>{{ feedbackMessage }}</p>
-
-    <h2>Liste des évènements:</h2>
-    <ul>
-      <li v-for="event in events" :key="event.id">
-        <p>Nom: {{ event.name }}</p>
-        <p>Date de début: {{ event.start }}</p>
-        <p>Date de fin: {{ event.end }}</p>
-        <p>Lieu: {{ event.location }}</p>
-        <button>Voir</button>
-        <button>Supprimer</button>
-        <hr />
-      </li>
-    </ul>
   </div>
 </template>
 
@@ -59,7 +46,6 @@
 export default {
   data() {
     return {
-      events: [],
       name: "",
       start: "",
       end: "",
@@ -69,19 +55,6 @@ export default {
   },
 
   methods: {
-    /* Récupération des events */
-    async getEvents() {
-      const response = await fetch("http://127.0.0.1:8000/api/events", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
-      const data = await response.json();
-      this.events = data.events;
-    },
-
     /* Création d'un event */
     async createEvent() {
       const body = {
@@ -111,10 +84,6 @@ export default {
       this.end = "";
       this.location = "";
     },
-  },
-
-  mounted() {
-    this.getEvents();
   },
 };
 </script>
