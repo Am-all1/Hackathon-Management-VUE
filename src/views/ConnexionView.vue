@@ -129,7 +129,7 @@ export default {
       const data = await response.json();
 
       if (response.status === 200) {
-        localStorage.setItem("@social-network:token", data.token);
+        localStorage.setItem("@Hackathons:token", data.token);
         this.$router.replace("/");
         return;
       }

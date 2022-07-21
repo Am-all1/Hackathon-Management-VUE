@@ -3,7 +3,8 @@ import HomeView from "../views/HomeView.vue";
 import ConnexionView from "../views/ConnexionView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
 import CreateEventsView from "../views/CreateEventsView.vue";
-import GroupView from '../views/GroupView.vue';
+import GroupView from "../views/GroupView.vue";
+import EventuniqueView from "../views/EventuniqueView.vue";
 
 const routes = [
   {
@@ -16,8 +17,8 @@ const routes = [
   },
 
   {
-    path: '/group',
-    name: 'group',
+    path: "/group",
+    name: "group",
     component: GroupView,
   },
   {
@@ -49,6 +50,13 @@ const routes = [
     path: "/create-event",
     name: "createEventAdmin",
     component: CreateEventsView,
+  },
+
+  {
+    path: "/eventunique/:id",
+    name: "eventunique",
+    component: EventuniqueView,
+    props: true,
   },
 ];
 
