@@ -30,13 +30,6 @@ export default {
     Eventunique,
     Formulaire,
   },
-  props: {
-    // name: String,
-    // start: String,
-    // end: String,
-    // location: String,
-    // event_id: Number,
-  },
 
   methods: {
     /* Récupération des events unique */

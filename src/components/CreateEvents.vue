@@ -39,23 +39,6 @@
     </form>
 
     <p>{{ feedbackMessage }}</p>
-
-    <!-- a transformer en components sur lequel on fera un v-for -->
-    <!-- <h2>Liste des évènements:</h2> -->
-    <!-- <ul>
-      <li v-for="event in events" :key="event.id">
-        <p>Nom: {{ event.name }}</p>
-        <p>Date de début: {{ event.start }}</p>
-        <p>Date de fin: {{ event.end }}</p>
-        <p>Lieu: {{ event.location }}</p>
-        <p>{{ event.id }}</p>
-        <button @click="storeEventId()">
-          <router-link to="/Eventunique">Montrer l'évènement</router-link>
-        </button>
-        <button>Supprimer</button>
-        <hr />
-      </li>
-    </ul> -->
   </div>
 </template>
 
