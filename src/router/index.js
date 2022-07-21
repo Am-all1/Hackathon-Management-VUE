@@ -21,12 +21,12 @@ const routes = [
     component: GroupView,
   },
 
-  {
-    path: "/about",
-    name: "about",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
-  },
+  // {
+  //   path: "/about",
+  //   name: "about",
+  //   component: () =>
+  //     import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+  // },
 
   {
     path: "/connexion",
@@ -77,3 +77,10 @@ const routes = [
     component: CreateSlotsView,
   },
 ];
+
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes,
+});
+
+export default router;
