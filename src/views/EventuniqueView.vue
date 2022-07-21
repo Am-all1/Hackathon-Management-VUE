@@ -9,7 +9,7 @@
       :event_id="event.id"
     />
 
-    <Formulaire />
+    <Formulaire :event_id="event.id" />
   </div>
 </template>
 

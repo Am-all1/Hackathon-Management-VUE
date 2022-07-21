@@ -15,7 +15,7 @@
         <input type="text" name="members" v-model="members" />
         <p>Compétences</p>
         <input type="text" name="abilities" v-model="abilities" />
-        <input type="hidden" name="event_id" v-model="event_id" />
+        <input type="hidden" name="event_id" />
         <input type="submit" value="s'inscrire" />
       </form>
       <p>{{ feedbackMessage }}</p>
@@ -48,9 +48,11 @@ export default {
       room: "",
       members: "",
       abilities: "",
-      event_id: "",
       feedbackMessage: "",
     };
+  },
+  props: {
+    event_id: Number,
   },
 
   methods: {
@@ -61,6 +63,7 @@ export default {
         room: this.room,
         members: this.members,
         abilities: this.abilities,
+        event_id: this.event_id,
       };
 
       const response = await fetch("http://127.0.0.1:8000/api/groups", {
