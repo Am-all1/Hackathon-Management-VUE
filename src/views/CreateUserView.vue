@@ -49,7 +49,11 @@
       <input type="submit" value="Valider" />
     </form>
 
-    <p>{{ feedBackmessage }}</p>
+    <p v-if="status == true">
+      Création de compte réussie
+      <br />
+    </p>
+    <p v-else-if="status == false">Création de compte échouée</p>
   </div>
 </template>
 
@@ -57,12 +61,13 @@
 export default {
   data() {
     return {
+      status: null,
+      message: "",
       users: [],
       firstname: "",
       lastname: "",
       email: "",
       password: "",
-      feedBackmessage: "",
     };
   },
   methods: {
@@ -75,7 +80,7 @@ export default {
         password: this.password,
       };
 
-      const response = await fetch("http://127.0.0.1:8000/api/users", {
+      const response = await fetch("http://127.0.0.1:8000/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -85,7 +90,9 @@ export default {
       });
       const data = await response.json();
 
-      this.feedBackMessage = data.message;
+      console.log(data);
+      this.message = data.message;
+      this.status = data.status;
     },
   },
 };

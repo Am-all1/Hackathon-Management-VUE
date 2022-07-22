@@ -1,19 +1,17 @@
 <template>
   <section>
     <div>
-       <Formulaire />
-      
+      <CreateGroup />
     </div>
   </section>
 </template>
 
 <script>
-import Formulaire from '@/components/Formulaire.vue';
+import CreateGroup from "@/components/CreateGroup.vue";
 export default {
-  name: '',
+  name: "",
   components: {
-    Formulaire,
-}
-}
-
+    CreateGroup,
+  },
+};
 </script>

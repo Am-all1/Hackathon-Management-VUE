@@ -1,6 +1,6 @@
 <template>
   <div id="mainContainer">
-    <!-- Formulaire de connexion -->
+    <!-- CreateGroup de connexion -->
     <form @submit.prevent="login">
       <div class="input-container">
         <label for="emailInput">Email : </label>
@@ -27,11 +27,11 @@
       <input type="submit" value="Se connecter" />
     </form>
 
-    <p v-if="result === true" class="success">
+    <p v-if="status == true">
       Connexion réussie
       <br />
     </p>
-    <p v-else-if="result === false" class="error">Connexion échouée</p>
+    <p v-else-if="status == false">Connexion échouée</p>
   </div>
 </template>
 
@@ -41,11 +41,11 @@ export default {
     return {
       email: "",
       password: "",
-      result: null,
+      status: null,
+      message: "",
       token: "",
     };
   },
-
   methods: {
     async login() {
       const options = {
@@ -59,14 +59,24 @@ export default {
         }),
       };
 
-      const response = await fetch("http://127.0.0.1:8000/api/users", options);
+      const response = await fetch(
+        "http://127.0.0.1:8000/api/auth/login",
+        options
+      );
 
       const data = await response.json();
 
-      this.result = data.success;
-      if (data.success === true) {
+      this.message = data.message;
+      this.status = data.status;
+      if (data.status === true) {
         this.token = data.token;
       }
+      this.saveUserToken();
+    },
+    saveUserToken() {
+      console.log("Entrée dans la méthode saveUserToken, avec le token: ");
+      console.log(this.token);
+      localStorage.setItem("savedUserToken", this.token);
     },
   },
 };

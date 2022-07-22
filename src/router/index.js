@@ -2,32 +2,33 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import LoginView from "../views/LoginView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
 import CreateEventsView from "../views/CreateEventsView.vue";
+import GroupView from "../views/GroupView.vue";
+import EventUniqueView from "../views/EventUniqueView.vue";
+import ProfilView from "../views/ProfilView.vue";
 import CreateSlotsView from "../views/CreateSlotsView.vue";
 import CreateUserView from "../views/CreateUserView.vue";
 import GroupView from "../views/GroupView.vue";
 import ModifyProfilView from "../views/ModifyProfilView.vue";
 import Abilities from "../components/Abilities.vue"
+import GroupUniqueView from "../views/GroupUniqueView.vue";
+
 const routes = [
-  {
-    path: "/login",
-    name: "connexion",
-    component: LoginView,
-    meta: {
-      title: "Connexion",
-    },
-  },
-  {
-    path: "/create-user",
-    name: "creation de compte",
-    component: CreateUserView,
-    meta: {
-      title: "création de compte",
-    },
-  },
   {
     path: "/group",
     name: "group",
     component: GroupView,
+  },
+
+  {
+    path: "/login",
+    name: "connexion",
+    component: LoginView,
+  },
+
+  {
+    path: "/create-user",
+    name: "creation de compte",
+    component: CreateUserView,
   },
   // {
   //   path: "/about",
@@ -46,18 +47,37 @@ const routes = [
   },
 
   {
+    path: "/profil/",
+    name: "profil",
+    component: ProfilView,
+  },
+
+  {
     path: "/:pathMatch(.*)",
     name: "NotFound",
     component: NotFoundView,
-    meta: {
-      title: "404 Not Found",
-    },
   },
+
   {
     path: "/create-event",
     name: "createEventAdmin",
     component: CreateEventsView,
   },
+
+  {
+    path: "/eventunique/:id",
+    name: "EventUnique",
+    component: EventUniqueView,
+    props: true,
+  },
+
+  {
+    path: "/groupuniqueshow/:id",
+    name: "GroupUniqueShow",
+    component: GroupUniqueView,
+    props: true,
+  },
+
   {
     path: "/slots",
     name: "createSlots",
