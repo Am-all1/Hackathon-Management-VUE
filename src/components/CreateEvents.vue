@@ -14,7 +14,7 @@
       <div>
         <label for="start">Date de début:</label>
         <br />
-        <input type="date" name="start" v-model="start" />
+        <input type="datetime-local" name="start" v-model="start" />
       </div>
 
       <br />
@@ -22,7 +22,7 @@
       <div>
         <label for="end">Date de fin:</label>
         <br />
-        <input type="date" name="end" v-model="end" />
+        <input type="datetime-local" name="end" v-model="end" />
       </div>
 
       <br />
