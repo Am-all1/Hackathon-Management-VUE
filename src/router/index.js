@@ -2,13 +2,14 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import LoginView from "../views/LoginView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
 import CreateEventsView from "../views/CreateEventsView.vue";
-import GroupView from "../views/GroupView.vue";
 import EventUniqueView from "../views/EventUniqueView.vue";
 import ProfilView from "../views/ProfilView.vue";
 import CreateSlotsView from "../views/CreateSlotsView.vue";
 import CreateUserView from "../views/CreateUserView.vue";
+import GroupView from "../views/GroupView.vue";
+import ModifyProfilView from "../views/ModifyProfilView.vue";
+import Abilities from "../components/Abilities.vue"
 import GroupUniqueView from "../views/GroupUniqueView.vue";
-
 const routes = [
   {
     path: "/group",
@@ -26,6 +27,21 @@ const routes = [
     path: "/create-user",
     name: "creation de compte",
     component: CreateUserView,
+  },
+  // {
+  //   path: "/about",
+  //   name: "about",
+  //   component: () =>
+  //     import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+  //   meta: {
+  //     title: "A propos",
+  //   },
+  // },
+
+  {
+    path: "/modifications",
+    name: "Modification de profil",
+    component:ModifyProfilView,
   },
 
   {
@@ -64,6 +80,12 @@ const routes = [
     path: "/slots",
     name: "createSlots",
     component: CreateSlotsView,
+  },
+
+  {
+    path: "/abilities",
+    name: "Competences",
+    component:Abilities,
   },
 ];
 

@@ -25,14 +25,14 @@ export default {
   async getGroupUnique() {
     const response = await fetch(
       // en-dessous : adapter les paramètres dynamiques afin d'utiliser l'id de l'event
-      "http://127.0.0.1:8000/api/groups/" + // quelque chose du type : this.$route.params.id,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        }
+      "http://127.0.0.1:8000/api/groups/", // + this.$route.params.id, //
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
     );
     const data = await response.json();
     this.groups = data.groups;

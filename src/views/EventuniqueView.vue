@@ -39,6 +39,7 @@ import GroupUnique from "@/components/GroupUnique.vue";
 export default {
   mounted() {
     this.getEventUnique();
+    this.getGroupUnique();
   },
   data() {
     return {
@@ -75,9 +76,7 @@ export default {
     async getGroupUnique() {
       const response = await fetch(
         // en-dessous : adapter les paramètres dynamiques afin d'utiliser l'id de l'event ____________ A VERIFIER  :o
-        "http://127.0.0.1:8000/api/events/" +
-          this.$route.params.id +
-          "/groups/",
+        "http://127.0.0.1:8000/api/groups/" + this.$route.params.id,
         {
           method: "GET",
           headers: {
