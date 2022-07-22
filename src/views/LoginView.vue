@@ -66,12 +66,17 @@ export default {
 
       const data = await response.json();
 
-      console.log(data);
       this.message = data.message;
       this.status = data.status;
       if (data.status === true) {
         this.token = data.token;
       }
+      this.saveUserToken();
+    },
+    saveUserToken() {
+      console.log("Entrée dans la méthode saveUserToken, avec le token: ");
+      console.log(this.token);
+      localStorage.setItem("savedUserToken", this.token);
     },
   },
 };
