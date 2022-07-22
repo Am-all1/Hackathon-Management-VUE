@@ -5,7 +5,8 @@ import CreateEventsView from "../views/CreateEventsView.vue";
 import CreateSlotsView from "../views/CreateSlotsView.vue";
 import CreateUserView from "../views/CreateUserView.vue";
 import GroupView from "../views/GroupView.vue";
-
+import ModifyProfilView from "../views/ModifyProfilView.vue";
+import Abilities from "../components/Abilities.vue"
 const routes = [
   {
     path: "/login",
@@ -28,14 +29,20 @@ const routes = [
     name: "group",
     component: GroupView,
   },
+  // {
+  //   path: "/about",
+  //   name: "about",
+  //   component: () =>
+  //     import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+  //   meta: {
+  //     title: "A propos",
+  //   },
+  // },
+
   {
-    path: "/about",
-    name: "about",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
-    meta: {
-      title: "A propos",
-    },
+    path: "/modifications",
+    name: "Modification de profil",
+    component:ModifyProfilView,
   },
 
   {
@@ -55,6 +62,12 @@ const routes = [
     path: "/slots",
     name: "createSlots",
     component: CreateSlotsView,
+  },
+
+  {
+    path: "/abilities",
+    name: "Competences",
+    component:Abilities,
   },
 ];
 
