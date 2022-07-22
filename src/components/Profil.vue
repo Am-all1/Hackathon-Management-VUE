@@ -1,7 +1,7 @@
 <template>
   <h1>Mon profil:</h1>
 
-  <span>{{ picture }}</span>
+  <!-- <span>{{ picture }}</span> -->
 
   <ul>
     <li v-for="user in users" :key="user.id">
@@ -15,7 +15,7 @@
     </li>
   </ul>
 
-  <p>Prénom: {{ firstname }}</p>
+  <!-- <p>Prénom: {{ firstname }}</p>
   <p>Nom: {{ lastname }}</p>
   <p>Email: {{ email }}</p>
   <p>Bio: {{ bio }}</p>
@@ -23,7 +23,7 @@
   <p>LinkedIn: {{ linkedIn }}</p>
   <p>Website: {{ website }}</p>
   <p>PortFolio: {{ portfolio }}</p>
-  <p>GitHub: {{ github }}</p>
+  <p>GitHub: {{ github }}</p> -->
 
   <!-- <div
     v-if="users.id != null"
@@ -38,12 +38,13 @@
 
 <script>
 export default {
-  mounted() {
-    this.getDataProfil();
-  },
-
   data() {
     return {
+      columns: [
+        { label: "id", field: "id" },
+        { label: "firstname", field: "firstname" },
+        { label: "lastname", field: "lastname" },
+      ],
       users: [],
       firstname: "",
       lastname: "",
@@ -59,7 +60,7 @@ export default {
 
   // Récupérer les infos d'un USER
   methods: {
-    async getDataProfil() {
+    async getUsers() {
       const response = await fetch(
         "http://127.0.0.1:8000/api/profil/" + this.$route.params.id,
         {
@@ -73,6 +74,10 @@ export default {
       const data = await response.json();
       this.users = data.users;
     },
+  },
+
+  mounted() {
+    this.getUsers();
   },
 };
 </script>
