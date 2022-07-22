@@ -4,7 +4,8 @@
   </div>
   <hr />
   <h2>Liste des évènements:</h2>
-  <Eventunique
+
+  <EventUnique
     v-for="event in events"
     :key="event.id"
     :name="event.name"
@@ -17,12 +18,12 @@
 
 <script>
 import CreateEvents from "@/components/CreateEvents.vue";
-import Eventunique from "@/components/Eventunique.vue";
+import EventUnique from "@/components/EventUnique.vue";
 
 export default {
   components: {
     CreateEvents,
-    Eventunique,
+    EventUnique,
   },
   data() {
     return {

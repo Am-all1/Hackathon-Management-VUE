@@ -3,7 +3,7 @@
     <div>
       <button @click="submit">Inscrire</button>
       <div>
-        <Formulaire></Formulaire>
+        <CreateGroup></CreateGroup>
       </div>
     </div>
   </section>
@@ -11,13 +11,13 @@
 
 <script>
 // import Generique from "./Generique.vue";
-import Formulaire from "./Formulaire.vue";
+import CreateGroup from "./CreateGroup.vue";
 
 export default {
   components: {
     // Generique,
-    Formulaire
-},
+    CreateGroup,
+  },
   data() {
     return {
       formulaireData: [],
@@ -25,8 +25,7 @@ export default {
   },
   methods: {
     async submit() {
-      let retourRequete = await fetch(
-      );
+      let retourRequete = await fetch();
       let donnees = await retourRequete.json();
       this.formulaireData = donnees.list;
     },
@@ -35,12 +34,3 @@ export default {
 </script>
 
 <style scoped></style>
-
-
-
-
-
-
-
-
-
