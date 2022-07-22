@@ -1,13 +1,14 @@
 <template>
-  <div>
+  <div class="eventDiv">
     <p>Nom: {{ name }}</p>
     <p>Date de début: {{ start }}</p>
     <p>Date de fin: {{ end }}</p>
     <p>Lieu: {{ location }}</p>
     <p>{{ event_id }}</p>
+
     <router-link
       :to="{
-        name: 'eventunique',
+        name: 'EventUnique',
         params: {
           id: this.event_id,
         },
