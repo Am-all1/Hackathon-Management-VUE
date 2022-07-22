@@ -7,6 +7,7 @@ import EventUniqueView from "../views/EventUniqueView.vue";
 import ProfilView from "../views/ProfilView.vue";
 import CreateSlotsView from "../views/CreateSlotsView.vue";
 import CreateUserView from "../views/CreateUserView.vue";
+import GroupUniqueView from "../views/GroupUniqueView.vue";
 
 const routes = [
   {
