@@ -42,6 +42,7 @@ export default {
   },
 
   methods: {
+    /* Création d'un groupe */
     async createGroup() {
       const body = {
         subject: this.subject,
@@ -66,7 +67,7 @@ export default {
 
       this.feedbackMessage = data.message;
 
-      this.getGroup();
+      this.$emit("groupCreated");
 
       this.subject = "";
       this.name = "";
@@ -75,7 +76,7 @@ export default {
       this.abilities = "";
     },
 
-    async getGroup() {
+    /* async getGroup() {
       const response = await fetch("http://127.0.0.1:8000/api/groups", {
         method: "GET",
         headers: {
@@ -86,7 +87,7 @@ export default {
 
       const data = await response.json();
       this.groups = data.groups;
-    },
+    }, */
   },
 
   mounted() {

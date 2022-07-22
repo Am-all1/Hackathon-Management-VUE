@@ -12,7 +12,7 @@
 
     <!-- APPEL DU COMPOSANT CreateGroup AFIN D'AFFICHER LE FORMULAIRE DE CREATION DE GROUPE -->
     <div class="groupFormDisplay">
-      <CreateGroup :event_id="event.id" />
+      <CreateGroup :event_id="event.id" @groupCreated="getGroupUnique" />
     </div>
 
     <!-- APPEL DU COMPOSANT GroupUnique AVEC UN v-for AFIN D'AFFICHER LA LISTE DES GROUPES LIES A CET EVENEMENT -->

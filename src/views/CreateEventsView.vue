@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <CreateEvents />
+    <CreateEvents @created="getEvents" />
   </div>
   <hr />
   <h2>Liste des évènements:</h2>
