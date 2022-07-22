@@ -28,7 +28,7 @@ const routes = [
   },
 
   {
-    path: "/profil",
+    path: "/profil/",
     name: "profil",
     component: ProfilView,
   },
