@@ -12,17 +12,17 @@
       <br />
 
       <div>
-        <label for="start">Date de début:</label>
+        <label for="start">Date et heure de début:</label>
         <br />
-        <input type="date" name="start" v-model="start" />
+        <input type="datetime-local" name="start" v-model="start" />
       </div>
 
       <br />
 
       <div>
-        <label for="end">Date de fin:</label>
+        <label for="end">Date et heure de fin:</label>
         <br />
-        <input type="date" name="end" v-model="end" />
+        <input type="datetime-local" name="end" v-model="end" />
       </div>
 
       <br />
@@ -83,6 +83,19 @@ export default {
       this.start = "";
       this.end = "";
       this.location = "";
+    },
+
+    /* Récupération des events */
+    async getEvents() {
+      const response = await fetch("http://127.0.0.1:8000/api/events", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      const data = await response.json();
+      this.events = data.events;
     },
   },
 };
