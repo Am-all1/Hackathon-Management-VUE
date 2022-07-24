@@ -8,8 +8,9 @@ import CreateSlotsView from "../views/CreateSlotsView.vue";
 import CreateUserView from "../views/CreateUserView.vue";
 import GroupView from "../views/GroupView.vue";
 import ModifyProfilView from "../views/ModifyProfilView.vue";
-import Abilities from "../components/Abilities.vue"
+import Abilities from "../components/Abilities.vue";
 import GroupUniqueView from "../views/GroupUniqueView.vue";
+
 const routes = [
   {
     path: "/group",
@@ -41,7 +42,7 @@ const routes = [
   {
     path: "/modifications",
     name: "Modification de profil",
-    component:ModifyProfilView,
+    component: ModifyProfilView,
   },
 
   {
@@ -63,14 +64,14 @@ const routes = [
   },
 
   {
-    path: "/eventunique/:id",
+    path: "/eventunique/:event_id",
     name: "EventUnique",
     component: EventUniqueView,
     props: true,
   },
 
   {
-    path: "/groupuniqueshow/:id",
+    path: "/groupuniqueshow/:group_id",
     name: "GroupUniqueShow",
     component: GroupUniqueView,
     props: true,
@@ -85,7 +86,7 @@ const routes = [
   {
     path: "/abilities",
     name: "Competences",
-    component:Abilities,
+    component: Abilities,
   },
 ];
 

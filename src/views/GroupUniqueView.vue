@@ -8,6 +8,7 @@
       :members="group.members"
       :abilities="group.abilities"
       :group_id="group.id"
+      :event_id="group.event_id"
     />
   </div>
 </template>
@@ -17,25 +18,35 @@
 import GroupUnique from "@/components/GroupUnique.vue";
 
 export default {
+  beforeMount() {
+    this.getGroupUnique();
+  },
   /* Enregistrement des composents utilisés */
   components: {
     GroupUnique,
   },
-  /* Récupération de tous les groups uniques, liés à l'événement dans lequel on se trouve */
-  async getGroupUnique() {
-    const response = await fetch(
-      // en-dessous : adapter les paramètres dynamiques afin d'utiliser l'id de l'event
-      "http://127.0.0.1:8000/api/groups/", // + this.$route.params.id, //
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      }
-    );
-    const data = await response.json();
-    this.groups = data.groups;
+
+  data() {
+    return {
+      group: [],
+    };
+  },
+  methods: {
+    /* Récupération du groupe à afficher, à partir de son id passé dynamiquement (params : group_id) */
+    async getGroupUnique() {
+      const response = await fetch(
+        "http://127.0.0.1:8000/api/groups/" + this.$route.params.group_id,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      this.group = data.group;
+    },
   },
 };
 </script>

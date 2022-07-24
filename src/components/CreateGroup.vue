@@ -1,7 +1,6 @@
 <template>
   <section>
     <div>
-      <h1>Inscription d'un nouveau groupe</h1>
       <br />
 
       <form @submit.prevent="createGroup">
@@ -26,6 +25,9 @@
 
 <script>
 export default {
+  mounted() {
+    //this.getGroup();
+  },
   data() {
     return {
       groups: [],
@@ -44,6 +46,12 @@ export default {
   methods: {
     /* Création d'un groupe */
     async createGroup() {
+      console.log(
+        "Affichgae de données du body : subject = " +
+          this.subject +
+          " event_id = " +
+          this.event_id
+      );
       const body = {
         subject: this.subject,
         name: this.name,
@@ -59,7 +67,6 @@ export default {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-
         body: JSON.stringify(body),
       });
 
@@ -88,10 +95,6 @@ export default {
       const data = await response.json();
       this.groups = data.groups;
     }, */
-  },
-
-  mounted() {
-    this.getGroup();
   },
 };
 </script>

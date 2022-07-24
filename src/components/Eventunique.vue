@@ -10,7 +10,7 @@
       :to="{
         name: 'EventUnique',
         params: {
-          id: this.event_id,
+          event_id: this.event_id,
         },
       }"
     >
