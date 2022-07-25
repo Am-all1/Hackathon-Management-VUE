@@ -3,10 +3,11 @@ import LoginView from "../views/LoginView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
 import CreateEventsView from "../views/CreateEventsView.vue";
 import GroupView from "../views/GroupView.vue";
-import EventuniqueView from "../views/EventuniqueView.vue";
+import EventUniqueView from "../views/EventUniqueView.vue";
 import ProfilView from "../views/ProfilView.vue";
 import CreateSlotsView from "../views/CreateSlotsView.vue";
 import CreateUserView from "../views/CreateUserView.vue";
+import AdminView from "../views/AdminView.vue";
 
 const routes = [
   {
@@ -48,7 +49,7 @@ const routes = [
   {
     path: "/eventunique/:id",
     name: "eventunique",
-    component: EventuniqueView,
+    component: EventUniqueView,
     props: true,
   },
 
@@ -56,6 +57,12 @@ const routes = [
     path: "/slots",
     name: "createSlots",
     component: CreateSlotsView,
+  },
+
+  {
+    path: "/admin",
+    name: "admin",
+    component: AdminView,
   },
 ];
 
