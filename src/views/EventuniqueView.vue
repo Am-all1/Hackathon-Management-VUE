@@ -9,25 +9,27 @@
       :location="event.location"
       :event_id="event.id"
     />
+  </div>
 
-    <!-- APPEL DU COMPOSANT CreateGroup AFIN D'AFFICHER LE FORMULAIRE DE CREATION DE GROUPE -->
-    <div class="groupFormDisplay">
-      <CreateGroup :event_id="event.id" @groupCreated="getGroupUnique" />
-    </div>
+  <!-- APPEL DU COMPOSANT CreateGroup AFIN D'AFFICHER LE FORMULAIRE DE CREATION DE GROUPE -->
+  <div class="groupFormDisplay">
+    <CreateGroup :event_id="event.id" @groupCreated="getGroupUnique" />
+  </div>
 
-    <!-- APPEL DU COMPOSANT GroupUnique AVEC UN v-for AFIN D'AFFICHER LA LISTE DES GROUPES LIES A CET EVENEMENT -->
-    <div class="allGroupsInEvent">
-      <GroupUnique
-        v-for="group in groups"
-        :key="group.id"
-        :name="group.name"
-        :subject="group.subject"
-        :room="group.room"
-        :members="group.members"
-        :abilities="group.abilities"
-        :group_id="group.id"
-      />
-    </div>
+  <!-- APPEL DU COMPOSANT GroupUnique AVEC UN v-for AFIN D'AFFICHER LA LISTE DES GROUPES LIES A CET EVENEMENT -->
+  <div class="allGroupsInEvent">
+    <h2>Listes des groupes actuellement enregistrés dans cet événement :</h2>
+    <GroupUnique
+      v-for="group in groups"
+      :key="group.id"
+      :name="group.name"
+      :subject="group.subject"
+      :room="group.room"
+      :members="group.members"
+      :abilities="group.abilities"
+      :group_id="group.id"
+      :event_id="group.event_id"
+    />
   </div>
 </template>
 
@@ -37,7 +39,7 @@ import CreateGroup from "@/components/CreateGroup.vue";
 import GroupUnique from "@/components/GroupUnique.vue";
 
 export default {
-  mounted() {
+  beforeMount() {
     this.getEventUnique();
     this.getGroupUnique();
   },
@@ -58,10 +60,9 @@ export default {
     /* Récupération des données de l'event unique sur lequel on se trouve */
     async getEventUnique() {
       const response = await fetch(
-        "http://127.0.0.1:8000/api/events/" + this.$route.params.id,
+        "http://127.0.0.1:8000/api/events/" + this.$route.params.event_id,
         {
           method: "GET",
-          // params: { event_id: id },
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
@@ -75,8 +76,9 @@ export default {
     /* Récupération de tous les groups uniques, liés à l'événement dans lequel on se trouve */
     async getGroupUnique() {
       const response = await fetch(
-        // en-dessous : adapter les paramètres dynamiques afin d'utiliser l'id de l'event ____________ A VERIFIER  :o
-        "http://127.0.0.1:8000/api/groups/" + this.$route.params.id,
+        "http://127.0.0.1:8000/api/events/" +
+          this.$route.params.event_id +
+          "/groups",
         {
           method: "GET",
           headers: {
