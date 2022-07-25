@@ -21,9 +21,8 @@
           group_id: this.group_id,
         },
       }"
-    >
-      Voir le groupe</router-link
-    >
+      ><button>Voir le groupe</button>
+    </router-link>
     <button>Supprimer</button>
   </div>
 </template>

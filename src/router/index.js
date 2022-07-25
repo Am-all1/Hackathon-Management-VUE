@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import LoginView from "../views/LoginView.vue";
+import DisconnectedView from "../views/DisconnectedView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
 import CreateEventsView from "../views/CreateEventsView.vue";
 import EventUniqueView from "../views/EventUniqueView.vue";
@@ -14,15 +15,20 @@ import GroupUniqueView from "../views/GroupUniqueView.vue";
 
 const routes = [
   {
+    path: "/login",
+    name: "connexion",
+    component: LoginView,
+  },
+  {
     path: "/group",
     name: "group",
     component: GroupView,
   },
 
   {
-    path: "/login",
-    name: "connexion",
-    component: LoginView,
+    path: "/disconnected",
+    name: "deconnexion",
+    component: DisconnectedView,
   },
 
   {
@@ -47,8 +53,8 @@ const routes = [
   },
 
   {
-    path: "/profil/",
-    name: "profil",
+    path: "/profil/:user_id",
+    name: "Profil",
     component: ProfilView,
   },
 
