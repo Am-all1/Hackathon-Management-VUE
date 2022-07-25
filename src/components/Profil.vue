@@ -7,7 +7,6 @@
     <li v-for="user in users" :key="user.id">
       <p>Nom: {{ user.firstname }}</p>
       <p>Date de début: {{ user.lastname }}</p>
-      <p>Date de fin: {{ user.firstname }}</p>
       <p>Lieu: {{ user.teams }}</p>
       <button>Voir</button>
       <button>Supprimer</button>
@@ -15,7 +14,7 @@
     </li>
   </ul>
 
-  <!-- <p>Prénom: {{ firstname }}</p>
+  <p>Prénom: {{ firstname }}</p>
   <p>Nom: {{ lastname }}</p>
   <p>Email: {{ email }}</p>
   <p>Bio: {{ bio }}</p>
@@ -23,7 +22,7 @@
   <p>LinkedIn: {{ linkedIn }}</p>
   <p>Website: {{ website }}</p>
   <p>PortFolio: {{ portfolio }}</p>
-  <p>GitHub: {{ github }}</p> -->
+  <p>GitHub: {{ github }}</p>
 
   <!-- <div
     v-if="users.id != null"
@@ -40,11 +39,6 @@
 export default {
   data() {
     return {
-      columns: [
-        { label: "id", field: "id" },
-        { label: "firstname", field: "firstname" },
-        { label: "lastname", field: "lastname" },
-      ],
       users: [],
       firstname: "",
       lastname: "",
@@ -55,6 +49,7 @@ export default {
       github: "",
       website: "",
       portfolio: "",
+      token: localStorage.getItem("savedUserToken"),
     };
   },
 
@@ -68,6 +63,7 @@ export default {
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
+            Authorization: 'Bearer ${localStorage.getItem("savedUserToken")}',
           },
         }
       );
