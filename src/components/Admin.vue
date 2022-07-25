@@ -38,11 +38,11 @@
 </template>
 
 <script>
-import Eventunique from "@/components/Eventunique.vue";
+import EventUnique from "@/components/EventUnique.vue";
 
 export default {
   components: {
-    Eventunique,
+    EventUnique,
   },
   data() {
     return {
