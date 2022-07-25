@@ -6,6 +6,7 @@ import EventUniqueView from "../views/EventUniqueView.vue";
 import ProfilView from "../views/ProfilView.vue";
 import CreateSlotsView from "../views/CreateSlotsView.vue";
 import CreateUserView from "../views/CreateUserView.vue";
+import AdminView from "../views/AdminView.vue";
 import GroupView from "../views/GroupView.vue";
 import ModifyProfilView from "../views/ModifyProfilView.vue";
 import Abilities from "../components/Abilities.vue";
@@ -46,8 +47,8 @@ const routes = [
   },
 
   {
-    path: "/profil/",
-    name: "profil",
+    path: "/profil/:user_id",
+    name: "Profil",
     component: ProfilView,
   },
 
@@ -84,6 +85,9 @@ const routes = [
   },
 
   {
+    path: "/admin",
+    name: "admin",
+    component: AdminView,
     path: "/abilities",
     name: "Competences",
     component: Abilities,

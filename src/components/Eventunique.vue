@@ -14,8 +14,9 @@
         },
       }"
     >
-      Montrer l'évènement</router-link
+      <button class="showBtn">Montrer l'évènement</button></router-link
     >
+
     <button>Supprimer</button>
     <hr />
   </div>
