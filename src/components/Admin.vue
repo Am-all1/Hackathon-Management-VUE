@@ -5,7 +5,6 @@
       <br />
       <label for="">Choix de l'évènement:</label>
       <br />
-      <button @click="getEventUnique">Récupérer les events</button>
       <select name="" id="">
         <option v-for="event in events" :key="event.id">
           {{ event.name }} - {{ event.location }} - {{ event.start }} -
@@ -22,6 +21,7 @@
           <th>Prénom</th>
           <th>Adresse email</th>
           <th>Accréditation</th>
+          <th>Action</th>
         </tr>
       </table>
       <table>
@@ -38,11 +38,11 @@
 </template>
 
 <script>
-import Eventunique from "@/components/Eventunique.vue";
+import EventUnique from "@/components/EventUnique.vue";
 
 export default {
   components: {
-    Eventunique,
+    EventUnique,
   },
   data() {
     return {
