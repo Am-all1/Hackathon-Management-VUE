@@ -1,6 +1,6 @@
 <template>
   <div id="mainContainer">
-    <!-- Formulaire de connexion -->
+    <!-- CreateGroup de connexion -->
     <form @submit.prevent="login">
       <div class="input-container">
         <label for="emailInput">Email : </label>

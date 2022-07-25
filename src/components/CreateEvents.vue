@@ -12,7 +12,7 @@
       <br />
 
       <div>
-        <label for="start">Date de début:</label>
+        <label for="start">Date et heure de début:</label>
         <br />
         <input type="datetime-local" name="start" v-model="start" />
       </div>
@@ -20,7 +20,7 @@
       <br />
 
       <div>
-        <label for="end">Date de fin:</label>
+        <label for="end">Date et heure de fin:</label>
         <br />
         <input type="datetime-local" name="end" v-model="end" />
       </div>
@@ -74,12 +74,11 @@ export default {
         },
         body: JSON.stringify(body),
       });
-
       const data = await response.json();
 
       this.feedbackMessage = data.message;
 
-      this.getEvents();
+      this.$emit("created");
 
       this.name = "";
       this.start = "";

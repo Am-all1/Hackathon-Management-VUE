@@ -1,13 +1,12 @@
 <template>
   <h1>Mon profil:</h1>
 
-  <span>{{ picture }}</span>
+  <!-- <span>{{ picture }}</span> -->
 
   <ul>
     <li v-for="user in users" :key="user.id">
       <p>Nom: {{ user.firstname }}</p>
       <p>Date de début: {{ user.lastname }}</p>
-      <p>Date de fin: {{ user.firstname }}</p>
       <p>Lieu: {{ user.teams }}</p>
       <button>Voir</button>
       <button>Supprimer</button>
@@ -42,10 +41,6 @@
 
 <script>
 export default {
-  mounted() {
-    this.getDataProfil();
-  },
-
   data() {
     return {
       users: [],
@@ -64,7 +59,7 @@ export default {
 
   // Récupérer les infos d'un USER
   methods: {
-    async getDataProfil() {
+    async getUsers() {
       const response = await fetch(
         "http://127.0.0.1:8000/api/profil/" + this.$route.params.id,
         {
@@ -72,19 +67,17 @@ export default {
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
-            Authorization: `Bearer ${localStorage.getItem("savedUserToken")}`,
-          },
-          body: {
-            firstname: string,
-            lastname: string,
-            email: string,
-            bio: string,
+            Authorization: 'Bearer ${localStorage.getItem("savedUserToken")}',
           },
         }
       );
       const data = await response.json();
       this.users = data.users;
     },
+  },
+
+  mounted() {
+    this.getUsers();
   },
 };
 </script>

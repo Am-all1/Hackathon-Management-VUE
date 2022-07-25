@@ -1,17 +1,19 @@
 <template>
   <section>
-    <div>
-      <CreateGroup />
-    </div>
+    <Admin />
   </section>
 </template>
 
 <script>
-import CreateGroup from "@/components/CreateGroup.vue";
+import Admin from "@/components/Admin.vue";
 export default {
   name: "",
   components: {
-    CreateGroup,
+    Admin,
+  },
+
+  data() {
+    return {};
   },
 };
 </script>

@@ -1,48 +1,38 @@
 <template>
   <section>
     <div>
-      <h1>Inscription nouveau groupe</h1>
       <br />
 
       <form @submit.prevent="createGroup">
-        <p>Sujet du groupe :</p>
-        <input type="text" name="subject" v-model="subject" />
         <p>Nom du groupe :</p>
         <input type="text" name="name" v-model="name" />
+        <p>Sujet du groupe :</p>
+        <input type="text" name="subject" v-model="subject" />
         <p>Salle :</p>
         <input type="text" name="room" v-model="room" />
-        <p>Nombre de personne :</p>
+        <p>Nombre de personnes :</p>
         <input type="text" name="members" v-model="members" />
-        <p>Compétences :</p>
+        <!-- 
+          Compétences : LES COMPETENCES NE DOIVENT PAS ÊTRE AJOUTEES
+          MANUELLEMENT ICI, MAIS IMPORTEES DANS LE GROUPE AUTOMATIQUEMENT LORS
+          DE L'AJOUT D'UN PARTICIPANT
+         -->
+        <p>Compétences => L'input ci-dessous devra dégager</p>
         <input type="text" name="abilities" v-model="abilities" />
         <input type="hidden" name="event_id" />
         <input type="submit" value="s'inscrire" />
       </form>
       <p>{{ feedbackMessage }}</p>
     </div>
-    <div>
-      <h1>Liste des groupes</h1>
-      <ul>
-        <li v-for="group in groups" :key="group.id">
-          <p>Sujet : {{ group.subject }}</p>
-          <p>Nom du Groupe : {{ group.name }}</p>
-          <p>Salle : {{ group.room }}</p>
-          <p>Nombre de membre : {{ group.members }}</p>
-          <p>
-            Compétences de qualité qualitative qualitantement parlant :
-            {{ group.abilities }}
-          </p>
-          <button>Voir</button>
-          <button>Supprimer</button>
-          <hr />
-        </li>
-      </ul>
-    </div>
+    <hr />
   </section>
 </template>
 
 <script>
 export default {
+  mounted() {
+    //this.getGroup();
+  },
   data() {
     return {
       groups: [],
@@ -59,7 +49,14 @@ export default {
   },
 
   methods: {
+    /* Création d'un groupe */
     async createGroup() {
+      console.log(
+        "Affichgae de données du body : subject = " +
+          this.subject +
+          " event_id = " +
+          this.event_id
+      );
       const body = {
         subject: this.subject,
         name: this.name,
@@ -75,7 +72,6 @@ export default {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-
         body: JSON.stringify(body),
       });
 
@@ -83,7 +79,7 @@ export default {
 
       this.feedbackMessage = data.message;
 
-      this.getGroup();
+      this.$emit("groupCreated");
 
       this.subject = "";
       this.name = "";
@@ -92,7 +88,7 @@ export default {
       this.abilities = "";
     },
 
-    async getGroup() {
+    /* async getGroup() {
       const response = await fetch("http://127.0.0.1:8000/api/groups", {
         method: "GET",
         headers: {
@@ -103,11 +99,7 @@ export default {
 
       const data = await response.json();
       this.groups = data.groups;
-    },
-  },
-
-  mounted() {
-    this.getGroup();
+    }, */
   },
 };
 </script>

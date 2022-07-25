@@ -3,11 +3,15 @@ import LoginView from "../views/LoginView.vue";
 import DisconnectedView from "../views/DisconnectedView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
 import CreateEventsView from "../views/CreateEventsView.vue";
-import GroupView from "../views/GroupView.vue";
-import EventuniqueView from "../views/EventuniqueView.vue";
+import EventUniqueView from "../views/EventUniqueView.vue";
 import ProfilView from "../views/ProfilView.vue";
 import CreateSlotsView from "../views/CreateSlotsView.vue";
 import CreateUserView from "../views/CreateUserView.vue";
+import AdminView from "../views/AdminView.vue";
+import GroupView from "../views/GroupView.vue";
+import ModifyProfilView from "../views/ModifyProfilView.vue";
+import Abilities from "../components/Abilities.vue";
+import GroupUniqueView from "../views/GroupUniqueView.vue";
 
 const routes = [
   {
@@ -32,10 +36,25 @@ const routes = [
     name: "creation de compte",
     component: CreateUserView,
   },
+  // {
+  //   path: "/about",
+  //   name: "about",
+  //   component: () =>
+  //     import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+  //   meta: {
+  //     title: "A propos",
+  //   },
+  // },
 
   {
-    path: "/profil",
-    name: "profil",
+    path: "/modifications",
+    name: "Modification de profil",
+    component: ModifyProfilView,
+  },
+
+  {
+    path: "/profil/:user_id",
+    name: "Profil",
     component: ProfilView,
   },
 
@@ -52,15 +71,32 @@ const routes = [
   },
 
   {
-    path: "/eventunique/:id",
-    name: "eventunique",
-    component: EventuniqueView,
+    path: "/eventunique/:event_id",
+    name: "EventUnique",
+    component: EventUniqueView,
+    props: true,
+  },
+
+  {
+    path: "/groupuniqueshow/:group_id",
+    name: "GroupUniqueShow",
+    component: GroupUniqueView,
+    props: true,
   },
 
   {
     path: "/slots",
     name: "createSlots",
     component: CreateSlotsView,
+  },
+
+  {
+    path: "/admin",
+    name: "admin",
+    component: AdminView,
+    path: "/abilities",
+    name: "Competences",
+    component: Abilities,
   },
 ];
 

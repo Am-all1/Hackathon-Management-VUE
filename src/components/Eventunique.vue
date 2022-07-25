@@ -1,20 +1,22 @@
 <template>
-  <div>
+  <div class="eventDiv">
     <p>Nom: {{ name }}</p>
     <p>Date de début: {{ start }}</p>
     <p>Date de fin: {{ end }}</p>
     <p>Lieu: {{ location }}</p>
     <p>{{ event_id }}</p>
+
     <router-link
       :to="{
-        name: 'eventunique',
+        name: 'EventUnique',
         params: {
-          id: this.event_id,
+          event_id: this.event_id,
         },
       }"
     >
-      Montrer l'évènement</router-link
+      <button class="showBtn">Montrer l'évènement</button></router-link
     >
+
     <button>Supprimer</button>
     <hr />
   </div>
