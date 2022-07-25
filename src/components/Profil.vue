@@ -14,11 +14,15 @@
       <hr />
     </li>
   </ul>
-
-  <p>Prénom: {{ firstname }}</p>
-  <p>Nom: {{ lastname }}</p>
-  <p>Email: {{ email }}</p>
-  <p>Bio: {{ bio }}</p>
+  <ProfilView
+    v-for="user in users"
+    :key="user.id"
+    {{user.firstname}}
+    {{user.lastname}}
+    {{user.email}}
+    {{user.bio}}
+  >
+  </ProfilView>
   <hr />
   <p>LinkedIn: {{ linkedIn }}</p>
   <p>Website: {{ website }}</p>
@@ -54,6 +58,7 @@ export default {
       github: "",
       website: "",
       portfolio: "",
+      token: localStorage.getItem("savedUserToken"),
     };
   },
 
@@ -67,6 +72,13 @@ export default {
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
+            Authorization: `Bearer ${localStorage.getItem("savedUserToken")}`,
+          },
+          body: {
+            firstname: string,
+            lastname: string,
+            email: string,
+            bio: string,
           },
         }
       );

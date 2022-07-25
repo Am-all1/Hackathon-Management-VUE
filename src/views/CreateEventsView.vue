@@ -27,6 +27,7 @@ export default {
   data() {
     return {
       events: [],
+      token: localStorage.getItem("savedUserToken"),
     };
   },
   mounted() {
@@ -40,6 +41,7 @@ export default {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
+          Authorization: `Bearer ${localStorage.getItem("savedUserToken")}`,
         },
       });
       const data = await response.json();

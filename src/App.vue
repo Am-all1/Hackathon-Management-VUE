@@ -3,6 +3,7 @@
     <router-link to="/">Accueil</router-link> |
     <router-link to="/profil">Profil</router-link> |
     <router-link to="/login">Connexion</router-link> |
+    <router-link to="/disconnected">Deconnexion</router-link> |
     <router-link to="/create-user">Création de compte</router-link> |
     <router-link to="/create-event">Créer un évènement</router-link> |
     <router-link to="/slots">Créer un créneau</router-link>

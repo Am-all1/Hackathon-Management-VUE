@@ -43,7 +43,7 @@ export default {
       password: "",
       status: null,
       message: "",
-      token: "",
+      token: localStorage.getItem("savedUserToken"),
     };
   },
   methods: {
@@ -52,10 +52,13 @@ export default {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${localStorage.getItem("savedUserToken")}`,
         },
         body: JSON.stringify({
           email: this.email,
           password: this.password,
+          token: this.token,
         }),
       };
 
@@ -74,7 +77,7 @@ export default {
       this.saveUserToken();
     },
     saveUserToken() {
-      console.log("Entrée dans la méthode saveUserToken, avec le token: ");
+      console.log("test");
       console.log(this.token);
       localStorage.setItem("savedUserToken", this.token);
     },

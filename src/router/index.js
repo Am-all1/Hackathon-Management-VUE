@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import LoginView from "../views/LoginView.vue";
+import DisconnectedView from "../views/DisconnectedView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
 import CreateEventsView from "../views/CreateEventsView.vue";
 import GroupView from "../views/GroupView.vue";
@@ -10,15 +11,20 @@ import CreateUserView from "../views/CreateUserView.vue";
 
 const routes = [
   {
+    path: "/login",
+    name: "connexion",
+    component: LoginView,
+  },
+  {
     path: "/group",
     name: "group",
     component: GroupView,
   },
 
   {
-    path: "/login",
-    name: "connexion",
-    component: LoginView,
+    path: "/disconnected",
+    name: "deconnexion",
+    component: DisconnectedView,
   },
 
   {
@@ -49,7 +55,6 @@ const routes = [
     path: "/eventunique/:id",
     name: "eventunique",
     component: EventuniqueView,
-    props: true,
   },
 
   {

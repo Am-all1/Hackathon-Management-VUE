@@ -51,6 +51,7 @@ export default {
       end: "",
       location: "",
       feedbackMessage: "",
+      token: localStorage.getItem("savedUserToken"),
     };
   },
 
@@ -69,6 +70,7 @@ export default {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
+          Authorization: `Bearer ${localStorage.getItem("savedUserToken")}`,
         },
         body: JSON.stringify(body),
       });
