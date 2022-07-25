@@ -72,12 +72,11 @@ export default {
         },
         body: JSON.stringify(body),
       });
-
       const data = await response.json();
 
       this.feedbackMessage = data.message;
 
-      this.getEvents();
+      this.$emit("created");
 
       this.name = "";
       this.start = "";
