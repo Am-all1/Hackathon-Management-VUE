@@ -14,7 +14,7 @@
       </div>
       <br />
       <div>
-        <label for="lastname">Nom : {{lastname}} </label>
+        <label for="lastname">Nom : {{ lastname }} </label>
         <input
           type="text"
           name="lasttname"
@@ -25,31 +25,29 @@
       </div>
       <br />
       <div>
-        <label for="email">Email: {{email}} : </label>
+        <label for="email">Email: {{ email }} : </label>
         <input
           type="email"
           name="email"
           id="email"
           placeholder="Email"
           v-model="email"
-          
         />
       </div>
       <br />
       <div>
-        <label for="password">Mot de passe : {{password}} </label>
+        <label for="password">Mot de passe : {{ password }} </label>
         <input
           type="password"
           name="password"
           id="password"
           placeholder="password"
           v-model="password"
-          
         />
       </div>
       <br />
       <div>
-        <label for="firstname">linkedIn : {{linkedIn}} </label>
+        <label for="firstname">linkedIn : {{ linkedIn }} </label>
         <input
           type="text"
           name="linkedin"
@@ -60,7 +58,7 @@
       </div>
       <br />
       <div>
-        <label for="firstname">Github : {{Github}} </label>
+        <label for="firstname">Github : {{ Github }} </label>
         <input
           type="text"
           name="linkedin"
@@ -71,7 +69,7 @@
       </div>
       <br />
       <div>
-        <label for="firstname">Website : {{website}}</label>
+        <label for="firstname">Website : {{ website }}</label>
         <input
           type="text"
           name="website"
@@ -82,7 +80,7 @@
       </div>
       <br />
       <div>
-        <label for="firstname">Portfolio : {{portfolio}} </label>
+        <label for="firstname">Portfolio : {{ portfolio }} </label>
         <input
           type="text"
           name="portfolio"
@@ -93,7 +91,7 @@
       </div>
       <br />
       <div>
-        <label for="firstname">Bio : {{bio}} </label>
+        <label for="firstname">Bio : {{ bio }} </label>
         <input
           type="text"
           name="bio"
@@ -104,7 +102,7 @@
       </div>
       <br />
       <div>
-        <label for="firstname">Photo : {{picture}}</label>
+        <label for="firstname">Photo : {{ picture }}</label>
         <input
           type="image"
           name="picture"
@@ -190,4 +188,3 @@ export default {
   },
 };
 </script>
-
