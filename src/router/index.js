@@ -46,8 +46,8 @@ const routes = [
   },
 
   {
-    path: "/profil/",
-    name: "profil",
+    path: "/profil/:user_id",
+    name: "Profil",
     component: ProfilView,
   },
 
