@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import Eventunique from "@/components/Eventunique.vue";
+import Eventunique from "@/components/EventUnique.vue";
 
 export default {
   components: {
