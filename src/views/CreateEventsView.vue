@@ -4,31 +4,44 @@
   </div>
   <hr />
   <h2>Liste des évènements:</h2>
-
-  <EventUnique
-    v-for="event in events"
-    :key="event.id"
-    :name="event.name"
-    :start="event.start"
-    :end="event.end"
-    :location="event.location"
-    :event_id="event.id"
-  />
+  <div>
+    <form>
+      <EventUnique
+        v-for="event in events"
+        :key="event.id"
+        :name="event.name"
+        :start="event.start"
+        :end="event.end"
+        :location="event.location"
+        :event_id="event.id"
+      />
+      <input type="button" @click="qrCreate" />
+      <qrcode-vue v-if="QRValue" :value="value" :size="size" level="H" />
+    </form>
+    <button @click="deleteEvent(event)">Delete</button>
+  </div>
 </template>
 
 <script>
 import CreateEvents from "@/components/CreateEvents.vue";
 import EventUnique from "@/components/EventUnique.vue";
+import QrcodeVue from "qrcode.vue";
 
 export default {
+  beforeMount() {
+    this.test();
+  },
+
   components: {
     CreateEvents,
     EventUnique,
+    QrcodeVue,
   },
   data() {
     return {
       events: [],
       token: localStorage.getItem("savedUserToken"),
+      QRValue: null,
     };
   },
   mounted() {
@@ -47,6 +60,17 @@ export default {
       });
       const data = await response.json();
       this.events = data.events;
+    },
+    deleteEvent: function (event) {
+      this.events.splice(this.event);
+    },
+    qrCreate() {
+      console.log(this.$route.query.page);
+    },
+    test() {
+      var currentUrl = window.location.pathname;
+      console.log("test");
+      console.log(currentUrl);
     },
   },
 };
