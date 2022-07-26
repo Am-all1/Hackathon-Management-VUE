@@ -17,6 +17,7 @@
   <!-- APPEL DU COMPOSANT QUI PERMET D'AJOUTER UN PARTICIPANT AU GROUPE QUE L'ON CONSULTE -->
   <div class="addUserFormDisplay">
     <h2>AJOUTER UN USER DANS CE GROUPE</h2>
+    <UserInGroup />
   </div>
 
   <hr />
@@ -37,6 +38,7 @@
 <script>
 /* Import des composants */
 import GroupUnique from "@/components/GroupUnique.vue";
+import UserInGroup from "@/components/UserInGroup.vue";
 import ShortProfile from "@/components/ShortProfile.vue";
 
 export default {
@@ -44,9 +46,11 @@ export default {
     this.getGroupUniqueWithUsers();
     //this.getGroupUsers(); // PAS UTILE SI getGroupUniqueWithUsers APPORTE LES UTILISATEURS -> à tester
   },
+
   /* Enregistrement des composents utilisés */
   components: {
     GroupUnique,
+    UserInGroup,
     ShortProfile,
   },
 
