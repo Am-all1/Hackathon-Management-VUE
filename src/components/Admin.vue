@@ -5,78 +5,122 @@
       <br />
       <label for="">Choix de l'évènement:</label>
       <br />
-      <button @click="getEventUnique">Récupérer les events</button>
-      <select name="" id="">
+      <select>
         <option v-for="event in events" :key="event.id">
-          {{ event.name }} - {{ event.location }} - {{ event.start }} -
-          {{ event.end }}
+          {{ event.name }}
+          {{ event.location }}
+          {{ event.id }}
         </option>
       </select>
     </div>
     <div>
       <h1>Liste des utilisateurs inscrits à l'évènement</h1>
       <br />
-      <table>
-        <tr>
-          <th>Nom</th>
-          <th>Prénom</th>
-          <th>Adresse email</th>
-          <th>Accréditation</th>
-        </tr>
-      </table>
-      <table>
-        <p></p>
-        <tr v-for="event_user in event_users" :key="event_user.id">
-          <th>{{ event_user.user_lastname }}</th>
-          <th>{{ event_user.user_firstname }}</th>
-          <th>{{ event_user.user_email }}</th>
-          <th>{{ role.authorization }}</th>
-        </tr>
-      </table>
+      <label for="">Recherche de participant : </label>
+      <input
+        type="text"
+        v-model="searchTerm"
+        class=""
+        placeholder="Entrez un participant"
+      />
+      <div class="tableau">
+        <table>
+          <thead>
+            <tr>
+              <th>Utilisateurs</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td">Prénom</td>
+              <td class="td">Nom</td>
+              <td class="td">Email</td>
+              <td class="td">Role</td>
+            </tr>
+
+            <tr v-for="user in filterByName" :key="user.id">
+              <td>{{ user.firstname }}</td>
+              <td>{{ user.lastname }}</td>
+              <td>{{ user.email }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 </template>
 
 <script>
-import EventUnique from "@/components/EventUnique.vue";
-
 export default {
-  components: {
-    EventUnique,
-  },
   data() {
     return {
+      users: [],
+      searchTerm: "",
       events: [],
-      name: "",
-      start: "",
-      end: "",
-      location: "",
-      event_users: [],
-      user_lastname: "",
-      user_firstname: "",
-      user_email: "",
     };
+  },
+  beforeMount() {
+    this.getEvent();
+    this.getUsers();
+  },
+
+  computed: {
+    filterByName() {
+      return this.users.filter((user) => {
+        return (
+          user.firstname
+            .toLowerCase()
+            .includes(this.searchTerm.toLowerCase()) ||
+          user.lastname.toLowerCase().includes(this.searchTerm.toLowerCase())
+        );
+      });
+    },
   },
 
   methods: {
-    /* Récupération des events */
-    async getEventUnique() {
-      const response = await fetch(
-        "http://127.0.0.1:8000/api/events/" + this.$route.params.id,
-        {
-          method: "GET",
-          // params: { event_id: id },
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        }
-      );
+    /* Recherche de tous les utilisateurs inscris */
+    async getUsers() {
+      const response = await fetch("http://127.0.0.1:8000/api/showusers", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
       const data = await response.json();
-      this.event = data.event;
+      this.users = data.users;
+    },
+
+    /* Récupération des events */
+    async getEvent() {
+      const response = await fetch("http://127.0.0.1:8000/api/events", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      const data = await response.json();
+      this.events = data.events;
     },
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+table,
+.td {
+  border: 1px solid #333;
+}
+
+thead {
+  background-color: #333;
+  color: #fff;
+}
+
+.tableau {
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+}
+</style>

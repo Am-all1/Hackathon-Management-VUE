@@ -20,11 +20,13 @@
           <td class="td">Email</td>
           <td class="td">Add</td>
         </tr>
+
         <tr v-for="user in filterByName" :key="user.id">
           <td>{{ user.firstname }}</td>
           <td>{{ user.lastname }}</td>
           <td>{{ user.email }}</td>
-          <td><button>+</button></td>
+
+          <td><button @click="addToGroup(user.id)">+</button></td>
         </tr>
       </tbody>
     </table>
@@ -54,11 +56,7 @@ export default {
       });
     },
   },
-  props: {
-    firstname: String,
-    lastname: String,
-    email: String,
-  },
+
   methods: {
     /* Recherche de tous les utilisateurs inscris */
     async getUsers() {
@@ -71,6 +69,31 @@ export default {
       });
       const data = await response.json();
       this.users = data.users;
+    },
+
+    /* add un utilisateurs dans un group */
+    async addToGroup(userId) {
+      const body = {
+        user_id: userId,
+        group_id: this.$route.params.group_id,
+      };
+
+      const response = await fetch("http://127.0.0.1:8000/api/group-users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+
+      const data = await response.json();
+
+      this.$emit("UserAdded");
+
+      this.feedbackMessage = data.message;
+
+      // this.getSlots(); // relancer inventaire du grp
     },
   },
 };

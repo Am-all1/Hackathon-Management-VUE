@@ -94,6 +94,9 @@ const routes = [
     path: "/admin",
     name: "admin",
     component: AdminView,
+  },
+
+  {
     path: "/abilities",
     name: "Competences",
     component: Abilities,

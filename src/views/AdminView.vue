@@ -1,19 +1,17 @@
 <template>
-  <section>
+  <div>
     <Admin />
-  </section>
+  </div>
 </template>
 
 <script>
 import Admin from "@/components/Admin.vue";
 export default {
-  name: "",
-  components: {
-    Admin,
-  },
-
   data() {
     return {};
+  },
+  components: {
+    Admin,
   },
 };
 </script>
