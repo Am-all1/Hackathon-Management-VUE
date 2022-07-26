@@ -3,26 +3,15 @@
 
   <!-- <span>{{ picture }}</span> -->
 
-  <!-- <ul>
-    <li v-for="user in users" :key="user.id">
-      <p>Nom: {{ user.firstname }}</p>
-      <p>Date de début: {{ user.lastname }}</p>
-      <p>Lieu: {{ user.teams }}</p>
-      <button>Voir</button>
-      <button>Supprimer</button>
-      <hr />
-    </li>
-  </ul> -->
-
-  <p>Prénom: {{ firstname }}</p>
-  <p>Nom: {{ lastname }}</p>
-  <p>Email: {{ email }}</p>
-  <p>Bio: {{ bio }}</p>
+  <p>Prénom: {{ user.firstname }}</p>
+  <p>Nom: {{ user.lastname }}</p>
+  <p>Email: {{ user.email }}</p>
+  <p>Bio: {{ user.bio }}</p>
   <hr />
-  <p>LinkedIn: {{ linkedIn }}</p>
-  <p>Website: {{ website }}</p>
-  <p>PortFolio: {{ portfolio }}</p>
-  <p>GitHub: {{ github }}</p>
+  <p>LinkedIn: {{ user.linkedIn }}</p>
+  <p>Website: {{ user.website }}</p>
+  <p>PortFolio: {{ user.portfolio }}</p>
+  <p>GitHub: {{ user.github }}</p>
 
   <!-- <div
     v-if="users.id != null"
@@ -37,10 +26,15 @@
 
 <script>
 export default {
+  mounted() {
+    this.getUserByToken();
+    alert(this.user.id);
+  },
+
   data() {
     return {
-      users: [],
-      firstname: "",
+      user: [],
+      /* firstname: "",
       lastname: "",
       email: "",
       bio: "",
@@ -49,15 +43,20 @@ export default {
       github: "",
       website: "",
       portfolio: "",
-      token: localStorage.getItem("savedUserToken"),
+      user_id: "", */
     };
+  },
+
+  props: {
+    token: String,
   },
 
   // Récupérer les infos d'un USER
   methods: {
-    async getUsers() {
+    async getUserByToken() {
+      alert("entrée dans getUsersByToken");
       const response = await fetch(
-        "http://127.0.0.1:8000/api/profil/" + this.$route.params.id,
+        "http://127.0.0.1:8000/api/my-profile/" + this.token,
         {
           method: "GET",
           headers: {
@@ -67,13 +66,10 @@ export default {
           },
         }
       );
+      alert("Fetch passé");
       const data = await response.json();
-      this.users = data.users;
+      this.user = data.user;
     },
-  },
-
-  mounted() {
-    this.getUsers();
   },
 };
 </script>

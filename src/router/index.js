@@ -4,6 +4,7 @@ import NotFoundView from "../views/NotFoundView.vue";
 import CreateEventsView from "../views/CreateEventsView.vue";
 import EventUniqueView from "../views/EventUniqueView.vue";
 import ProfilView from "../views/ProfilView.vue";
+import MyProfileView from "../views/MyProfileView.vue";
 import CreateSlotsView from "../views/CreateSlotsView.vue";
 import CreateUserView from "../views/CreateUserView.vue";
 import AdminView from "../views/AdminView.vue";
@@ -50,6 +51,13 @@ const routes = [
     path: "/profil/:user_id",
     name: "Profil",
     component: ProfilView,
+  },
+
+  {
+    path: "/mon-profil/:token",
+    name: "mon-profil",
+    component: MyProfileView,
+    props: true,
   },
 
   {
