@@ -8,7 +8,7 @@ import CreateSlotsView from "../views/CreateSlotsView.vue";
 import CreateUserView from "../views/CreateUserView.vue";
 import GroupView from "../views/GroupView.vue";
 import ModifyProfilView from "../views/ModifyProfilView.vue";
-import Abilities from "../components/Abilities.vue"
+import Abilities from "../components/Abilities.vue";// A laisser pour tester l'affichage 
 import GroupUniqueView from "../views/GroupUniqueView.vue";
 
 const routes = [
