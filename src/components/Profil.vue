@@ -3,30 +3,15 @@
 
   <!-- <span>{{ picture }}</span> -->
 
-  <ul>
-    <li v-for="user in users" :key="user.id">
-      <p>Nom: {{ user.firstname }}</p>
-      <p>Date de début: {{ user.lastname }}</p>
-      <p>Lieu: {{ user.teams }}</p>
-      <button>Voir</button>
-      <button>Supprimer</button>
-      <hr />
-    </li>
-  </ul>
-  <ProfilView
-    v-for="user in users"
-    :key="user.id"
-    {{user.firstname}}
-    {{user.lastname}}
-    {{user.email}}
-    {{user.bio}}
-  >
-  </ProfilView>
+  <!-- <p>Prénom: {{ user.firstname }}</p>
+  <p>Nom: {{ user.lastname }}</p>
+  <p>Email: {{ user.email }}</p>
+  <p>Bio: {{ user.bio }}</p>
   <hr />
   <p>LinkedIn: {{ linkedIn }}</p>
   <p>Website: {{ website }}</p>
   <p>PortFolio: {{ portfolio }}</p>
-  <p>GitHub: {{ github }}</p>
+  <p>GitHub: {{ github }}</p> -->
 
   <!-- <div
     v-if="users.id != null"
@@ -41,6 +26,16 @@
 
 <script>
 export default {
+  // props: {
+  //   firstname: String,
+  //   lastname: string,
+  //   email: string,
+  //   bio: string,
+  //   linkedIn: string,
+  //   website: string,
+  //   portfolio: string,
+  //   github: string,
+  // },
   data() {
     return {
       users: [],
@@ -61,7 +56,7 @@ export default {
   methods: {
     async getUsers() {
       const response = await fetch(
-        "http://127.0.0.1:8000/api/profil/" + this.$route.params.id,
+        "http://127.0.0.1:8000/api/profil/" + this.token,
         {
           method: "GET",
           headers: {
