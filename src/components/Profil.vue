@@ -3,15 +3,37 @@
 
   <!-- <span>{{ picture }}</span> -->
 
-  <!-- <p>Prénom: {{ user.firstname }}</p>
-  <p>Nom: {{ user.lastname }}</p>
-  <p>Email: {{ user.email }}</p>
-  <p>Bio: {{ user.bio }}</p>
+  <!-- <ul>
+    <li v-for="user in users" :key="user.id">
+      <p>Nom: {{ user.firstname }}</p>
+      <p>Date de début: {{ user.lastname }}</p>
+      <p>Lieu: {{ user.teams }}</p>
+      <button>Voir</button>
+      <button>Supprimer</button>
+      <hr />
+    </li>
+  </ul> -->
+
+  <p>Prénom: {{ firstname }}</p>
+  <p>Nom: {{ lastname }}</p>
+  <p>Email: {{ email }}</p>
+  <p>Bio: {{ bio }}</p>
+
+  <ProfilView
+    v-for="user in users"
+    :key="user.id"
+    {{user.firstname}}
+    {{user.lastname}}
+    {{user.email}}
+    {{user.bio}}
+  >
+  </ProfilView>
   <hr />
   <p>LinkedIn: {{ linkedIn }}</p>
   <p>Website: {{ website }}</p>
   <p>PortFolio: {{ portfolio }}</p>
-  <p>GitHub: {{ github }}</p> -->
+  <p>GitHub: {{ github }}</p>
+  -->
 
   <!-- <div
     v-if="users.id != null"

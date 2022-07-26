@@ -5,12 +5,13 @@ import NotFoundView from "../views/NotFoundView.vue";
 import CreateEventsView from "../views/CreateEventsView.vue";
 import EventUniqueView from "../views/EventUniqueView.vue";
 import ProfilView from "../views/ProfilView.vue";
+import MyProfileView from "../views/MyProfileView.vue";
 import CreateSlotsView from "../views/CreateSlotsView.vue";
 import CreateUserView from "../views/CreateUserView.vue";
 import AdminView from "../views/AdminView.vue";
 import GroupView from "../views/GroupView.vue";
 import ModifyProfilView from "../views/ModifyProfilView.vue";
-import Abilities from "../components/Abilities.vue";
+import Abilities from "../components/Abilities.vue";// A laisser pour tester l'affichage 
 import GroupUniqueView from "../views/GroupUniqueView.vue";
 import QrGenerator from "../views/QrGenerator.vue";
 import PageQrCodeView from "../views/PageQrCodeView.vue";
@@ -71,6 +72,13 @@ const routes = [
   },
 
   {
+    path: "/mon-profil/:token",
+    name: "mon-profil",
+    component: MyProfileView,
+    props: true,
+  },
+
+  {
     path: "/:pathMatch(.*)",
     name: "NotFound",
     component: NotFoundView,
@@ -106,6 +114,9 @@ const routes = [
     path: "/admin",
     name: "admin",
     component: AdminView,
+  },
+
+  {
     path: "/abilities",
     name: "Competences",
     component: Abilities,
