@@ -3,7 +3,7 @@
 
   <!-- <span>{{ picture }}</span> -->
 
-  <ul>
+  <!-- <ul>
     <li v-for="user in users" :key="user.id">
       <p>Nom: {{ user.firstname }}</p>
       <p>Date de début: {{ user.lastname }}</p>
@@ -12,7 +12,13 @@
       <button>Supprimer</button>
       <hr />
     </li>
-  </ul>
+  </ul> -->
+
+  <p>Prénom: {{ firstname }}</p>
+  <p>Nom: {{ lastname }}</p>
+  <p>Email: {{ email }}</p>
+  <p>Bio: {{ bio }}</p>
+
   <ProfilView
     v-for="user in users"
     :key="user.id"
