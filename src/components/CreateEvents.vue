@@ -51,6 +51,7 @@ export default {
       end: "",
       location: "",
       feedbackMessage: "",
+      token: localStorage.getItem("savedUserToken"),
     };
   },
 
@@ -69,33 +70,20 @@ export default {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
+          Authorization: `Bearer ${localStorage.getItem("savedUserToken")}`,
         },
         body: JSON.stringify(body),
       });
-
       const data = await response.json();
 
       this.feedbackMessage = data.message;
 
-      this.getEvents();
+      this.$emit("created");
 
       this.name = "";
       this.start = "";
       this.end = "";
       this.location = "";
-    },
-
-    /* Récupération des events */
-    async getEvents() {
-      const response = await fetch("http://127.0.0.1:8000/api/events", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
-      const data = await response.json();
-      this.events = data.events;
     },
   },
 };

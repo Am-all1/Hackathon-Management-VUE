@@ -1,7 +1,6 @@
 <template>
   <section>
     <div>
-      <h1>Inscription d'un nouveau groupe</h1>
       <br />
 
       <form @submit.prevent="createGroup">
@@ -13,7 +12,12 @@
         <input type="text" name="room" v-model="room" />
         <p>Nombre de personnes :</p>
         <input type="text" name="members" v-model="members" />
-        <p>Compétences :</p>
+        <!-- 
+          Compétences : LES COMPETENCES NE DOIVENT PAS ÊTRE AJOUTEES
+          MANUELLEMENT ICI, MAIS IMPORTEES DANS LE GROUPE AUTOMATIQUEMENT LORS
+          DE L'AJOUT D'UN PARTICIPANT
+         -->
+        <p>Compétences => L'input ci-dessous devra dégager</p>
         <input type="text" name="abilities" v-model="abilities" />
         <input type="hidden" name="event_id" />
         <input type="submit" value="s'inscrire" />
@@ -26,6 +30,9 @@
 
 <script>
 export default {
+  mounted() {
+    //this.getGroup();
+  },
   data() {
     return {
       groups: [],
@@ -42,7 +49,14 @@ export default {
   },
 
   methods: {
+    /* Création d'un groupe */
     async createGroup() {
+      console.log(
+        "Affichgae de données du body : subject = " +
+          this.subject +
+          " event_id = " +
+          this.event_id
+      );
       const body = {
         subject: this.subject,
         name: this.name,
@@ -58,7 +72,6 @@ export default {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-
         body: JSON.stringify(body),
       });
 
@@ -66,7 +79,7 @@ export default {
 
       this.feedbackMessage = data.message;
 
-      this.getGroup();
+      this.$emit("groupCreated");
 
       this.subject = "";
       this.name = "";
@@ -75,7 +88,7 @@ export default {
       this.abilities = "";
     },
 
-    async getGroup() {
+    /* async getGroup() {
       const response = await fetch("http://127.0.0.1:8000/api/groups", {
         method: "GET",
         headers: {
@@ -86,11 +99,7 @@ export default {
 
       const data = await response.json();
       this.groups = data.groups;
-    },
-  },
-
-  mounted() {
-    this.getGroup();
+    }, */
   },
 };
 </script>

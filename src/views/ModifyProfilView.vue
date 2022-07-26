@@ -32,7 +32,6 @@
           id="email"
           placeholder= {{email}}
           v-model="email"
-          
         />
       </div>
       <br />
@@ -44,7 +43,6 @@
           id="password"
           placeholder= {{password}} 
           v-model="password"
-          
         />
       </div>
       <br />
@@ -187,4 +185,3 @@ export default {
     components: { FileUploadView }
 };
 </script>
-

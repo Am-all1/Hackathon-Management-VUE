@@ -1,11 +1,14 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import LoginView from "../views/LoginView.vue";
+import DisconnectedView from "../views/DisconnectedView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
 import CreateEventsView from "../views/CreateEventsView.vue";
 import EventUniqueView from "../views/EventUniqueView.vue";
 import ProfilView from "../views/ProfilView.vue";
+import MyProfileView from "../views/MyProfileView.vue";
 import CreateSlotsView from "../views/CreateSlotsView.vue";
 import CreateUserView from "../views/CreateUserView.vue";
+import AdminView from "../views/AdminView.vue";
 import GroupView from "../views/GroupView.vue";
 import ModifyProfilView from "../views/ModifyProfilView.vue";
 import Abilities from "../components/Abilities.vue";// A laisser pour tester l'affichage 
@@ -13,15 +16,20 @@ import GroupUniqueView from "../views/GroupUniqueView.vue";
 
 const routes = [
   {
+    path: "/login",
+    name: "connexion",
+    component: LoginView,
+  },
+  {
     path: "/group",
     name: "group",
     component: GroupView,
   },
 
   {
-    path: "/login",
-    name: "connexion",
-    component: LoginView,
+    path: "/disconnected",
+    name: "deconnexion",
+    component: DisconnectedView,
   },
 
   {
@@ -42,13 +50,20 @@ const routes = [
   {
     path: "/modifications",
     name: "Modification de profil",
-    component:ModifyProfilView,
+    component: ModifyProfilView,
   },
 
   {
-    path: "/profil/",
-    name: "profil",
+    path: "/profil/:user_id",
+    name: "Profil",
     component: ProfilView,
+  },
+
+  {
+    path: "/mon-profil/:token",
+    name: "mon-profil",
+    component: MyProfileView,
+    props: true,
   },
 
   {
@@ -64,14 +79,14 @@ const routes = [
   },
 
   {
-    path: "/eventunique/:id",
+    path: "/eventunique/:event_id",
     name: "EventUnique",
     component: EventUniqueView,
     props: true,
   },
 
   {
-    path: "/groupuniqueshow/:id",
+    path: "/groupuniqueshow/:group_id",
     name: "GroupUniqueShow",
     component: GroupUniqueView,
     props: true,
@@ -84,9 +99,15 @@ const routes = [
   },
 
   {
+    path: "/admin",
+    name: "admin",
+    component: AdminView,
+  },
+
+  {
     path: "/abilities",
     name: "Competences",
-    component:Abilities,
+    component: Abilities,
   },
 ];
 
