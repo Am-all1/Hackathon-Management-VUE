@@ -15,9 +15,10 @@
   <div class="groupFormDisplay">
     <CreateGroup :event_id="event.id" @groupCreated="getGroupUnique" />
   </div>
+  @/components/Even@/components/EventUnique.vue
 
   <!-- APPEL DU COMPOSANT GroupUnique AVEC UN v-for AFIN D'AFFICHER LA LISTE DES GROUPES LIES A CET EVENEMENT -->
-  <div class="allGroupsInEvent">
+  <div class="allGroupsIn@/components/EventUnique.vue">
     <h2>Listes des groupes actuellement enregistrés dans cet événement :</h2>
     <GroupUnique
       v-for="group in groups"

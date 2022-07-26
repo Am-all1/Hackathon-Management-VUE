@@ -1,8 +1,8 @@
 <template>
   <div class="ShortProfileLine">
-    <p>user.firstname</p>
-    <p>user.lastname</p>
-    <p>user.email</p>
+    <p>{{ firstname }}</p>
+    <p>{{ lastname }}</p>
+    <p>{{ email }}</p>
 
     <router-link
       :to="{
