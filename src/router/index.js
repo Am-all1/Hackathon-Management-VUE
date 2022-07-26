@@ -60,7 +60,7 @@ const routes = [
   },
 
   {
-    path: "/mon-profil/:token",
+    path: "/mon-profil/:tokenable_id",
     name: "mon-profil",
     component: MyProfileView,
     props: true,
