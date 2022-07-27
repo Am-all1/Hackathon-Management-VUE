@@ -17,6 +17,7 @@
       <button class="showBtn">Montrer l'évènement</button></router-link
     >
 
+    <button @click="deleteEvent">Supprimer</button>
     <hr />
   </div>
 </template>

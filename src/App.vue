@@ -1,5 +1,4 @@
 <template>
- 
   <nav>
     <div>
       <router-link to="/">Accueil</router-link> |
@@ -17,8 +16,7 @@
       <router-link to="/mon-profil">Mon Profil</router-link> |
       <router-link to="/login">Connexion</router-link> |
       <router-link to="/disconnected">Deconnexion</router-link> |
-      <router-link to="/create-user">Création de compte</router-link> |
-      <router-link to="/create-event">Créer un évènement</router-link> |
+      <router-link to="/eventlist">Evènements</router-link> |
       <router-link to="/admin">Espace admin</router-link> |
       <router-link to="/slots">Créer un créneau</router-link>|
       <router-link to="/modifications">Modifier mon profil</router-link>|
@@ -31,16 +29,13 @@
   <!-- <h1 id="titreAccueil">Hackathon <span id="letter">(s)</span> Manager</h1> -->
   <router-view />
 
-
-<!-- <footer class="footer">
+  <!-- <footer class="footer">
 
   <div>
     © 2022 Copyright: Nice Start(s) Up
   </div>
  
 </footer> -->
-
-
 </template>
 
 <script>
@@ -83,7 +78,7 @@ export default {
 // .footer{
 //   background-color: rgba(0, 0, 0, 0.815);
 //     position:absolute;
-//    bottom:0; 
+//    bottom:0;
 //    width:100%;
 //    height:100px;
 //    color: white;

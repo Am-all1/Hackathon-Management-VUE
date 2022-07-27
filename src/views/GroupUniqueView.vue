@@ -14,7 +14,7 @@
   </div>
   <hr />
 
-  <!-- APPEL DU COMPOSANT QUI PERMET D'AJOUTER UN PARTICIPANT AU GROUPE QUE L'ON CONSULTE -->
+  <!-- APPEL DU COMPOSANT QUI PERMET D'AFFICHER TOUS LES PARTICIPANTS DE L EVENT -->
   <div class="addUserFormDisplay">
     <h2>AJOUTER UN USER DANS CE GROUPE</h2>
     <AddUserToGroup @UserAdded="getGroupUniqueWithUsers" />
@@ -46,7 +46,6 @@ import ArrayHead from "@/components/ArrayHead.vue";
 export default {
   beforeMount() {
     this.getGroupUniqueWithUsers();
-    //this.getGroupUsers(); // PAS UTILE SI getGroupUniqueWithUsers APPORTE LES UTILISATEURS -> à tester
   },
 
   /* Enregistrement des composents utilisés */

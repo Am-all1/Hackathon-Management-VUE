@@ -8,32 +8,31 @@
       class=""
       placeholder="Entrez un participant"
     />
-    <table>
-      <thead>
-        <tr>
-          <th>
-            Liste des utilisateurs inscrits -> Actuellement : tous les users du
-            site
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="td">Prénom</td>
-          <td class="td">Nom</td>
-          <td class="td">Email</td>
-          <td class="td">Add</td>
-        </tr>
+    <div class="tableau">
+      <table>
+        <thead>
+          <tr>
+            <th>Utilisateurs inscrits</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td">Prénom</td>
+            <td class="td">Nom</td>
+            <td class="td">Email</td>
+            <td class="td">Add</td>
+          </tr>
 
-        <tr v-for="user in filterByName" :key="user.id">
-          <td>{{ user.firstname }}</td>
-          <td>{{ user.lastname }}</td>
-          <td>{{ user.email }}</td>
+          <tr v-for="user in filterByName" :key="user.id">
+            <td>{{ user.firstname }}</td>
+            <td>{{ user.lastname }}</td>
+            <td>{{ user.email }}</td>
 
-          <td><button @click="addToGroup(user.id)">+</button></td>
-        </tr>
-      </tbody>
-    </table>
+            <td><button @click="addToGroup(user.id)">+</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -139,5 +138,11 @@ table,
 thead {
   background-color: #333;
   color: #fff;
+}
+
+.tableau {
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
 }
 </style>
