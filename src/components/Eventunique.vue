@@ -33,9 +33,22 @@ export default {
   },
 
   methods: {
-    deleteEvent(e) {
-      const index = e.target.dataset.index;
-      this.doneList.splice(index, 1);
+    async deleteEvent(event) {
+      const response = await fetch(
+        "http://127.0.0.1:8000/api/events/" + this.$route.params.event_id,
+
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      );
+
+      const data = await response.json();
+      this.events = data.events;
+      this.events.splice(this.events.indexOf(event), 1);
     },
   },
 };
