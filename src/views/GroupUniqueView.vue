@@ -17,13 +17,14 @@
   <!-- APPEL DU COMPOSANT QUI PERMET D'AJOUTER UN PARTICIPANT AU GROUPE QUE L'ON CONSULTE -->
   <div class="addUserFormDisplay">
     <h2>AJOUTER UN USER DANS CE GROUPE</h2>
-    <UserInGroup @UserAdded="getGroupUniqueWithUsers" />
+    <AddUserToGroup @UserAdded="getGroupUniqueWithUsers" />
   </div>
 
   <hr />
   <!-- APPEL DU COMPOSANT QUI AFFICHE LES PARTICIPANTS INSCRITS DANS LE GROUPE QUE L'ON CONSULTE, avec un v-for -->
   <div class="allUsersInGroup">
-    <h2>Liste des utilisateurs dans ce groupe :</h2>
+    <h2>LISTE DES UTILISATEURS DE CE GROUPE</h2>
+    <!-- SI ON PEUT FAIRE MIEUX POUR L'AFFICHE DU TITRE DE TABLEAU, ALORS BANCO -->
     <ShortProfile
       v-for="user in users"
       :key="user.id"
@@ -38,8 +39,9 @@
 <script>
 /* Import des composants */
 import GroupUnique from "@/components/GroupUnique.vue";
-import UserInGroup from "@/components/UserInGroup.vue";
 import ShortProfile from "@/components/ShortProfile.vue";
+import AddUserToGroup from "@/components/AddUserToGroup.vue";
+import ArrayHead from "@/components/ArrayHead.vue";
 
 export default {
   beforeMount() {
@@ -50,8 +52,9 @@ export default {
   /* Enregistrement des composents utilisés */
   components: {
     GroupUnique,
-    UserInGroup,
     ShortProfile,
+    AddUserToGroup,
+    ArrayHead,
   },
 
   data() {
@@ -84,7 +87,6 @@ export default {
       this.users = data.users;
       console.log("Affichage des users du groupe :" + data.users);
     },
-
     /* Récupération des utilisateurs qui font partie de ce groupe
 
     *************************** CETTE PARTIE-CI N'EST PAS UTILE SI LA FONCTION getGroupUniqueWithUsers donne les utilisateurs

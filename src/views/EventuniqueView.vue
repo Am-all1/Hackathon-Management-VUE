@@ -15,7 +15,6 @@
   <div class="groupFormDisplay">
     <CreateGroup :event_id="event.id" @groupCreated="getGroupUnique" />
   </div>
-  @/components/Even@/components/EventUnique.vue
 
   <!-- APPEL DU COMPOSANT GroupUnique AVEC UN v-for AFIN D'AFFICHER LA LISTE DES GROUPES LIES A CET EVENEMENT -->
   <div class="allGroupsIn@/components/EventUnique.vue">
@@ -39,6 +38,8 @@ import EventUnique from "@/components/EventUnique.vue";
 import CreateGroup from "@/components/CreateGroup.vue";
 import GroupUnique from "@/components/GroupUnique.vue";
 
+import { computed } from "vue";
+
 export default {
   beforeMount() {
     this.getEventUnique();
@@ -46,10 +47,16 @@ export default {
   },
   data() {
     return {
-      event: {},
+      event: [],
       groups: [], // à vérifier : le type "tableau" est-il le plus approprié ?
+      /* event_id: this.event.id, */ // UTILISATION POUR LE PROVIDE
     };
   },
+  /*   provide() {
+    return {
+      event_id: computed(() => this.event_id),
+    };
+  }, */
 
   components: {
     EventUnique,
