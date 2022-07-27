@@ -1,4 +1,3 @@
-
 <template>
   <section>
     <div>
@@ -21,9 +20,9 @@
         <p>OPS</p>
         <input type="checkbox" name="ops" v-model="ops" />
         <p>design graphique</p>
-        <input type="checkbox" name="desiGraph" v-model="design" />
-        <br>
-        <br>
+        <input type="checkbox" name="desiGraph" v-model="desiGraph" />
+        <br />
+        <br />
         <input type="submit" value="valider" />
       </form>
     </div>
@@ -31,7 +30,6 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -42,8 +40,8 @@ export default {
       management: "",
       commercial: "",
       communication: "",
-      ops: "", 
-      designGraph:"",
+      ops: "",
+      desiGraph: "",
     };
   },
 
@@ -101,4 +99,3 @@ export default {
   },
 };
 </script>
-

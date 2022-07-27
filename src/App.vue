@@ -16,7 +16,7 @@
       <router-link to="/mon-profil">Mon Profil</router-link> |
       <router-link to="/login">Connexion</router-link> |
       <router-link to="/disconnected">Deconnexion</router-link> |
-      <router-link to="/create-event">Créer un évènement</router-link> |
+      <router-link to="/eventlist">Evènements</router-link> |
       <router-link to="/admin">Espace admin</router-link> |
       <router-link to="/slots">Créer un créneau</router-link>|
       <router-link to="/modifications">Modifier mon profil</router-link>|

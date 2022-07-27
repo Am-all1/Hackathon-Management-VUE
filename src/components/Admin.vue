@@ -3,8 +3,10 @@
     <div>
       <h1>Mon espace administrateur</h1>
       <br />
-      <label for="">Choix de l'évènement:</label>
-      <br />
+
+      <CreateEvents @created="getEvents" />
+      <h3>Choix de l'évènement:</h3>
+
       <select v-model="selectedEvent_id">
         <option :value="null">Tous les événements</option>
         <option v-for="event in events" :key="event.id" :value="event.id">
@@ -21,7 +23,8 @@
       class="filteredUsers"
       v-if="selectedEvent_id == null ? getUsers() : null"
     >
-      <h1>Liste de tous les utilisateurs</h1>
+      <br />
+      <h3>Liste de tous les utilisateurs</h3>
       <br />
       <label for="">Recherche de participant : </label>
       <input
@@ -97,6 +100,7 @@
 </template>
 
 <script>
+import CreateEvents from "@/components/CreateEvents.vue";
 export default {
   data() {
     return {
@@ -106,6 +110,10 @@ export default {
       selectedEvent_id: null,
     };
   },
+  components: {
+    CreateEvents,
+  },
+
   beforeMount() {
     this.getEvents();
     this.getUsers();

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Création d'un évènement:</h1>
+    <h2>Création d'un évènement:</h2>
 
     <form @submit.prevent="createEvent">
       <div>
