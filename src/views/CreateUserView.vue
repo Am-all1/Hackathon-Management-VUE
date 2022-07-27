@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="linkTitlePage">Création de votre compte</h1>
+    <h1>Création de votre compte</h1>
     <form @submit.prevent="createUser">
       <div>
         <label for="firstname">Prénom : </label>
@@ -97,11 +97,3 @@ export default {
   },
 };
 </script>
-<style>
-.linkTitlePage{
-    BACKGROUND-COLOR: #ed4c4c;
-    MARGIN-LEFT: 30%;
-    margin-right: 30%                                      
-}
-
-</style>

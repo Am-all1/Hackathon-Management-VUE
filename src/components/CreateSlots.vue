@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="linkTitlePage">Choix d'un créneau horaire:</h1>
+    <h1>Choix d'un créneau horaire:</h1>
 
     <form @submit.prevent="createSlot">
       <div>
