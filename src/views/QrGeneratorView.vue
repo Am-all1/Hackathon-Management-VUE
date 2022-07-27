@@ -15,7 +15,6 @@
 <script>
 import QrcodeVue from "qrcode.vue";
 import { QrcodeStream } from "vue3-qrcode-reader";
-
 export default {
   data() {
     return {
