@@ -17,7 +17,10 @@
     {{ selectedEvent_id }}
 
     <!-- ICI LA LISTE DE TOUS LES UTILISATEURS -->
-    <div class="filteredUsers" v-if="selectedEvent_id == null">
+    <div
+      class="filteredUsers"
+      v-if="selectedEvent_id == null ? getUsers() : null"
+    >
       <h1>Liste de tous les utilisateurs</h1>
       <br />
       <label for="">Recherche de participant : </label>
