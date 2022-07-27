@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="linkTitlePage">Création d'un évènement:</h1>
+    <h1>Création d'un évènement:</h1>
 
     <form @submit.prevent="createEvent">
       <div>
