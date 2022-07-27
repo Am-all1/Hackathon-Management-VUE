@@ -15,8 +15,6 @@
         :location="event.location"
         :event_id="event.id"
       />
-      <!-- <input type="button" @click="qrCreate" /> -->
-      <!-- <qrcode-vue v-if="QRValue" :value="value" :size="size" level="H" /> -->
     </form>
   </div>
 </template>
@@ -24,19 +22,15 @@
 <script>
 import CreateEvents from "@/components/CreateEvents.vue";
 import EventUnique from "@/components/EventUnique.vue";
-import QrcodeVue from "qrcode.vue";
 
 export default {
   components: {
     CreateEvents,
     EventUnique,
-    QrcodeVue,
   },
   data() {
     return {
       events: [],
-      token: localStorage.getItem("savedUserToken"),
-      QRValue: null,
     };
   },
   mounted() {
@@ -55,17 +49,6 @@ export default {
       });
       const data = await response.json();
       this.events = data.events;
-    },
-    deleteEvent: function (event) {
-      this.events.splice(this.event);
-    },
-    qrCreate() {
-      console.log(this.$route.query.page);
-    },
-    test() {
-      var currentUrl = window.location.pathname;
-      console.log("test");
-      console.log(currentUrl);
     },
   },
 };

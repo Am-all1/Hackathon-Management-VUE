@@ -8,8 +8,7 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "boostrap": "^2.0.0",
-    "bootstrap-vue": "^2.22.0",
+    "bootstrap": "^5.2.0",
     "capacitor": "^0.5.5",
     "core-js": "^3.8.3",
     "qrcode.vue": "^3.3.3",

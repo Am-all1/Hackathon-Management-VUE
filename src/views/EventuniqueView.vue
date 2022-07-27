@@ -51,6 +51,8 @@ import CreateGroup from "@/components/CreateGroup.vue";
 import GroupUnique from "@/components/GroupUnique.vue";
 import CreateUser from "@/components/CreateUser.vue";
 
+import { computed } from "vue";
+
 export default {
   beforeMount() {
     this.getEventUnique();
@@ -58,10 +60,16 @@ export default {
   },
   data() {
     return {
-      event: {},
+      event: [],
       groups: [], // à vérifier : le type "tableau" est-il le plus approprié ?
+      /* event_id: this.event.id, */ // UTILISATION POUR LE PROVIDE
     };
   },
+  /*   provide() {
+    return {
+      event_id: computed(() => this.event_id),
+    };
+  }, */
 
   components: {
     EventUnique,
