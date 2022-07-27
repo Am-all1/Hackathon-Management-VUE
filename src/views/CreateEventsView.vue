@@ -3,7 +3,7 @@
     <CreateEvents @created="getEvents" />
   </div>
   <hr />
-  <h2>Liste des évènements:</h2>
+  <h2 >Liste des évènements:</h2>
 
   <EventUnique
     v-for="event in events"

@@ -1,7 +1,7 @@
 <template>
   <section>
     <div>
-      <h1>Mon espace administrateur</h1>
+      <h1 class="linkTitlePage">Mon espace administrateur</h1>
       <br />
       <label for="">Choix de l'évènement:</label>
       <br />
