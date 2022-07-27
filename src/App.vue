@@ -12,9 +12,9 @@
   </header>
   <nav>
     <router-link to="/home" class="links">Accueil</router-link> |
-    <router-link to="/profil" class="links">Profil</router-link> |
+    <router-link to="/profil" class="links">Mon profil</router-link> |
     <router-link to="/login" class="links">Connexion</router-link> |
-    <router-link to="/disconnected" class="links">Deconnexion</router-link> |
+    <router-link to="/disconnected" class="links">Déconnexion</router-link> |
     <router-link to="/create-user" class="links">Créer un compte</router-link>
     |
     <router-link to="/create-event" class="links"
@@ -25,8 +25,9 @@
     <router-link to="/modifications" class="links"
       >Modifier mon profil</router-link
     >
-    |
-    <router-link to="/abilities" class="links">Mes compétences</router-link>
+    | <router-link to="/abilities" class="links">Mes compétences</router-link> |
+    <router-link to="/qrgenerator">Qr Code</router-link> |
+    <router-link to="/pageqrcode">Page avec QR Code</router-link>
   </nav>
   <div>
     <router-view />
@@ -34,6 +35,8 @@
 </template>
 
 <script>
+import "bootstrap/dist/css/bootstrap.min.css";
+
 export default {
   name: "App",
   components: {},
@@ -53,7 +56,8 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+
+  // color: #2c3e50;
 }
 
 header {
@@ -103,4 +107,19 @@ nav {
 .links {
   text-decoration-line: none;
 }
+#navBar {
+  background-color: whitesmoke;
+  padding: 4%;
+}
+#navLink {
+  text-decoration: none;
+}
+
+// .footerDiv{
+//   background-color: black;
+//     position:absolute;
+//    bottom:0;  /* on le colle en bas */
+//    width:100%;
+//    height:100px;   /* Hauteur du pied de page */
+// }
 </style>

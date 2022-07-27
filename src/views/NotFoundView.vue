@@ -1,5 +1,5 @@
 <template>
-  <h1>La page que vous cherchez n'existe pas.</h1>
+  <h1>La page demandée n'existe pas</h1>
 </template>
 
 <style scoped>
@@ -12,3 +12,7 @@ h1 {
   margin: 150px;
 }
 </style>
+<!-- <script>
+import logo from "../assets/logo.png"
+
+</script> -->

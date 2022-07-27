@@ -1,71 +1,149 @@
 <template>
   <section>
     <div>
-      <h1>Mon espace administrateur</h1>
+      <h1 class="linkTitlePage">Mon espace administrateur</h1>
       <br />
       <label for="">Choix de l'évènement:</label>
       <br />
-      <select name="" id="">
-        <option v-for="event in events" :key="event.id">
-          {{ event.name }} - {{ event.location }} - {{ event.start }} -
-          {{ event.end }}
+      <select v-model="selectedEvent_id">
+        <option :value="null">Tous les événements</option>
+        <option v-for="event in events" :key="event.id" :value="event.id">
+          {{ event.name }}
+          {{ event.location }}
+          {{ event.id }}
         </option>
       </select>
     </div>
-    <div>
-      <h1>Liste des utilisateurs inscrits à l'évènement</h1>
+    {{ selectedEvent_id }}
+
+    <!-- ICI LA LISTE DE TOUS LES UTILISATEURS -->
+    <div
+      class="filteredUsers"
+      v-if="selectedEvent_id == null ? getUsers() : null"
+    >
+      <h1>Liste de tous les utilisateurs</h1>
       <br />
-      <table>
-        <tr>
-          <th>Nom</th>
-          <th>Prénom</th>
-          <th>Adresse email</th>
-          <th>Accréditation</th>
-          <th>Action</th>
-        </tr>
-      </table>
-      <table>
-        <p></p>
-        <tr v-for="event_user in event_users" :key="event_user.id">
-          <th>{{ event_user.user_lastname }}</th>
-          <th>{{ event_user.user_firstname }}</th>
-          <th>{{ event_user.user_email }}</th>
-          <th>{{ role.authorization }}</th>
-        </tr>
-      </table>
+      <label for="">Recherche de participant : </label>
+      <input
+        type="text"
+        v-model="searchTerm"
+        class=""
+        placeholder="Entrez un participant"
+      />
+      <div class="tableau">
+        <table>
+          <thead>
+            <tr>
+              <th>Utilisateurs</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td">Prénom</td>
+              <td class="td">Nom</td>
+              <td class="td">Email</td>
+              <td class="td">Role</td>
+            </tr>
+
+            <tr v-for="user in filterByName" :key="user.id">
+              <td>{{ user.firstname }}</td>
+              <td>{{ user.lastname }}</td>
+              <td>{{ user.email }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ***************  ICI LA LISTE DES UTILISATEURS D'UN EVENEMENT *************** -->
+    <div
+      class="filteredUsers"
+      v-if="selectedEvent_id != null ? getUsersOfEvents() : false"
+    >
+      <h1>Liste des utilisateurs de l'événement séléctionné :</h1>
+      <br />
+      <label for="">Recherche de participant : </label>
+      <input
+        type="text"
+        v-model="searchTerm"
+        class=""
+        placeholder="Entrez un participant"
+      />
+      <div class="tableau">
+        <table>
+          <thead>
+            <tr>
+              <th>Utilisateurs</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td">Prénom</td>
+              <td class="td">Nom</td>
+              <td class="td">Email</td>
+              <td class="td">Role</td>
+            </tr>
+
+            <tr v-for="user in filterByName" :key="user.id">
+              <td>{{ user.firstname }}</td>
+              <td>{{ user.lastname }}</td>
+              <td>{{ user.email }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 </template>
 
 <script>
-import EventUnique from "@/components/EventUnique.vue";
-
 export default {
-  components: {
-    EventUnique,
-  },
   data() {
     return {
+      users: [],
+      searchTerm: "",
       events: [],
-      name: "",
-      start: "",
-      end: "",
-      location: "",
-      event_users: [],
-      user_lastname: "",
-      user_firstname: "",
-      user_email: "",
+      selectedEvent_id: null,
     };
+  },
+  beforeMount() {
+    this.getEvents();
+    this.getUsers();
+  },
+
+  computed: {
+    filterByName() {
+      return this.users.filter((user) => {
+        return (
+          user.firstname
+            .toLowerCase()
+            .includes(this.searchTerm.toLowerCase()) ||
+          user.lastname.toLowerCase().includes(this.searchTerm.toLowerCase())
+        );
+      });
+    },
   },
 
   methods: {
-    /* Récupération des events */
-    async getEventUnique() {
+    /* Recherche de tous les utilisateurs inscrits */
+    async getUsers() {
+      const response = await fetch("http://127.0.0.1:8000/api/showusers", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      const data = await response.json();
+      this.users = data.users;
+    },
+
+    /* Recherche de tous les utilisateurs inscrits dans un événement */
+    async getUsersOfEvents() {
       const response = await fetch(
-        "http://127.0.0.1:8000/api/events/" + this.$route.params.id,
+        "http://127.0.0.1:8000/api/events/" + this.selectedEvent_id,
         {
           method: "GET",
-          // params: { event_id: id },
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
@@ -73,10 +151,39 @@ export default {
         }
       );
       const data = await response.json();
-      this.event = data.event;
+      this.users = data.users;
+    },
+
+    /* Récupération des events */
+    async getEvents() {
+      const response = await fetch("http://127.0.0.1:8000/api/events", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      const data = await response.json();
+      this.events = data.events;
     },
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+table,
+.td {
+  border: 1px solid #333;
+}
+
+thead {
+  background-color: #333;
+  color: #fff;
+}
+
+.tableau {
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+}
+</style>

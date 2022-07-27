@@ -53,7 +53,7 @@ export default {
     /* Création d'un groupe */
     async createGroup() {
       console.log(
-        "Affichgae de données du body : subject = " +
+        "Affichage de données du body : subject = " +
           this.subject +
           " event_id = " +
           this.event_id

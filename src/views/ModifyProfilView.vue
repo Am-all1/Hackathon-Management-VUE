@@ -5,94 +5,109 @@
       <div id="formStyle">
         <div id="formStyleLeftContainer">
           <label for="firstname">Prénom : </label>
-          <br />
+          <br>
           <input
             type="text"
             name="firstname"
             id="firstname"
-            placeholder="Prénom"
+            :placeholder="user.firstname"
             v-model="firstname"
           />
-          <br />
-          <label for="lastname">Nom : {{ lastname }} </label><br />
+          <br>
+          <label for="lastname">Nom : </label>
+          <br>
           <input
             type="text"
             name="lasttname"
             id="lastname"
-            placeholder="Nom"
+            placeholder="{{lastname}}"
             v-model="lastname"
           />
-          <br />
-          <label for="email">Email: {{ email }} : </label><br />
+          <br>
+          <label for="email">Email: </label>
+          <br>
           <input
             type="email"
             name="email"
             id="email"
-            placeholder="Email"
+            placeholder="{{email}}"
             v-model="email"
           />
-          <br />
-          <label for="password">Mot de passe : {{ password }} </label><br />
+          <br>
+          <label for="password">Mot de passe : </label>
+          <br>
           <input
             type="password"
             name="password"
             id="password"
-            placeholder="password"
+            placeholder="{{password}}"
             v-model="password"
           />
-        </div>
-        <div id="formStyleCenterContainer">
-          <label for="firstname">linkedIn : {{ linkedIn }} </label><br />
+      </div>
+
+      <div id="formStyleCenterContainer">
+        <label for="firstname">linkedIn : </label>
+        <br>
+        <input
+          type="text"
+          name="linkedin"
+          id="linkedin"
+          placeholder="{{linkedIn}}"
+          v-model="linkedin"
+        />
+        <br />
+          <label for="firstname">Github </label>
+          <br>
           <input
             type="text"
             name="linkedin"
             id="linkedin"
-            placeholder="lien Linkedin"
-            v-model="linkedin"
-          />
-          <br />
-          <label for="firstname">Github : {{ Github }} </label><br />
-          <input
-            type="text"
-            name="linkedin"
-            id="linkedin"
-            placeholder="Lien Github"
+            placeholder="{{github}}"
             v-model="github"
           />
-          <br />
-          <label for="firstname">Website : {{ website }}</label
-          ><br />
+        <br />
+          <label for="firstname">Website :</label>
+          <br>
           <input
             type="text"
             name="website"
             id="website"
-            placeholder="Site web"
+            placeholder="{{website}}"
             v-model="website"
           />
-          <br />
-          <label for="firstname">Portfolio : {{ portfolio }} </label><br />
+        <br />
+          <label for="firstname">Portfolio :</label>
+          <br>
           <input
             type="text"
             name="portfolio"
             id="portfolio"
-            placeholder="Portfolio"
+            placeholder="{{portfolio}}"
             v-model="portfolio"
           />
-        </div>
-        <div id="formStyleRightContainer">
-          <label for="firstname">Photo : {{ picture }}</label
-          ><br />
-          <input
-            type="image"
-            name="picture"
-            id="picture"
-            placeholder="photo"
-            v-model="picture"
-          />
-        </div>
       </div>
-      <br />
-      <input type="submit" value="Modifier" id="button" />
+      <div>
+        <label for="firstname">Photo :</label>
+        <br>
+        <input
+          type="image"
+          name="picture"
+          id="picture"
+          placeholder="{{picture}}"
+          v-model="picture"
+        />
+        <FileUploadView></FileUploadView>
+        <br>
+        <label for="firstname">Bio :</label>
+        <textarea
+          name="bio"
+          id="bio"
+          placeholder="{{bio}}"
+          v-model="bio"
+        ></textarea>
+      </div>
+
+      <input type="submit" value="Valider" id="button"/>
     </form>
 
     <p>{{ feedBackmessage }}</p>
@@ -100,6 +115,8 @@
 </template>
 
 <script>
+// import FileUpload from './FileUploadView.vue';
+import FileUploadView from "./FileUploadView.vue";
 export default {
   data() {
     return {
@@ -108,10 +125,15 @@ export default {
       lastname: "",
       email: "",
       password: "",
+      linkedin: "",
+      github: "",
+      website: "",
+      portfolio: "",
+      bio: "",
+      picture: "",
       feedBackmessage: "",
     };
   },
-
   methods: {
     /* Récupération */
     async getModifyProfil() {
@@ -122,10 +144,10 @@ export default {
           Accept: "application/json",
         },
       });
+
       const data = await response.json();
       this.events = data.events;
     },
-
     /* Création des modifs */
     async createModifyProfil() {
       const body = {
@@ -140,7 +162,6 @@ export default {
         bio: this.bio,
         picture: this.picture,
       };
-
       const response = await fetch("http://127.0.0.1:8000/api/users", {
         method: "POST",
         headers: {
@@ -149,23 +170,19 @@ export default {
         },
         body: JSON.stringify(body),
       });
-
       const data = await response.json();
-
       this.feedbackMessage = data.message;
-
       this.getModifyProfil();
-
       // firstname: this.firstname,
       // lastname: this.lastname,
       // email: this.email,
       // password: this.password,
     },
   },
-
   mounted() {
     this.getModifyProfil();
   },
+  components: { FileUploadView },
 };
 </script>
 

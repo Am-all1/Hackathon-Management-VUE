@@ -1,8 +1,6 @@
 <template>
   <div class="">
     <form>
-      <label for="">Générer mon QR CODE</label>
-      <br />
       <input type="text" v-model="QRValue" />
     </form>
     <qrcode-vue v-if="QRValue" :value="value" :size="size" level="H" />

@@ -4,6 +4,7 @@
     <br />
     <button @click="disconnect">Se déconnecter</button>
   </div>
+  <QRgenerator></QRgenerator>
 </template>
 
 <script>
