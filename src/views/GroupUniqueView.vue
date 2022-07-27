@@ -17,20 +17,6 @@
   <!-- APPEL DU COMPOSANT QUI PERMET D'AFFICHER TOUS LES PARTICIPANTS DE L EVENT -->
   <div class="addUserFormDisplay">
     <h2>AJOUTER UN USER DANS CE GROUPE</h2>
-<<<<<<< HEAD
-    <UsersInEvent
-      :event_id="group.event_id"
-      @UserAdded="getGroupUniqueWithUsers"
-    />
-  </div>
-
-  <hr />
-  <!-- APPEL DU COMPOSANT QUI AFFICHE LES PARTICIPANTS INSCRITS DANS LE GROUPE QUE L'ON CONSULTE -->
-  <!-- <div class="allUsersInGroup">
-    <h2>Liste des utilisateurs dans ce groupe :</h2>
-    <UsersInGroup :user_id="user.id" :group_id="group.id" />
-  </div> -->
-=======
     <AddUserToGroup @UserAdded="getGroupUniqueWithUsers" />
   </div>
 
@@ -48,20 +34,14 @@
       :user_id="user.id"
     />
   </div>
->>>>>>> 3bd952e081206df5d4f419c74e6e1393b93b931b
 </template>
 
 <script>
 /* Import des composants */
 import GroupUnique from "@/components/GroupUnique.vue";
-<<<<<<< HEAD
-import UsersInEvent from "@/components/UsersInEvent.vue";
-import UsersInGroup from "@/components/UsersInGroup.vue";
-=======
 import ShortProfile from "@/components/ShortProfile.vue";
 import AddUserToGroup from "@/components/AddUserToGroup.vue";
 import ArrayHead from "@/components/ArrayHead.vue";
->>>>>>> 3bd952e081206df5d4f419c74e6e1393b93b931b
 
 export default {
   beforeMount() {
@@ -71,14 +51,9 @@ export default {
   /* Enregistrement des composents utilisés */
   components: {
     GroupUnique,
-<<<<<<< HEAD
-    UsersInEvent,
-    UsersInGroup,
-=======
     ShortProfile,
     AddUserToGroup,
     ArrayHead,
->>>>>>> 3bd952e081206df5d4f419c74e6e1393b93b931b
   },
 
   data() {
@@ -111,8 +86,6 @@ export default {
       this.users = data.users;
       console.log("Affichage des users du groupe :" + data.users);
     },
-<<<<<<< HEAD
-=======
     /* Récupération des utilisateurs qui font partie de ce groupe
 
     *************************** CETTE PARTIE-CI N'EST PAS UTILE SI LA FONCTION getGroupUniqueWithUsers donne les utilisateurs
@@ -134,7 +107,6 @@ export default {
     },
 
     */
->>>>>>> 3bd952e081206df5d4f419c74e6e1393b93b931b
   },
 };
 </script>

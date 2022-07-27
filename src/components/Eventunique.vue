@@ -17,11 +17,8 @@
       <button class="showBtn">Montrer l'évènement</button></router-link
     >
 
-<<<<<<< HEAD
     <button @click="deleteEvent">Supprimer</button>
-=======
     <hr />
->>>>>>> 3bd952e081206df5d4f419c74e6e1393b93b931b
   </div>
 </template>
 
