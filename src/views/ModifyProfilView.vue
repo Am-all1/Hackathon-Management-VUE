@@ -8,7 +8,7 @@
           type="text"
           name="firstname"
           id="firstname"
-          placeholder="{{Prénom}}"
+          :placeholder="user.firstname"
           v-model="firstname"
         />
       </div>
@@ -19,7 +19,7 @@
           type="text"
           name="lasttname"
           id="lastname"
-          placeholder={{lastname}}
+          placeholder="{{lastname}}"
           v-model="lastname"
         />
       </div>
@@ -30,7 +30,7 @@
           type="email"
           name="email"
           id="email"
-          placeholder= {{email}}
+          placeholder="{{email}}"
           v-model="email"
         />
       </div>
@@ -41,7 +41,7 @@
           type="password"
           name="password"
           id="password"
-          placeholder= {{password}} 
+          placeholder="{{password}}"
           v-model="password"
         />
       </div>
@@ -52,7 +52,7 @@
           type="text"
           name="linkedin"
           id="linkedin"
-          placeholder={{linkedIn}} 
+          placeholder="{{linkedIn}}"
           v-model="linkedin"
         />
       </div>
@@ -74,7 +74,7 @@
           type="text"
           name="website"
           id="website"
-          placeholder= {{website}}
+          placeholder="{{website}}"
           v-model="website"
         />
       </div>
@@ -85,15 +85,19 @@
           type="text"
           name="portfolio"
           id="portfolio"
-          placeholder= {{portfolio}} 
+          placeholder="{{portfolio}}"
           v-model="portfolio"
         />
       </div>
       <br />
       <div>
         <label for="firstname">Bio :</label>
-          <textarea name="bio" id="bio" placeholder= {{bio}} 
-          v-model="bio"></textarea>
+        <textarea
+          name="bio"
+          id="bio"
+          placeholder="{{bio}}"
+          v-model="bio"
+        ></textarea>
       </div>
       <br />
       <div>
@@ -102,7 +106,7 @@
           type="image"
           name="picture"
           id="picture"
-          placehol= {{picture}}
+          placeholder="{{picture}}"
           v-model="picture"
         />
         <FileUploadView></FileUploadView>
@@ -117,71 +121,72 @@
 
 <script>
 // import FileUpload from './FileUploadView.vue';
-import FileUploadView from './FileUploadView.vue';
+import FileUploadView from "./FileUploadView.vue";
 export default {
-    data() {
-        return {
-            users: [],
-            firstname: "",
-            lastname: "",
-            email: "",
-            password: "",
-            linkedin:"",
-            github:"",
-            website:"",
-            portfolio:"",
-            bio:"",
-            picture:"",
-            feedBackmessage: "",
-        };
-    },
-    methods: {
-        /* Récupération */
-        async getModifyProfil() {
-            const response = await fetch("http://127.0.0.1:8000/api/users", {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json",
-                },
-            });
-            // const data = await response.json();
-            // this.events = data.events;
+  data() {
+    return {
+      users: [],
+      firstname: "",
+      lastname: "",
+      email: "",
+      password: "",
+      linkedin: "",
+      github: "",
+      website: "",
+      portfolio: "",
+      bio: "",
+      picture: "",
+      feedBackmessage: "",
+    };
+  },
+  methods: {
+    /* Récupération */
+    async getModifyProfil() {
+      const response = await fetch("http://127.0.0.1:8000/api/users", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        /* Création des modifs */
-        async createModifyProfil() {
-            const body = {
-                firstname: this.firstname,
-                lastname: this.lastname,
-                email: this.email,
-                password: this.password,
-                linkedin: this.linkedin,
-                github: this.github,
-                website: this.website,
-                portfolio: this.portfolio,
-                bio: this.bio,
-                picture: this.picture,
-            };
-            const response = await fetch("http://127.0.0.1:8000/api/users", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json",
-                },
-                body: JSON.stringify(body),
-            });
-            const data = await response.json();
-            this.feedbackMessage = data.message;
-            this.getModifyProfil();
-            // firstname: this.firstname,
-            // lastname: this.lastname,
-            // email: this.email,
-            // password: this.password,
+      });
+
+      const data = await response.json();
+      this.events = data.events;
+    },
+    /* Création des modifs */
+    async createModifyProfil() {
+      const body = {
+        firstname: this.firstname,
+        lastname: this.lastname,
+        email: this.email,
+        password: this.password,
+        linkedin: this.linkedin,
+        github: this.github,
+        website: this.website,
+        portfolio: this.portfolio,
+        bio: this.bio,
+        picture: this.picture,
+      };
+      const response = await fetch("http://127.0.0.1:8000/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
+        body: JSON.stringify(body),
+      });
+      const data = await response.json();
+      this.feedbackMessage = data.message;
+      this.getModifyProfil();
+      // firstname: this.firstname,
+      // lastname: this.lastname,
+      // email: this.email,
+      // password: this.password,
     },
-    mounted() {
-        this.getModifyProfil();
-    },
-    components: { FileUploadView }
+  },
+  mounted() {
+    this.getModifyProfil();
+  },
+  components: { FileUploadView },
 };
 </script>
