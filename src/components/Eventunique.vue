@@ -17,7 +17,6 @@
       <button class="showBtn">Montrer l'évènement</button></router-link
     >
 
-    <button @click="deleteEvent">Supprimer</button>
     <hr />
   </div>
 </template>
@@ -30,13 +29,6 @@ export default {
     end: String,
     location: String,
     event_id: Number,
-  },
-
-  methods: {
-    deleteEvent(e) {
-      const index = e.target.dataset.index;
-      this.doneList.splice(index, 1);
-    },
   },
 };
 </script>
