@@ -15,10 +15,7 @@
         :location="event.location"
         :event_id="event.id"
       />
-      <input type="button" @click="qrCreate" />
-      <qrcode-vue v-if="QRValue" :value="value" :size="size" level="H" />
     </form>
-    <button @click="deleteEvent(event)">Delete</button>
   </div>
 </template>
 
@@ -63,14 +60,6 @@ export default {
     },
     deleteEvent: function (event) {
       this.events.splice(this.event);
-    },
-    qrCreate() {
-      console.log(this.$route.query.page);
-    },
-    test() {
-      var currentUrl = window.location.pathname;
-      console.log("test");
-      console.log(currentUrl);
     },
   },
 };
