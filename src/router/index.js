@@ -20,7 +20,7 @@ const routes = [
   {
     path: "/qrgenerator",
     name: "qr code",
-    component: QrGenerator,
+    component: QrGeneratorView,
   },
   {
     path: "/pageqrcode",
