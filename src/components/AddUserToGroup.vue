@@ -30,7 +30,7 @@
           <td>{{ user.lastname }}</td>
           <td>{{ user.email }}</td>
 
-          <td><button @click="addToGroup(user.id)">[+]</button></td>
+          <td><button @click="addToGroup(user.id)">+</button></td>
         </tr>
       </tbody>
     </table>
