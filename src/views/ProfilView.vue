@@ -1,12 +1,20 @@
 <template>
   <div class="">
-    <Profil
-      :firstname="firstname"
-      :lastname="lastname"
-      :email="email"
-      :bio="bio"
+    <!-- <Profil
+      v-for="user in users"
+      :key="user.id"
+      :firstname="user.firstname"
+      :lastname="user.lastname"
+      :email="user.email"
+      :bio="user.bio"
+      :picture="user.picture"
+      :linkedIn="user.linkedIn"
+      :github="user.github"
+      :website="user.website"
+      :portfolio="user.portfolio"
     >
-    </Profil>
+    </Profil> -->
+    <input type="button" @click="qrCreate" value="Générer un badge" />
   </div>
 </template>
 

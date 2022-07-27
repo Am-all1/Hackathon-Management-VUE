@@ -33,6 +33,7 @@
   <p>Website: {{ website }}</p>
   <p>PortFolio: {{ portfolio }}</p>
   <p>GitHub: {{ github }}</p>
+  -->
 
   <!-- <div
     v-if="users.id != null"
@@ -47,6 +48,16 @@
 
 <script>
 export default {
+  // props: {
+  //   firstname: String,
+  //   lastname: string,
+  //   email: string,
+  //   bio: string,
+  //   linkedIn: string,
+  //   website: string,
+  //   portfolio: string,
+  //   github: string,
+  // },
   data() {
     return {
       users: [],
@@ -67,7 +78,7 @@ export default {
   methods: {
     async getUsers() {
       const response = await fetch(
-        "http://127.0.0.1:8000/api/profil/" + this.$route.params.id,
+        "http://127.0.0.1:8000/api/profil/" + this.token,
         {
           method: "GET",
           headers: {

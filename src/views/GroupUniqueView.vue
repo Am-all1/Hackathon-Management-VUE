@@ -17,7 +17,7 @@
   <!-- APPEL DU COMPOSANT QUI PERMET D'AJOUTER UN PARTICIPANT AU GROUPE QUE L'ON CONSULTE -->
   <div class="addUserFormDisplay">
     <h2>AJOUTER UN USER DANS CE GROUPE</h2>
-    <UserInGroup />
+    <UserInGroup @UserAdded="getGroupUniqueWithUsers" />
   </div>
 
   <hr />
