@@ -22,23 +22,15 @@
 <script>
 import CreateEvents from "@/components/CreateEvents.vue";
 import EventUnique from "@/components/EventUnique.vue";
-import QrcodeVue from "qrcode.vue";
 
 export default {
-  beforeMount() {
-    this.test();
-  },
-
   components: {
     CreateEvents,
     EventUnique,
-    QrcodeVue,
   },
   data() {
     return {
       events: [],
-      token: localStorage.getItem("savedUserToken"),
-      QRValue: null,
     };
   },
   mounted() {
@@ -57,9 +49,6 @@ export default {
       });
       const data = await response.json();
       this.events = data.events;
-    },
-    deleteEvent: function (event) {
-      this.events.splice(this.event);
     },
   },
 };
