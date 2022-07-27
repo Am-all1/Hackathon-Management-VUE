@@ -13,14 +13,14 @@ import GroupView from "../views/GroupView.vue";
 import ModifyProfilView from "../views/ModifyProfilView.vue";
 import Abilities from "../components/Abilities.vue"; // A laisser pour tester l'affichage
 import GroupUniqueView from "../views/GroupUniqueView.vue";
-import QrGenerator from "../views/QrGenerator.vue";
+import QrGeneratorView from "../views/QrGeneratorView.vue";
 import PageQrCodeView from "../views/PageQrCodeView.vue";
 
 const routes = [
   {
     path: "/qrgenerator",
     name: "qr code",
-    component: QrGenerator,
+    component: QrGeneratorView,
   },
   {
     path: "/pageqrcode",
