@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>Choix d'un créneau horaire:</h1>
+  <div id="mainContainer">
+    <h1>Créer un créneau horaire</h1>
 
     <form @submit.prevent="createSlot">
       <div>
@@ -41,7 +41,7 @@
 
       <br />
 
-      <input type="submit" value="Valider" />
+      <input type="submit" value="Valider" id="button" />
     </form>
 
     <p>{{ feedbackMessage }}</p>
@@ -130,5 +130,35 @@ export default {
 <style scoped>
 li {
   list-style-type: none;
+}
+
+h1,
+form,
+label,
+h2,
+li {
+  color: rgb(86, 82, 82);
+}
+
+#button {
+  border: 2px solid GREY;
+  background-color: white;
+  color: grey;
+  height: 30px;
+  width: 90px;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#button:hover {
+  border: 2px solid rgb(219, 117, 117);
+  background-color: rgb(219, 117, 117);
+  color: white;
+  font-weight: bold;
 }
 </style>

@@ -13,8 +13,14 @@ import GroupView from "../views/GroupView.vue";
 import ModifyProfilView from "../views/ModifyProfilView.vue";
 import Abilities from "../components/Abilities.vue";
 import GroupUniqueView from "../views/GroupUniqueView.vue";
+import HomeView from "../views/HomeView.vue";
 
 const routes = [
+  {
+    path: "/home",
+    name: "home",
+    component: HomeView,
+  },
   {
     path: "/login",
     name: "connexion",

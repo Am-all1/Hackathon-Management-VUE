@@ -32,12 +32,16 @@
       :event_id="group.event_id"
     />
   </div>
+  <div>
+    <QrGenerator />
+  </div>
 </template>
 
 <script>
 import EventUnique from "@/components/EventUnique.vue";
 import CreateGroup from "@/components/CreateGroup.vue";
 import GroupUnique from "@/components/GroupUnique.vue";
+import QrGenerator from "@/components/QrGenerator.vue";
 
 export default {
   beforeMount() {
@@ -55,6 +59,7 @@ export default {
     EventUnique,
     CreateGroup,
     GroupUnique,
+    QrGenerator,
   },
 
   methods: {

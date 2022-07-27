@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Création d'un évènement:</h1>
+    <h1>Créer un évènement</h1>
 
     <form @submit.prevent="createEvent">
       <div>
@@ -35,7 +35,7 @@
 
       <br />
 
-      <input type="submit" value="Valider" />
+      <input type="submit" value="Valider" id="button" />
     </form>
 
     <p>{{ feedbackMessage }}</p>
@@ -92,5 +92,28 @@ export default {
 <style scoped>
 li {
   list-style-type: none;
+}
+
+h1,
+label {
+  color: rgb(86, 82, 82);
+}
+
+#button {
+  border: 2px solid GREY;
+  background-color: white;
+  color: grey;
+  height: 60px;
+  width: 180px;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 20px;
+}
+
+#button:hover {
+  border: 2px solid rgb(219, 117, 117);
+  background-color: rgb(219, 117, 117);
+  color: white;
+  font-weight: bold;
 }
 </style>

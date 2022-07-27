@@ -1,30 +1,36 @@
 <template>
+  <header>
+    <div id="logoBloc">
+      <a href="https://lebocal.academy/"
+        ><img src="./assets/logo_bocal.png" alt="" class="logo"
+      /></a>
+      <p>HACKATHON</p>
+      <a href="https://www.nicestartsup.com/"
+        ><img src="./assets/logo_nicestartup.png" alt="" class="logo"
+      /></a>
+    </div>
+  </header>
   <nav>
-    <router-link to="/">Accueil</router-link> |
-    <!--     <router-link
-      :to="{
-        name: 'mon-profil',
-        params: {
-          token: this.token,
-        },
-      }"
-    >
-      Mon Profil</router-link
-    > -->
+    <router-link to="/home" class="links">Accueil</router-link> |
+    <router-link to="/profil" class="links">Profil</router-link> |
+    <router-link to="/login" class="links">Connexion</router-link> |
+    <router-link to="/disconnected" class="links">Deconnexion</router-link> |
+    <router-link to="/create-user" class="links">Créer un compte</router-link>
     |
-    <router-link to="/profil">Profil</router-link> |
-    <router-link to="/login">Connexion</router-link> |
-    <router-link to="/disconnected">Deconnexion</router-link> |
-    <router-link to="/create-user">Création de compte</router-link> |
-    <router-link to="/create-event">Créer un évènement</router-link> |
-    <router-link to="/admin">Espace admin</router-link> |
-    <router-link to="/slots">Créer un créneau</router-link> |
-    <router-link to="/modifications">Modifier mon profil</router-link> |
-    <router-link to="/abilities">Mes compétences</router-link>
+    <router-link to="/create-event" class="links"
+      >Créer un évènement</router-link
+    >
+    | <router-link to="/admin" class="links">Espace admin</router-link> |
+    <router-link to="/slots" class="links">Créer un créneau</router-link> |
+    <router-link to="/modifications" class="links"
+      >Modifier mon profil</router-link
+    >
+    |
+    <router-link to="/abilities" class="links">Mes compétences</router-link>
   </nav>
-
-  <div></div>
-  <router-view />
+  <div>
+    <router-view />
+  </div>
 </template>
 
 <script>
@@ -41,6 +47,7 @@ export default {
 </script>
 
 <style lang="scss">
+//NAV
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -49,16 +56,51 @@ export default {
   color: #2c3e50;
 }
 
-nav {
-  padding: 30px;
+header {
+  p {
+    font-size: 60px;
+    font-weight: bold;
+    color: rgb(86, 82, 82);
+  }
+}
 
+nav {
+  p {
+    font-size: 60px;
+    font-weight: bold;
+  }
   a {
     font-weight: bold;
-    color: #2c3e50;
+    color: grey;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: GREY;
     }
   }
+
+  a:hover {
+    background-color: rgb(219, 117, 117);
+    color: white;
+    cursor: pointer;
+    margin: 5px;
+    padding: 5px;
+    text-decoration-line: underline;
+  }
+}
+
+#logoBloc {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.logo {
+  height: 60px;
+  min-width: 40px;
+  min-width: 100px;
+}
+
+.links {
+  text-decoration-line: none;
 }
 </style>

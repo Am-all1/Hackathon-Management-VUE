@@ -1,118 +1,98 @@
 <template>
   <div>
-    <h1>Modifier votre profil</h1>
+    <h1>Modifier mon profil</h1>
     <form @submit.prevent="ModifyProfil">
-      <div>
-        <label for="firstname">Prénom : </label>
-        <input
-          type="text"
-          name="firstname"
-          id="firstname"
-          placeholder="Prénom"
-          v-model="firstname"
-        />
+      <div id="formStyle">
+        <div id="formStyleLeftContainer">
+          <label for="firstname">Prénom : </label>
+          <br />
+          <input
+            type="text"
+            name="firstname"
+            id="firstname"
+            placeholder="Prénom"
+            v-model="firstname"
+          />
+          <br />
+          <label for="lastname">Nom : {{ lastname }} </label><br />
+          <input
+            type="text"
+            name="lasttname"
+            id="lastname"
+            placeholder="Nom"
+            v-model="lastname"
+          />
+          <br />
+          <label for="email">Email: {{ email }} : </label><br />
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email"
+            v-model="email"
+          />
+          <br />
+          <label for="password">Mot de passe : {{ password }} </label><br />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="password"
+            v-model="password"
+          />
+        </div>
+        <div id="formStyleCenterContainer">
+          <label for="firstname">linkedIn : {{ linkedIn }} </label><br />
+          <input
+            type="text"
+            name="linkedin"
+            id="linkedin"
+            placeholder="lien Linkedin"
+            v-model="linkedin"
+          />
+          <br />
+          <label for="firstname">Github : {{ Github }} </label><br />
+          <input
+            type="text"
+            name="linkedin"
+            id="linkedin"
+            placeholder="Lien Github"
+            v-model="github"
+          />
+          <br />
+          <label for="firstname">Website : {{ website }}</label
+          ><br />
+          <input
+            type="text"
+            name="website"
+            id="website"
+            placeholder="Site web"
+            v-model="website"
+          />
+          <br />
+          <label for="firstname">Portfolio : {{ portfolio }} </label><br />
+          <input
+            type="text"
+            name="portfolio"
+            id="portfolio"
+            placeholder="Portfolio"
+            v-model="portfolio"
+          />
+        </div>
+        <div id="formStyleRightContainer">
+          <label for="firstname">Photo : {{ picture }}</label
+          ><br />
+          <input
+            type="image"
+            name="picture"
+            id="picture"
+            placeholder="photo"
+            v-model="picture"
+          />
+        </div>
       </div>
       <br />
-      <div>
-        <label for="lastname">Nom : {{ lastname }} </label>
-        <input
-          type="text"
-          name="lasttname"
-          id="lastname"
-          placeholder="Nom"
-          v-model="lastname"
-        />
-      </div>
-      <br />
-      <div>
-        <label for="email">Email: {{ email }} : </label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Email"
-          v-model="email"
-        />
-      </div>
-      <br />
-      <div>
-        <label for="password">Mot de passe : {{ password }} </label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="password"
-          v-model="password"
-        />
-      </div>
-      <br />
-      <div>
-        <label for="firstname">linkedIn : {{ linkedIn }} </label>
-        <input
-          type="text"
-          name="linkedin"
-          id="linkedin"
-          placeholder="lien Linkedin"
-          v-model="linkedin"
-        />
-      </div>
-      <br />
-      <div>
-        <label for="firstname">Github : {{ Github }} </label>
-        <input
-          type="text"
-          name="linkedin"
-          id="linkedin"
-          placeholder="Lien Github"
-          v-model="github"
-        />
-      </div>
-      <br />
-      <div>
-        <label for="firstname">Website : {{ website }}</label>
-        <input
-          type="text"
-          name="website"
-          id="website"
-          placeholder="Site web"
-          v-model="website"
-        />
-      </div>
-      <br />
-      <div>
-        <label for="firstname">Portfolio : {{ portfolio }} </label>
-        <input
-          type="text"
-          name="portfolio"
-          id="portfolio"
-          placeholder="Portfolio"
-          v-model="portfolio"
-        />
-      </div>
-      <br />
-      <div>
-        <label for="firstname">Bio : {{ bio }} </label>
-        <input
-          type="text"
-          name="bio"
-          id="bio"
-          placeholder="Bio"
-          v-model="bio"
-        />
-      </div>
-      <br />
-      <div>
-        <label for="firstname">Photo : {{ picture }}</label>
-        <input
-          type="image"
-          name="picture"
-          id="picture"
-          placehol="photo"
-          v-model="picture"
-        />
-      </div>
-
-      <input type="submit" value="Valider les modifications" />
+      <input type="submit" value="Modifier" id="button" />
     </form>
 
     <p>{{ feedBackmessage }}</p>
@@ -188,3 +168,44 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+h1,
+label {
+  color: rgb(86, 82, 82);
+}
+
+#formStyle {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: stretch;
+}
+
+#formStyleCenterContainer {
+  margin: 0px 40px 20px 40px;
+}
+
+#button {
+  border: 2px solid GREY;
+  background-color: white;
+  color: grey;
+  height: 60px;
+  width: 180px;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#button:hover {
+  border: 2px solid rgb(219, 117, 117);
+  background-color: rgb(219, 117, 117);
+  color: white;
+  font-weight: bold;
+}
+</style>
