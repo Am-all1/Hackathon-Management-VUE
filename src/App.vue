@@ -28,7 +28,7 @@
     </div>
   </nav>
 
-  <h1 id="titreAccueil">Hackathon <span id="letter">(s)</span> Manager</h1>
+  <!-- <h1 id="titreAccueil">Hackathon <span id="letter">(s)</span> Manager</h1> -->
   <router-view />
 
 
@@ -68,17 +68,17 @@ export default {
   // color: #2c3e50;
 }
 
-#titreAccueil {
-  color: black;
-  font-family: fantasy;
-  font-size: xx-large;
-  padding-top: 3%;
-  // background-color: #ed4c4c;
-  // text-align: center;
-}
-#letter {
-  color: red;
-}
+// #titreAccueil {
+//   color: black;
+//   font-family: fantasy;
+//   font-size: xx-large;
+//   padding-top: 3%;
+//   // background-color: #ed4c4c;
+//   // text-align: center;
+// }
+// #letter {
+//   color: red;
+// }
 
 // .footer{
 //   background-color: rgba(0, 0, 0, 0.815);
