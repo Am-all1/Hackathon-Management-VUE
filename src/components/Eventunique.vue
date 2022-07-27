@@ -18,7 +18,6 @@
     >
 
     <button @click="deleteEvent">Supprimer</button>
-    <hr />
   </div>
 </template>
 

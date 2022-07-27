@@ -53,7 +53,7 @@ export default {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
-          Authorization: `Bearer ${localStorage.getItem("savedUserToken")}`,
+          // Authorization: `Bearer ${localStorage.getItem("savedUserToken")}`,
         },
         body: JSON.stringify({
           email: this.email,
@@ -76,8 +76,8 @@ export default {
       }
       this.saveUserToken();
     },
+
     saveUserToken() {
-      console.log("test");
       console.log(this.token);
       localStorage.setItem("savedUserToken", this.token);
     },

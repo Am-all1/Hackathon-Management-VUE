@@ -45,7 +45,7 @@ const routes = [
   },
 
   {
-    path: "/create-user",
+    path: "/create-user/:event_id",
     name: "creation de compte",
     component: CreateUserView,
   },
