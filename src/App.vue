@@ -34,6 +34,8 @@
 </template>
 
 <script>
+import "bootstrap/dist/css/bootstrap.min.css";
+
 export default {
   name: "App",
   components: {},
@@ -66,7 +68,9 @@ background-image: url(https://th.bing.com/th/id/R.08515d233893d99818a0de75ab9080
   color: black;
   font-family: fantasy;
   font-size: xx-large;
-  padding-top: 10%;
+  padding-top: 3%;
+  // background-color: #ed4c4c;
+  // text-align: center;
 }
 #letter {
   color: red;
