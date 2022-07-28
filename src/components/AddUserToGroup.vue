@@ -87,6 +87,7 @@ export default {
           Accept: "application/json",
         },
       });
+      
       alert("Sortie de getUsersOfEvent, affichage de data :");
       console.log(data.users);
 
