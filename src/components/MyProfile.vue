@@ -39,7 +39,7 @@
         </p>
       </div>
     </div>
-    <div>
+    <div id="btnBloc">
       <div>
         <button @click="redirectionBadge">Badge</button>
       </div>
@@ -147,5 +147,10 @@ button:hover {
   background-color: rgb(219, 117, 117);
   color: white;
   font-weight: bold;
+}
+
+#btnBloc {
+  display: flex;
+  justify-content: center;
 }
 </style>
