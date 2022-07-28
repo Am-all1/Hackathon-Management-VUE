@@ -1,4 +1,5 @@
 <template>
+  <hr />
   <div class="components">
     <div>
       <CreateGroup />
@@ -7,7 +8,7 @@
       <CreateSlots />
     </div>
   </div>
-</template> 
+</template>
 
 <script>
 import CreateSlots from "@/components/CreateSlots.vue";
