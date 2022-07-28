@@ -1,6 +1,7 @@
 <template>
   <section>
     <div>
+      <h1>Créer un groupe</h1>
       <br />
 
       <form @submit.prevent="createGroup">
