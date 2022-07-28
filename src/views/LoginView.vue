@@ -115,8 +115,9 @@ label {
   cursor: pointer;
   padding: 10px;
   font-size: 20px;
-  position:static;
+  position: static;
   top: 600px;
+  padding-bottom: 5%;
 }
 
 #button:hover {

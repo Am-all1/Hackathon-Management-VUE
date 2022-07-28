@@ -152,5 +152,7 @@ button:hover {
 #btnBloc {
   display: flex;
   justify-content: center;
+  position: relative;
+  padding-bottom: 5%;
 }
 </style>

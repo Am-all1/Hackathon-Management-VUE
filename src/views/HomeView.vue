@@ -1,11 +1,8 @@
 <template>
-  <!-- BODY -->
-  <body>
-    <section id="bodyImage">
-      <h2>Prochain évènement</h2>
-      <h2>J - 10</h2>
-    </section>
-  </body>
+  <section id="bodyImage">
+    <h2>Prochain évènement</h2>
+    <h2>H - 1 min</h2>
+  </section>
 </template>
 
 <script>

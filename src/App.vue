@@ -1,40 +1,39 @@
 <template>
-  <header>
-    <div id="logoBloc">
-      <a href="https://lebocal.academy/"
-        ><img src="./assets/logo_bocal.png" alt="" class="logo"
-      /></a>
-      <h1>HACKATHON MANAGER</h1>
-      <a href="https://www.nicestartsup.com/"
-        ><img src="./assets/logo_nicestartup.png" alt="" class="logo"
-      /></a>
-    </div>
-  </header>
+  <body>
+    <header>
+      <div id="logoBloc">
+        <a href="https://lebocal.academy/"
+          ><img src="./assets/logo_bocal.png" alt="" class="logo"
+        /></a>
+        <h1>HACKATHON MANAGER</h1>
+        <a href="https://www.nicestartsup.com/"
+          ><img src="./assets/logo_nicestartup.png" alt="" class="logo"
+        /></a>
+      </div>
+    </header>
 
-  <section class="stickyNav">
-    <nav>
-      <router-link to="/home" class="links">Accueil</router-link> |
-      <router-link to="/login" class="links">Connexion</router-link> |
-      <router-link to="/mon-profil" class="links">Mon profil</router-link> |
-      <router-link to="/eventlist">Evènements</router-link> |
-      <router-link to="/admin" class="links">Espace admin</router-link> |
-      <router-link to="/slots" class="links">Espace staff</router-link> |
-      <router-link to="/abilities" class="links">Mes compétences</router-link> |
-      <router-link to="/qrgenerator" class="links">Qr Code</router-link> |
-      <router-link to="/testhome">Home</router-link> |
-      <router-link to="/pageqrcode" class="links"
-        >Page avec QR Code</router-link
-      >
-    </nav>
-  </section>
-
-  <div id="routerViewStyle">
+    <section class="stickyNav">
+      <nav>
+        <router-link to="/home" class="links">Accueil</router-link>
+        <router-link to="/login" class="links">Connexion</router-link>
+        <router-link to="/mon-profil" class="links">Mon profil</router-link>
+        <router-link to="/eventlist">Evènements</router-link>
+        <router-link to="/admin" class="links">Espace admin</router-link>
+        <router-link to="/slots" class="links">Espace staff</router-link>
+        <router-link to="/abilities" class="links">Mes compétences</router-link>
+        <router-link to="/qrgenerator" class="links">Qr Code</router-link>
+        <router-link to="/testhome">Home</router-link>
+        <router-link to="/pageqrcode" class="links"
+          >Page avec QR Code</router-link
+        >
+      </nav>
+    </section>
     <router-view />
-  </div>
 
-  <div>
-    <Footer />
-  </div>
+    <div>
+      <Footer />
+    </div>
+  </body>
 </template>
 
 <script>
@@ -44,14 +43,13 @@ import Footer from "@/components/Footer.vue";
 
 export default {
   name: "App",
-  components: { HomeView },
+  components: { HomeView, Footer },
 
   data() {
     return {
       token: localStorage.getItem("savedUserToken"),
     };
   },
-  components: { Footer },
 };
 </script>
 
@@ -68,6 +66,11 @@ export default {
 
 #routerViewStyle {
   margin-top: 20px;
+}
+
+body {
+  height: 100%;
+  position: relative;
 }
 
 header {
@@ -122,10 +125,10 @@ nav {
   }
   a {
     font-weight: bold;
-    color: grey;
+    color: white;
 
     &.router-link-exact-active {
-      color: GREY;
+      color: rgb(219, 117, 117);
     }
   }
 }
@@ -144,25 +147,5 @@ nav {
 
 .links {
   text-decoration-line: none;
-}
-
-// .footer{
-//   background-color: rgba(0, 0, 0, 0.815);
-//     position:absolute;
-//    bottom:0;
-//    width:100%;
-//    height:100px;
-//    color: white;
-// }
-nav {
-  margin-bottom: 20px;
-}
-#navBar {
-  background-color: whitesmoke;
-  padding: 4%;
-}
-
-#navLink {
-  text-decoration: none;
 }
 </style>

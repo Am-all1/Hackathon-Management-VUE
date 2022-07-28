@@ -24,9 +24,8 @@
           <p>design graphique</p>
           <input type="checkbox" name="desiGraph" v-model="designGraphique" />
           <br />
-          <input type="submit" value="Valider" id="button" />
         </div>
-
+        <input type="submit" value="Valider" id="button" />
         <br />
       </form>
     </div>
@@ -124,6 +123,7 @@ input {
 
 #formStyle {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
@@ -140,8 +140,6 @@ input {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  position: fixed;
-  top: 600px;
 }
 
 #button:hover {
