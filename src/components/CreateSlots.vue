@@ -1,4 +1,5 @@
 <template>
+  <hr />
   <div id="mainContainer">
     <h1>Créer un créneau horaire</h1>
 
@@ -38,9 +39,7 @@
           <option>60 min</option>
         </select>
       </div>
-
       <br />
-
       <input type="submit" value="Valider" id="button" />
     </form>
 
@@ -144,8 +143,8 @@ li {
   border: 2px solid GREY;
   background-color: white;
   color: grey;
-  height: 30px;
-  width: 90px;
+  height: 60px;
+  width: 180px;
   cursor: pointer;
   padding: 10px;
   font-size: 20px;

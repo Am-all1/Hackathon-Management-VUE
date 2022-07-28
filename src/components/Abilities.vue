@@ -1,4 +1,5 @@
 <template>
+  <hr />
   <section>
     <div>
       <h1>Mes compétences</h1>
@@ -24,9 +25,9 @@
           <p>design graphique</p>
           <input type="checkbox" name="desiGraph" v-model="designGraphique" />
           <br />
+          <input type="submit" value="Valider" id="button" />
         </div>
         <br />
-        <input type="submit" value="Valider" id="button" />
       </form>
     </div>
   </section>
@@ -137,6 +138,8 @@ p {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  position: fixed;
+  top: 600px;
 }
 
 #button:hover {

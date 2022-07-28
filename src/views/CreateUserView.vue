@@ -1,4 +1,5 @@
 <template>
+  <hr />
   <div id="mainContainer">
     <h1>Créer un compte</h1>
     <form @submit.prevent="createUser" id="formStyle">
@@ -49,16 +50,14 @@
           v-model="password"
         />
       </div>
-      <br />
-      <br />
       <input type="submit" value="Valider" id="button" />
-    </form>
-
-    <p v-if="status == true">
-      Création de compte réussie
       <br />
-    </p>
-    <p v-else-if="status == false">Création de compte échouée</p>
+      <p v-if="status == true">
+        Création de compte réussie
+        <br />
+      </p>
+      <p v-else-if="status == false">Création de compte échouée</p>
+    </form>
   </div>
 </template>
 
@@ -104,21 +103,17 @@ export default {
 </script>
 
 <style scoped>
-#mainContainer {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-}
-
 h1,
 label {
   color: rgb(86, 82, 82);
 }
 
-#formstyle {
+#mainContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+#formStyle {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -136,6 +131,8 @@ label {
   cursor: pointer;
   padding: 10px;
   font-size: 20px;
+  position: fixed;
+  top: 600px;
 }
 
 #button:hover {

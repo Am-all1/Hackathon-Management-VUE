@@ -2,8 +2,8 @@
   <!-- BODY -->
   <body>
     <section id="bodyImage">
-      <h4>Prochain évènement</h4>
-      <h4>J - 10</h4>
+      <h2>Prochain évènement</h2>
+      <h2>J - 10</h2>
     </section>
   </body>
 </template>
@@ -40,8 +40,9 @@ export default {
   text-shadow: 2px 2px 2px black;
 }
 
-h4 {
+h2 {
   margin: 40px;
   opacity: 1;
+  font-size: 1em;
 }
 </style>

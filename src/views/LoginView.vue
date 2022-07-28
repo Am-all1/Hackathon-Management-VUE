@@ -1,8 +1,9 @@
 <template>
+  <hr />
   <div id="mainContainer">
     <h1>Espace connexion</h1>
     <!-- CreateGroup de connexion -->
-    <form @submit.prevent="login" id="formstyle">
+    <form @submit.prevent="login" id="formStyle">
       <div class="input-container">
         <label for="emailInput" class="labelWidth">Email :</label>
         <br />
@@ -30,11 +31,8 @@
       <br />
       <input type="submit" value="Se connecter" id="button" />
     </form>
-
-    <p v-if="status == true">
-      Connexion réussie
-      <br />
-    </p>
+    <br />
+    <p v-if="status == true">Connexion réussie</p>
     <p v-else-if="status == false">Connexion échouée</p>
   </div>
 </template>
@@ -100,7 +98,7 @@ label {
   flex-direction: column;
 }
 
-#formstyle {
+#formStyle {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -118,6 +116,8 @@ label {
   cursor: pointer;
   padding: 10px;
   font-size: 20px;
+  position: fixed;
+  top: 600px;
 }
 
 #button:hover {

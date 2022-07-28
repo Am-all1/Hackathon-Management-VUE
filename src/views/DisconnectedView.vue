@@ -1,8 +1,11 @@
 <template>
+  <hr />
   <div>
     <h1>Espace déconnexion</h1>
     <br />
-    <button @click="disconnect">Se déconnecter</button>
+    <div id="formStyle">
+      <button @click="disconnect">Se déconnecter</button>
+    </div>
   </div>
   <QRgenerator></QRgenerator>
 </template>
@@ -23,6 +26,15 @@ h1 {
   color: rgb(86, 82, 82);
 }
 
+#formStyle {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
 button {
   border: 2px solid GREY;
   background-color: white;
@@ -32,6 +44,8 @@ button {
   cursor: pointer;
   padding: 10px;
   font-size: 20px;
+  position: fixed;
+  top: 600px;
 }
 
 button:hover {

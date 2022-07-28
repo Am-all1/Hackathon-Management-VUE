@@ -1,11 +1,22 @@
 <template>
+  <hr />
   <div>
     <h1>Modifier mon profil</h1>
-    <form @submit.prevent="ModifyProfil">
+    <form @submit.prevent="ModifyProfil" :token="this.token">
       <div id="formStyle">
         <div id="formStyleLeftContainer">
+          <label for="bio">Biographie :</label>
+          <br />
+          <textarea
+            name="bio"
+            id="bio"
+            :placeholder="user.bio"
+            v-model="bio"
+          ></textarea>
+        </div>
+
+        <div id="formStyleCenterContainer">
           <label for="firstname">Prénom : </label>
-          <br>
           <input
             type="text"
             name="firstname"
@@ -13,103 +24,76 @@
             :placeholder="user.firstname"
             v-model="firstname"
           />
-          <br>
+          <br />
           <label for="lastname">Nom : </label>
-          <br>
           <input
             type="text"
-            name="lasttname"
+            name="lastname"
             id="lastname"
-            placeholder="{{lastname}}"
+            :placeholder="user.lastname"
             v-model="lastname"
           />
-          <br>
+          <br />
           <label for="email">Email: </label>
-          <br>
           <input
             type="email"
             name="email"
             id="email"
-            placeholder="{{email}}"
+            :placeholder="user.email"
             v-model="email"
           />
-          <br>
+          <br />
           <label for="password">Mot de passe : </label>
-          <br>
           <input
             type="password"
             name="password"
             id="password"
-            placeholder="{{password}}"
+            :placeholder="user.password"
             v-model="password"
           />
-      </div>
-
-      <div id="formStyleCenterContainer">
-        <label for="firstname">linkedIn : </label>
-        <br>
-        <input
-          type="text"
-          name="linkedin"
-          id="linkedin"
-          placeholder="{{linkedIn}}"
-          v-model="linkedin"
-        />
-        <br />
-          <label for="firstname">Github </label>
-          <br>
+          <br />
+        </div>
+        <div id="formStyleRightContainer">
+          <label for="firstname">LinkedIn :</label>
           <input
             type="text"
             name="linkedin"
             id="linkedin"
-            placeholder="{{github}}"
+            :placeholder="user.linkedIn"
+            v-model="linkedin"
+          />
+          <br />
+          <label for="github">Github :</label>
+          <input
+            type="text"
+            name="github"
+            id="github"
+            :placeholder="user.github"
             v-model="github"
           />
-        <br />
-          <label for="firstname">Website :</label>
-          <br>
+          <br />
+          <label for="website">Website :</label>
           <input
             type="text"
             name="website"
             id="website"
-            placeholder="{{website}}"
+            :placeholder="user.website"
             v-model="website"
           />
-        <br />
-          <label for="firstname">Portfolio :</label>
-          <br>
+          <br />
+          <label for="portfolio">Portfolio :</label>
           <input
             type="text"
             name="portfolio"
             id="portfolio"
-            placeholder="{{portfolio}}"
+            :placeholder="user.portfolio"
             v-model="portfolio"
           />
+        </div>
+        <input type="submit" value="Valider" id="button" />
       </div>
-      <div>
-        <label for="firstname">Photo :</label>
-        <br>
-        <input
-          type="image"
-          name="picture"
-          id="picture"
-          placeholder="{{picture}}"
-          v-model="picture"
-        />
-        <FileUploadView></FileUploadView>
-        <br>
-        <label for="firstname">Bio :</label>
-        <textarea
-          name="bio"
-          id="bio"
-          placeholder="{{bio}}"
-          v-model="bio"
-        ></textarea>
-      </div>
-
-      <input type="submit" value="Valider" id="button"/>
+      <br />
     </form>
-
     <p>{{ feedBackmessage }}</p>
   </div>
 </template>
@@ -118,70 +102,72 @@
 // import FileUpload from './FileUploadView.vue';
 import FileUploadView from "./FileUploadView.vue";
 export default {
+  mounted() {
+    this.getUserById();
+  },
+
   data() {
     return {
-      users: [],
+      user: [],
       firstname: "",
       lastname: "",
       email: "",
       password: "",
-      linkedin: "",
+      linkedIn: "",
       github: "",
       website: "",
       portfolio: "",
-      bio: "",
-      picture: "",
       feedBackmessage: "",
+      token: localStorage.getItem("savedUserToken"),
     };
   },
   methods: {
-    /* Récupération */
-    async getModifyProfil() {
-      const response = await fetch("http://127.0.0.1:8000/api/users", {
+    /* Récupération des infos du profil */
+    async getUserById() {
+      const response = await fetch("http://127.0.0.1:8000/api/my-profile/", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
+          Authorization: `Bearer ${localStorage.getItem("savedUserToken")}`,
         },
       });
 
       const data = await response.json();
-      this.events = data.events;
+      this.user = data.user;
     },
-    /* Création des modifs */
-    async createModifyProfil() {
+
+    /* UPDATE PROFIL */
+    async ModifyProfil() {
       const body = {
         firstname: this.firstname,
         lastname: this.lastname,
         email: this.email,
         password: this.password,
-        linkedin: this.linkedin,
+        linkedIn: this.linkedIn,
         github: this.github,
         website: this.website,
         portfolio: this.portfolio,
         bio: this.bio,
         picture: this.picture,
       };
-      const response = await fetch("http://127.0.0.1:8000/api/users", {
-        method: "POST",
+      const response = await fetch("http://127.0.0.1:8000/api/my-profile", {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
+          Authorization: `Bearer ${localStorage.getItem("savedUserToken")}`,
         },
         body: JSON.stringify(body),
       });
       const data = await response.json();
+
       this.feedbackMessage = data.message;
-      this.getModifyProfil();
-      // firstname: this.firstname,
-      // lastname: this.lastname,
-      // email: this.email,
-      // password: this.password,
+
+      this.getUserById();
     },
   },
-  mounted() {
-    this.getModifyProfil();
-  },
+
   components: { FileUploadView },
 };
 </script>
@@ -195,13 +181,18 @@ label {
 #formStyle {
   display: flex;
   flex-direction: row;
-  align-content: center;
   justify-content: center;
-  align-items: stretch;
+  text-align: left;
+  height: 280px;
+  margin-top: 50px;
 }
 
 #formStyleCenterContainer {
   margin: 0px 40px 20px 40px;
+}
+
+label {
+  margin: 10px;
 }
 
 #button {
@@ -217,6 +208,8 @@ label {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  position: fixed;
+  top: 600px;
 }
 
 #button:hover {

@@ -1,7 +1,8 @@
 <template>
+  <hr />
   <div class="">
     <form>
-      <label for="">Générer mon QR CODE</label>
+      <h1 for="">Générer mon QR CODE</h1>
       <br />
       <input type="text" v-model="QRValue" />
     </form>
