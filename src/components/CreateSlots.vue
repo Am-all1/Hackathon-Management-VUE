@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <h1>Choix d'un créneau horaire:</h1>
+  <hr />
+  <div id="mainContainer">
+    <h1>Créer un créneau horaire</h1>
 
     <form @submit.prevent="createSlot">
       <div>
@@ -38,10 +39,8 @@
           <option>60 min</option>
         </select>
       </div>
-
       <br />
-
-      <input type="submit" value="Valider" />
+      <input type="submit" value="Valider" id="button" />
     </form>
 
     <p>{{ feedbackMessage }}</p>
@@ -132,7 +131,33 @@ li {
   list-style-type: none;
 }
 
-h2 {
-  margin-top: 14%;
+h1,
+form,
+label,
+h2,
+li {
+  color: rgb(86, 82, 82);
+}
+
+#button {
+  border: 2px solid GREY;
+  background-color: white;
+  color: grey;
+  height: 60px;
+  width: 180px;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#button:hover {
+  border: 2px solid rgb(219, 117, 117);
+  background-color: rgb(219, 117, 117);
+  color: white;
+  font-weight: bold;
 }
 </style>

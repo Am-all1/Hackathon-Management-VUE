@@ -1,5 +1,6 @@
 <template>
-  <h1>Badge</h1>
+  <hr />
+  <h1>Mon badge</h1>
   <MyProfil
     v-for="user in users"
     :key="user.id"
