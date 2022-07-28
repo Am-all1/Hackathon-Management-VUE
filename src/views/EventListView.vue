@@ -11,6 +11,7 @@
           :end="event.end"
           :location="event.location"
           :event_id="event.id"
+          @eventDeleted="getEvents"
         />
       </form>
     </div>
