@@ -1,19 +1,26 @@
 <template>
-  <div class="ShortProfileLine">
-    <p>{{ firstname }}</p>
-    <p>{{ lastname }}</p>
-    <p>{{ email }}</p>
-
-    <router-link
-      :to="{
-        name: 'Profil',
-        params: {
-          user_id: this.user_id,
-        },
-      }"
-    >
-      <button class="showBtn">Détails du profil</button>
-    </router-link>
+  <div class="tableau">
+    <table>
+      <tbody>
+        <tr>
+          <td>{{ firstname }}</td>
+          <td>{{ lastname }}</td>
+          <td>{{ email }}</td>
+          <td>
+            <router-link
+              :to="{
+                name: 'Profil',
+                params: {
+                  user_id: this.user_id,
+                },
+              }"
+            >
+              <button class="showBtn">Profil</button>
+            </router-link>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -27,3 +34,15 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+table,
+.td {
+  border: 1px solid #333;
+}
+
+.tableau {
+  display: flex;
+  justify-content: center;
+}
+</style>

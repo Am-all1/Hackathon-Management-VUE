@@ -1,9 +1,12 @@
 <template>
+  <hr />
   <div id="mainContainer">
+    <h1>Espace connexion</h1>
     <!-- CreateGroup de connexion -->
-    <form @submit.prevent="login">
+    <form @submit.prevent="login" id="formStyle">
       <div class="input-container">
-        <label for="emailInput">Email : </label>
+        <label for="emailInput" class="labelWidth">Email :</label>
+        <br />
         <input
           type="email"
           id="emailInput"
@@ -14,7 +17,8 @@
       </div>
       <br />
       <div>
-        <label for="password">Password : </label>
+        <label for="password" class="labelWidth">Password : </label>
+        <br />
         <input
           type="password"
           id="password"
@@ -24,13 +28,11 @@
         />
       </div>
       <br />
-      <input type="submit" value="Se connecter" />
-    </form>
-
-    <p v-if="status == true">
-      Connexion réussie
       <br />
-    </p>
+      <input type="submit" value="Se connecter" id="button" />
+    </form>
+    <br />
+    <p v-if="status == true">Connexion réussie</p>
     <p v-else-if="status == false">Connexion échouée</p>
   </div>
 </template>
@@ -53,7 +55,7 @@ export default {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
-          Authorization: `Bearer ${localStorage.getItem("savedUserToken")}`,
+          // Authorization: `Bearer ${localStorage.getItem("savedUserToken")}`,
         },
         body: JSON.stringify({
           email: this.email,
@@ -76,11 +78,56 @@ export default {
       }
       this.saveUserToken();
     },
+
     saveUserToken() {
-      console.log("test");
       console.log(this.token);
       localStorage.setItem("savedUserToken", this.token);
     },
   },
 };
 </script>
+
+<style scoped>
+h1,
+label {
+  color: rgb(86, 82, 82);
+}
+
+#mainContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+#formStyle {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#button {
+  border: 2px solid GREY;
+  background-color: white;
+  color: grey;
+  height: 60px;
+  width: 180px;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 20px;
+  position: fixed;
+  top: 600px;
+}
+
+#button:hover {
+  border: 2px solid rgb(219, 117, 117);
+  background-color: rgb(219, 117, 117);
+  color: white;
+  font-weight: bold;
+}
+
+.labelWidth {
+  margin: 10px;
+}
+</style>

@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import LoginView from "../views/LoginView.vue";
 import DisconnectedView from "../views/DisconnectedView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
-import CreateEventsView from "../views/CreateEventsView.vue";
+import EventListView from "../views/EventListView.vue";
 import EventUniqueView from "../views/EventUniqueView.vue";
 import ProfilView from "../views/ProfilView.vue";
 import MyProfileView from "../views/MyProfileView.vue";
@@ -13,14 +13,21 @@ import GroupView from "../views/GroupView.vue";
 import ModifyProfilView from "../views/ModifyProfilView.vue";
 import Abilities from "../components/Abilities.vue"; // A laisser pour tester l'affichage
 import GroupUniqueView from "../views/GroupUniqueView.vue";
-import QrGeneratorView from "../views/QrGeneratorView.vue";
+import HomeView from "../views/HomeView.vue";
+import QrGenerator from "../components/QrGenerator.vue";
 import PageQrCodeView from "../views/PageQrCodeView.vue";
 
 const routes = [
   {
+    path: "/home",
+    name: "home",
+    component: HomeView,
+  },
+
+  {
     path: "/qrgenerator",
     name: "qr code",
-    component: QrGeneratorView,
+    component: QrGenerator,
   },
   {
     path: "/pageqrcode",
@@ -45,7 +52,7 @@ const routes = [
   },
 
   {
-    path: "/create-user",
+    path: "/create-user/:event_id",
     name: "creation de compte",
     component: CreateUserView,
   },
@@ -85,9 +92,9 @@ const routes = [
   },
 
   {
-    path: "/create-event",
-    name: "createEventAdmin",
-    component: CreateEventsView,
+    path: "/eventlist",
+    name: "eventlist",
+    component: EventListView,
   },
 
   {

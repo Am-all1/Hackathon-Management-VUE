@@ -9,7 +9,18 @@
       :location="event.location"
       :event_id="event.id"
     />
+    <router-link
+      :to="{
+        name: 'creation de compte',
+        params: {
+          event_id: this.event.id,
+        },
+      }"
+    >
+      <button class="">inscription à l'event</button></router-link
+    >
   </div>
+  <hr />
 
   <div>
     <ModifyEvents :event_id="event.id" @eventModified="getEventUnique" />
@@ -35,6 +46,9 @@
       :event_id="group.event_id"
     />
   </div>
+  <div>
+    <QrGenerator />
+  </div>
 </template>
 
 <script>
@@ -43,6 +57,8 @@ import CreateGroup from "@/components/CreateGroup.vue";
 import GroupUnique from "@/components/GroupUnique.vue";
 import ModifyEvents from "@/components/ModifyEvents.vue";
 
+import CreateUser from "@/components/CreateUser.vue";
+
 export default {
   beforeMount() {
     this.getEventUnique();
@@ -50,21 +66,29 @@ export default {
   },
   data() {
     return {
-      event: {},
+      event: [],
       groups: [], // à vérifier : le type "tableau" est-il le plus approprié ?
+      /* event_id: this.event.id, */ // UTILISATION POUR LE PROVIDE
     };
   },
+  /*   provide() {
+    return {
+      event_id: computed(() => this.event_id),
+    };
+  }, */
 
   components: {
     EventUnique,
     CreateGroup,
     GroupUnique,
     ModifyEvents,
+    CreateUser,
   },
 
   methods: {
     /* Récupération des données de l'event unique sur lequel on se trouve */
     async getEventUnique() {
+      console.log("entrée fetch " + this.$route.params.event_id);
       const response = await fetch(
         "http://127.0.0.1:8000/api/events/" + this.$route.params.event_id,
         {
@@ -75,6 +99,8 @@ export default {
           },
         }
       );
+      console.log("sortie fetch");
+
       const data = await response.json();
       this.event = data.event;
     },

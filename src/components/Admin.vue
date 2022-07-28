@@ -1,10 +1,12 @@
 <template>
   <section>
     <div>
-      <h1 class="linkTitlePage">Mon espace administrateur</h1>
+      <h1>Mon espace administrateur</h1>
       <br />
-      <label for="">Choix de l'évènement:</label>
-      <br />
+
+      <CreateEvents @created="getEvents" />
+      <h3>Choix de l'évènement:</h3>
+
       <select v-model="selectedEvent_id">
         <option :value="null">Tous les événements</option>
         <option v-for="event in events" :key="event.id" :value="event.id">
@@ -17,8 +19,12 @@
     {{ selectedEvent_id }}
 
     <!-- ICI LA LISTE DE TOUS LES UTILISATEURS -->
-    <div class="filteredUsers" v-if="selectedEvent_id == null">
-      <h1>Liste de tous les utilisateurs</h1>
+    <div
+      class="filteredUsers"
+      v-if="selectedEvent_id == null ? getUsers() : null"
+    >
+      <br />
+      <h3>Liste de tous les utilisateurs</h3>
       <br />
       <label for="">Recherche de participant : </label>
       <input
@@ -94,6 +100,7 @@
 </template>
 
 <script>
+import CreateEvents from "@/components/CreateEvents.vue";
 export default {
   data() {
     return {
@@ -103,6 +110,10 @@ export default {
       selectedEvent_id: null,
     };
   },
+  components: {
+    CreateEvents,
+  },
+
   beforeMount() {
     this.getEvents();
     this.getUsers();
@@ -168,6 +179,11 @@ export default {
 </script>
 
 <style scoped>
+h1,
+h2,
+table {
+  color: rgb(86, 82, 82);
+}
 table,
 .td {
   border: 1px solid #333;
