@@ -53,6 +53,7 @@ import EventUnique from "@/components/EventUnique.vue";
 import CreateGroup from "@/components/CreateGroup.vue";
 import GroupUnique from "@/components/GroupUnique.vue";
 import QrGenerator from "@/components/QrGenerator.vue";
+import CreateUser from "@/components/CreateUser.vue";
 
 export default {
   beforeMount() {
@@ -77,7 +78,7 @@ export default {
     CreateGroup,
     GroupUnique,
     QrGenerator,
-    CreateUser /*a voir si c'est à garder */,
+    CreateUser,
   },
 
   methods: {
