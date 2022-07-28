@@ -38,7 +38,17 @@
           PortFolio: <span>{{ user.portfolio }}</span>
         </p>
       </div>
-      <button @click="$router.push('/modifications')">Modifier</button>
+    </div>
+    <div>
+      <div>
+        <button @click="redirectionBadge">Badge</button>
+      </div>
+      <div>
+        <button @click="$router.push('/modifications')">Modifier</button>
+      </div>
+      <div>
+        <button @click="disconnect">Se déconnecter</button>
+      </div>
     </div>
   </div>
 </template>
@@ -47,6 +57,7 @@
 export default {
   mounted() {
     this.getUserById();
+    this.saveUrl();
   },
   data() {
     return {
@@ -69,6 +80,18 @@ export default {
       });
       const data = await response.json();
       this.user = data.user;
+    },
+
+    disconnect() {
+      localStorage.removeItem("savedUserToken");
+      window.location.reload();
+    },
+    redirectionBadge() {
+      window.location.href = "/#/pageqrcode";
+    },
+    saveUrl() {
+      console.log(window.location);
+      localStorage.setItem("@currentUrl", window.location.href);
     },
   },
 };
@@ -117,9 +140,6 @@ button {
   cursor: pointer;
   padding: 10px;
   font-size: 20px;
-  position: fixed;
-  top: 600px;
-  margin: auto;
 }
 
 button:hover {

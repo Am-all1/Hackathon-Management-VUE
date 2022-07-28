@@ -1,31 +1,23 @@
 <template>
   <div>
-    <h1>Liste des évènements:</h1>
-    <div>
-      <form>
-        <EventUnique
-          v-for="event in events"
-          :key="event.id"
-          :name="event.name"
-          :start="event.start"
-          :end="event.end"
-          :location="event.location"
-          :event_id="event.id"
-          @eventDeleted="getEvents"
-        />
-      </form>
-    </div>
+    <TestHome
+      v-for="event in events"
+      :key="event.id"
+      :name="event.name"
+      :start="event.start"
+      :end="event.end"
+      :location="event.location"
+      :event_id="event.id"
+    />
   </div>
 </template>
 
 <script>
-import CreateEvents from "@/components/CreateEvents.vue";
-import EventUnique from "@/components/EventUnique.vue";
+import TestHome from "@/components/TestHome.vue";
 
 export default {
   components: {
-    CreateEvents,
-    EventUnique,
+    TestHome,
   },
   data() {
     return {

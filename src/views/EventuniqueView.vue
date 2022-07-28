@@ -22,11 +22,14 @@
   </div>
   <hr />
 
+  <div>
+    <ModifyEvents :event_id="event.id" @eventModified="getEventUnique" />
+  </div>
+
   <!-- APPEL DU COMPOSANT CreateGroup AFIN D'AFFICHER LE FORMULAIRE DE CREATION DE GROUPE -->
   <div class="groupFormDisplay">
     <CreateGroup :event_id="event.id" @groupCreated="getGroupUnique" />
   </div>
-  <!-- @/components/Even@/components/EventUnique.vue -->
 
   <!-- APPEL DU COMPOSANT GroupUnique AVEC UN v-for AFIN D'AFFICHER LA LISTE DES GROUPES LIES A CET EVENEMENT -->
   <div class="allGroupsIn@/components/EventUnique.vue">
@@ -52,7 +55,8 @@
 import EventUnique from "@/components/EventUnique.vue";
 import CreateGroup from "@/components/CreateGroup.vue";
 import GroupUnique from "@/components/GroupUnique.vue";
-import QrGenerator from "@/components/QrGenerator.vue";
+import ModifyEvents from "@/components/ModifyEvents.vue";
+
 import CreateUser from "@/components/CreateUser.vue";
 
 export default {
@@ -77,7 +81,7 @@ export default {
     EventUnique,
     CreateGroup,
     GroupUnique,
-    QrGenerator,
+    ModifyEvents,
     CreateUser,
   },
 
