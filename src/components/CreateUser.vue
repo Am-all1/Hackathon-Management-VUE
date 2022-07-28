@@ -75,11 +75,13 @@ export default {
     /* Création d'un user */
 
     async createUser() {
+      // console.log("test id" + this.$route.params.event_id);
       const body = {
         firstname: this.firstname,
         lastname: this.lastname,
         email: this.email,
         password: this.password,
+        event_id: this.$route.params.event_id,
       };
 
       const response = await fetch("http://127.0.0.1:8000/api/auth/register", {
@@ -92,17 +94,16 @@ export default {
       });
       const data = await response.json();
 
-      console.log(data);
       this.message = data.message;
       this.status = data.status;
 
       if (data.status === true) {
-        localStorage.setItem("savedUserToken", data.token);
+        // localStorage.setItem("savedUserToken", data.token);
         this.addUserToEvent(data.token);
       }
     },
 
-    async addUserToEvent(token) {
+    async addUserToEvent() {
       const body = {
         event_id: this.$route.params.event_id,
       };
@@ -112,7 +113,7 @@ export default {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
-          Authorization: `Bearer ${token}`,
+          // Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(body),
       });
