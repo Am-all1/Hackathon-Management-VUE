@@ -19,12 +19,8 @@
     <router-link to="/modifications" class="links"
       >Modifier mon profil</router-link
     >
-    |
-    <router-link to="/create-event" class="links"
-      >Créer un évènement</router-link
-    >
     | <router-link to="/admin" class="links">Espace admin</router-link> |
-    <router-link to="/slots" class="links">Créer un créneau</router-link> |
+    <router-link to="/slots" class="links">Espace staff</router-link> |
     <router-link to="/abilities" class="links">Mes compétences</router-link> |
     <router-link to="/qrgenerator" class="links">Qr Code</router-link> |
     <router-link to="/pageqrcode" class="links">Page avec QR Code</router-link>
