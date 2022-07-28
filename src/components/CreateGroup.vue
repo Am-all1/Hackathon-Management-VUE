@@ -13,19 +13,21 @@
         <input type="text" name="room" v-model="room" />
         <p>Nombre de personnes :</p>
         <input type="text" name="members" v-model="members" />
+        <br />
         <!-- 
           Compétences : LES COMPETENCES NE DOIVENT PAS ÊTRE AJOUTEES
           MANUELLEMENT ICI, MAIS IMPORTEES DANS LE GROUPE AUTOMATIQUEMENT LORS
           DE L'AJOUT D'UN PARTICIPANT
          -->
+        <br />
         <p>Compétences => L'input ci-dessous devra dégager</p>
         <input type="text" name="abilities" v-model="abilities" />
         <input type="hidden" name="event_id" />
         <input type="submit" value="s'inscrire" />
       </form>
+      <br />
       <p>{{ feedbackMessage }}</p>
     </div>
-    <hr />
   </section>
 </template>
 

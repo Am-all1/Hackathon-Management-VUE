@@ -29,12 +29,7 @@
     <router-view />
   </div>
 
-  <!-- <footer class="footer">
-  <div>
-    © 2022 Copyright: Nice Start(s) Up
-  </div>
- 
-</footer> -->
+  
 </template>
 
 <script>
@@ -125,12 +120,4 @@ nav {
   text-decoration: none;
 }
 
-// .footer{
-//   background-color: rgba(0, 0, 0, 0.815);
-//     position:absolute;
-//    bottom:0;
-//    width:100%;
-//    height:100px;
-//    color: white;
-// }
 </style>
