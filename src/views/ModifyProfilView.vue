@@ -77,7 +77,7 @@
 
 <script>
 // import FileUpload from './FileUploadView.vue';
-// import FileUploadView from "./FileUploadView.vue";
+import FileUploadView from "./FileUploadView.vue";
 export default {
   mounted() {
     this.getUserById();
