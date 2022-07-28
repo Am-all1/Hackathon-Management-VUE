@@ -1,74 +1,15 @@
 <template>
-  <hr />
-  <div id="mainContainer">
-    <h1>Créer un compte</h1>
-    <form @submit.prevent="createUser" id="formStyle">
-      <div>
-        <label for="firstname">Prénom : </label>
-        <br />
-        <input
-          type="text"
-          name="firstname"
-          id="firstname"
-          placeholder="Prénom"
-          v-model="firstname"
-        />
-      </div>
-      <br />
-      <div>
-        <label for="lastname">Nom : </label>
-        <br />
-        <input
-          type="text"
-          name="lasttname"
-          id="lastname"
-          placeholder="Nom"
-          v-model="lastname"
-        />
-      </div>
-      <br />
-      <div>
-        <label for="email">Email : </label>
-        <br />
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Email"
-          v-model="email"
-        />
-      </div>
-      <br />
-      <div>
-        <label for="password">Mot de passe : </label>
-        <br />
-        <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="password"
-          v-model="password"
-        />
-      </div>
-      <input type="submit" value="Valider" id="button" />
-      <br />
-      <p v-if="status == true">
-        Création de compte réussie
-        <br />
-      </p>
-      <p v-else-if="status == false">Création de compte échouée</p>
-    </form>
+  <div>
+    <CreateUser />
   </div>
 </template>
 
 <script>
 import CreateUser from "@/components/CreateUser.vue";
-
 export default {
   data() {
     return {};
   },
-
   components: {
     CreateUser,
   },

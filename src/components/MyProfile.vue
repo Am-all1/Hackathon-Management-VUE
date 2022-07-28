@@ -38,7 +38,21 @@
           PortFolio: <span>{{ user.portfolio }}</span>
         </p>
       </div>
-      <button @click="$router.push('/modifications')">Modifier</button>
+    </div>
+    <div>
+      <div>
+        <input
+          type="button"
+          @click="redirectionBadge"
+          value="Générer un badge"
+        />
+      </div>
+      <div>
+        <button @click="$router.push('/modifications')">Modifier</button>
+      </div>
+      <div>
+        <button @click="disconnect">Se déconnecter</button>
+      </div>
     </div>
   </div>
 </template>
@@ -70,6 +84,11 @@ export default {
       });
       const data = await response.json();
       this.user = data.user;
+    },
+
+    disconnect() {
+      localStorage.removeItem("savedUserToken");
+      window.location.reload();
     },
     redirectionBadge() {
       window.location.href = "/#/pageqrcode";
@@ -125,9 +144,6 @@ button {
   cursor: pointer;
   padding: 10px;
   font-size: 20px;
-  position: fixed;
-  top: 600px;
-  margin: auto;
 }
 
 button:hover {
