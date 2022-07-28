@@ -19,17 +19,20 @@
     <router-link to="/slots" class="links">Espace staff</router-link> |
     <router-link to="/abilities" class="links">Mes compétences</router-link> |
     <router-link to="/qrgenerator" class="links">Qr Code</router-link> |
-    <router-link to="/home">Home</router-link> |
+    <router-link to="/testhome">Home</router-link> |
     <router-link to="/pageqrcode" class="links">Page avec QR Code</router-link>
   </nav>
+
+  <router-view />
   <div>
-    <router-view />
+    <Footer />
   </div>
 </template>
 
 <script>
 import "bootstrap/dist/css/bootstrap.min.css";
 import HomeView from "./views/HomeView.vue";
+import Footer from "@/components/Footer.vue";
 
 export default {
   name: "App",
@@ -40,6 +43,7 @@ export default {
       token: localStorage.getItem("savedUserToken"),
     };
   },
+  components: { Footer },
 };
 </script>
 

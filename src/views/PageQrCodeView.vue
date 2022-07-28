@@ -14,7 +14,6 @@ export default {
   },
 
   components: {
-    MyProfile,
     BadgeQrcode,
   },
 };

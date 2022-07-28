@@ -41,11 +41,7 @@
     </div>
     <div>
       <div>
-        <input
-          type="button"
-          @click="redirectionBadge"
-          value="Générer un badge"
-        />
+        <button @click="redirectionBadge">Badge</button>
       </div>
       <div>
         <button @click="$router.push('/modifications')">Modifier</button>

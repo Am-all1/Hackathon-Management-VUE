@@ -8,12 +8,13 @@
       :end="event.end"
       :location="event.location"
       :event_id="event.id"
+      :viewing="true"
     />
     <router-link
       :to="{
         name: 'creation de compte',
         params: {
-          event_id: this.event.id,
+          event_id: $route.params.event_id,
         },
       }"
     >
@@ -66,8 +67,8 @@ export default {
   },
   data() {
     return {
-      event: [],
-      groups: [], // à vérifier : le type "tableau" est-il le plus approprié ?
+      event: {},
+      groups: [],
       /* event_id: this.event.id, */ // UTILISATION POUR LE PROVIDE
     };
   },
@@ -88,7 +89,6 @@ export default {
   methods: {
     /* Récupération des données de l'event unique sur lequel on se trouve */
     async getEventUnique() {
-      console.log("entrée fetch " + this.$route.params.event_id);
       const response = await fetch(
         "http://127.0.0.1:8000/api/events/" + this.$route.params.event_id,
         {
@@ -99,8 +99,6 @@ export default {
           },
         }
       );
-      console.log("sortie fetch");
-
       const data = await response.json();
       this.event = data.event;
     },
