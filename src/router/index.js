@@ -4,7 +4,6 @@ import DisconnectedView from "../views/DisconnectedView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
 import EventListView from "../views/EventListView.vue";
 import EventUniqueView from "../views/EventUniqueView.vue";
-import ProfilView from "../views/ProfilView.vue";
 import MyProfileView from "../views/MyProfileView.vue";
 import CreateSlotsView from "../views/CreateSlotsView.vue";
 import CreateUserView from "../views/CreateUserView.vue";
@@ -14,8 +13,9 @@ import ModifyProfilView from "../views/ModifyProfilView.vue";
 import Abilities from "../components/Abilities.vue"; // A laisser pour tester l'affichage
 import GroupUniqueView from "../views/GroupUniqueView.vue";
 import HomeView from "../views/HomeView.vue";
-import QrGenerator from "../components/QrGenerator.vue";
+import QrCodeReader from "../components/QrCodeReader.vue";
 import PageQrCodeView from "../views/PageQrCodeView.vue";
+import TestHomeView from "../views/TestHomeView.vue";
 
 const routes = [
   {
@@ -27,8 +27,14 @@ const routes = [
   {
     path: "/qrgenerator",
     name: "qr code",
-    component: QrGenerator,
+    component: QrCodeReader,
   },
+  {
+    path: "/testhome",
+    name: "testhome",
+    component: TestHomeView,
+  },
+
   {
     path: "/pageqrcode",
     name: "pageqrcode",
@@ -70,12 +76,6 @@ const routes = [
     path: "/modifications",
     name: "Modification de profil",
     component: ModifyProfilView,
-  },
-
-  {
-    path: "/profil/:user_id",
-    name: "Profil",
-    component: ProfilView,
   },
 
   {

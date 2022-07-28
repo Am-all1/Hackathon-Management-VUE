@@ -1,10 +1,4 @@
 <template>
-  <div class="">
-    <form>
-      <input type="text" v-model="QRValue" />
-    </form>
-    <qrcode-vue v-if="QRValue" :value="value" :size="size" level="H" />
-  </div>
   <div>
     <p>{{ error }}</p>
     <p>{{ decodeString }}</p>
@@ -13,19 +7,14 @@
 </template>
 
 <script>
-import QrcodeVue from "qrcode.vue";
 import { QrcodeStream } from "vue3-qrcode-reader";
 export default {
   data() {
     return {
-      value: "this.token",
-      QRValue: null,
-      error: "",
       decodeString: "",
     };
   },
   components: {
-    QrcodeVue,
     QrcodeStream,
   },
   methods: {
