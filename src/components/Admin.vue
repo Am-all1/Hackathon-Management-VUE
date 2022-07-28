@@ -181,9 +181,12 @@ export default {
 <style scoped>
 h1,
 h2,
+h3,
+td,
 table {
   color: rgb(86, 82, 82);
 }
+
 table,
 .td {
   border: 1px solid #333;

@@ -9,7 +9,6 @@
         <div id="formStyle">
           <p>Développeur</p>
           <input type="checkbox" name="dev" v-model="dev" />
-
           <p>UI/UX</p>
           <input type="checkbox" name="design" v-model="design" />
           <p>Maker</p>
@@ -27,6 +26,7 @@
           <br />
           <input type="submit" value="Valider" id="button" />
         </div>
+
         <br />
       </form>
     </div>
@@ -105,10 +105,6 @@ export default {
 </script>
 
 <style scoped>
-h1 {
-  font-size: 2em;
-}
-
 h1,
 p,
 label {
@@ -118,6 +114,12 @@ label {
 p {
   padding: 5px;
   margin-left: 20px;
+}
+
+input {
+  margin-left: 10px;
+  top: -7px;
+  position: relative;
 }
 
 #formStyle {

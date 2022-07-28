@@ -94,7 +94,6 @@ label {
 }
 
 #mainContainer {
-  display: flex;
   flex-direction: column;
 }
 

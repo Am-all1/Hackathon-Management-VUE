@@ -17,7 +17,8 @@
         },
       }"
     >
-      <button class="">inscription à l'event</button></router-link
+      <br />
+      <button class="">S'inscrire</button></router-link
     >
   </div>
   <hr />
@@ -122,4 +123,27 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+button {
+  border: 2px solid GREY;
+  background-color: white;
+  color: grey;
+  height: 30px;
+  width: 180px;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 16px;
+  display: inline-flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+button:hover {
+  border: 2px solid rgb(219, 117, 117);
+  background-color: rgb(219, 117, 117);
+  color: white;
+  font-weight: bold;
+}
+</style>

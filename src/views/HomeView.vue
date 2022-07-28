@@ -25,17 +25,11 @@ export default {
 /* BODY */
 #bodyImage {
   opacity: 0.9;
-
   background-image: url("../assets/nice.jpeg");
   background-size: cover;
-  height: 450px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
+  height: 850px;
   color: white;
+  z-index: 200;
   font-size: 70px;
   text-shadow: 2px 2px 2px black;
 }

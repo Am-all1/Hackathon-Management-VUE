@@ -1,6 +1,7 @@
 <template>
+  <hr />
   <div>
-    <h1>Liste des évènements:</h1>
+    <h1>Liste des évènements</h1>
     <div>
       <form>
         <EventUnique
@@ -52,4 +53,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+h1 {
+  color: rgb(86, 82, 82);
+}
+</style>

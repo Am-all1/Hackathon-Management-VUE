@@ -54,3 +54,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+h1 {
+  color: rgb(86, 82, 82);
+}
+</style>
