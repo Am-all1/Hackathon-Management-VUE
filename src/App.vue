@@ -18,7 +18,7 @@
       <router-link to="/disconnected">Deconnexion</router-link> |
       <router-link to="/eventlist">Evènements</router-link> |
       <router-link to="/admin">Espace admin</router-link> |
-      <router-link to="/slots">Créer un créneau</router-link>|
+      <router-link to="/slots">Espace staff</router-link>|
       <router-link to="/modifications">Modifier mon profil</router-link>|
       <router-link to="/abilities">Mes compétences</router-link> |
       <router-link to="/qrgenerator">Qr Code</router-link> |

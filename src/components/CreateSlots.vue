@@ -131,4 +131,8 @@ export default {
 li {
   list-style-type: none;
 }
+
+h2 {
+  margin-top: 14%;
+}
 </style>
