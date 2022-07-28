@@ -1,8 +1,8 @@
 <template>
-  <div id="mainContainer">
-    <h1>Créer un créneau horaire</h1>
+  <div>
+    <h1 class="linkTitlePage">Choix d'un créneau horaire:</h1>
 
-    <form @submit.prevent="createSlot">
+    <form @submit.prevent="modifySlots">
       <div>
         <label for="title">Titre:</label>
         <br />
@@ -38,8 +38,10 @@
           <option>60 min</option>
         </select>
       </div>
+
       <br />
-      <input type="submit" value="Valider" id="button" />
+
+      <input type="submit" value="Valider" />
     </form>
 
     <p>{{ feedbackMessage }}</p>
@@ -87,7 +89,7 @@ export default {
     },
 
     /* Création d'un slot */
-    async createSlot() {
+    async modifySlots() {
       const body = {
         title: this.title,
         start: this.start,
@@ -96,7 +98,7 @@ export default {
       };
 
       const response = await fetch("http://127.0.0.1:8000/api/slots", {
-        method: "POST",
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
@@ -128,35 +130,5 @@ export default {
 <style scoped>
 li {
   list-style-type: none;
-}
-
-h1,
-form,
-label,
-h2,
-li {
-  color: rgb(86, 82, 82);
-}
-
-#button {
-  border: 2px solid GREY;
-  background-color: white;
-  color: grey;
-  height: 60px;
-  width: 180px;
-  cursor: pointer;
-  padding: 10px;
-  font-size: 20px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-#button:hover {
-  border: 2px solid rgb(219, 117, 117);
-  background-color: rgb(219, 117, 117);
-  color: white;
-  font-weight: bold;
 }
 </style>

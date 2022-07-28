@@ -1,21 +1,20 @@
 <template>
-  <div class="">
-    <CreateEvents @created="getEvents" />
-  </div>
-  <hr />
-  <h2>Liste des évènements:</h2>
   <div>
-    <form>
-      <EventUnique
-        v-for="event in events"
-        :key="event.id"
-        :name="event.name"
-        :start="event.start"
-        :end="event.end"
-        :location="event.location"
-        :event_id="event.id"
-      />
-    </form>
+    <h1>Liste des évènements:</h1>
+    <div>
+      <form>
+        <EventUnique
+          v-for="event in events"
+          :key="event.id"
+          :name="event.name"
+          :start="event.start"
+          :end="event.end"
+          :location="event.location"
+          :event_id="event.id"
+          @eventDeleted="getEvents"
+        />
+      </form>
+    </div>
   </div>
 </template>
 

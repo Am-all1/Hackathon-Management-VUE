@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1>Créer un évènement</h1>
+    <h1 class="linkTitlePage">Modification de l'évènement:</h1>
 
-    <form @submit.prevent="createEvent">
+    <form @submit.prevent="modifyEvent">
       <div>
         <label for="name">Nom:</label>
         <br />
@@ -35,7 +35,7 @@
 
       <br />
 
-      <input type="submit" value="Valider" id="button" />
+      <input type="submit" value="Modifier" />
     </form>
 
     <p>{{ feedbackMessage }}</p>
@@ -51,13 +51,17 @@ export default {
       end: "",
       location: "",
       feedbackMessage: "",
-      token: localStorage.getItem("savedUserToken"),
+      //   token: localStorage.getItem("savedUserToken"),
     };
   },
 
+  props: {
+    event_id: Number,
+  },
+
   methods: {
-    /* Création d'un event */
-    async createEvent() {
+    /* Modification d'un event */
+    async modifyEvent() {
       const body = {
         name: this.name,
         start: this.start,
@@ -65,25 +69,28 @@ export default {
         location: this.location,
       };
 
-      const response = await fetch("http://127.0.0.1:8000/api/events", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: `Bearer ${localStorage.getItem("savedUserToken")}`,
-        },
-        body: JSON.stringify(body),
-      });
+      const response = await fetch(
+        "http://127.0.0.1:8000/api/events/" + this.event_id,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            //   Authorization: `Bearer ${localStorage.getItem("savedUserToken")}`,
+          },
+          body: JSON.stringify(body),
+        }
+      );
       const data = await response.json();
 
       this.feedbackMessage = data.message;
-
-      this.$emit("created");
 
       this.name = "";
       this.start = "";
       this.end = "";
       this.location = "";
+
+      this.$emit("eventModified");
     },
   },
 };
@@ -92,28 +99,5 @@ export default {
 <style scoped>
 li {
   list-style-type: none;
-}
-
-h1,
-label {
-  color: rgb(86, 82, 82);
-}
-
-#button {
-  border: 2px solid GREY;
-  background-color: white;
-  color: grey;
-  height: 60px;
-  width: 180px;
-  cursor: pointer;
-  padding: 10px;
-  font-size: 20px;
-}
-
-#button:hover {
-  border: 2px solid rgb(219, 117, 117);
-  background-color: rgb(219, 117, 117);
-  color: white;
-  font-weight: bold;
 }
 </style>
