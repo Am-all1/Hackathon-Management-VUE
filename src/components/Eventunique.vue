@@ -14,7 +14,7 @@
         },
       }"
     >
-      <button class="showBtn">Montrer l'évènement</button></router-link
+      <button class="test">Montrer l'évènement</button></router-link
     >
 
     <button @click="deleteEvent">Supprimer</button>
