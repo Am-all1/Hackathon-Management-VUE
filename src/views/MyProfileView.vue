@@ -4,6 +4,7 @@
 
 <script>
 import MyProfile from "@/components/MyProfile.vue";
+
 export default {
   data() {
     return {

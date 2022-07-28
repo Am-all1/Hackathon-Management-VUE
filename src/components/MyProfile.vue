@@ -61,6 +61,7 @@
 export default {
   mounted() {
     this.getUserById();
+    this.saveUrl();
   },
   data() {
     return {
