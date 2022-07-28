@@ -1,5 +1,5 @@
 <template>
-  <h1 class="linkTitlePage">Mon profil:</h1>
+  <h1>Mon profil</h1>
 
   <!-- <span>{{ picture }}</span> -->
 
