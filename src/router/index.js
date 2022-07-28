@@ -13,7 +13,7 @@ import ModifyProfilView from "../views/ModifyProfilView.vue";
 import Abilities from "../components/Abilities.vue"; // A laisser pour tester l'affichage
 import GroupUniqueView from "../views/GroupUniqueView.vue";
 import HomeView from "../views/HomeView.vue";
-import QrGenerator from "../components/QrGenerator.vue";
+import QrCodeReader from "../components/QrCodeReader.vue";
 import PageQrCodeView from "../views/PageQrCodeView.vue";
 import TestHomeView from "../views/TestHomeView.vue";
 
@@ -27,7 +27,7 @@ const routes = [
   {
     path: "/qrgenerator",
     name: "qr code",
-    component: QrGenerator,
+    component: QrCodeReader,
   },
   {
     path: "/testhome",
