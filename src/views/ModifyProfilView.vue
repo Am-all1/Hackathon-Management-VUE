@@ -95,6 +95,7 @@ export default {
       website: "",
       portfolio: "",
       feedBackmessage: "",
+      bio: "",
       token: localStorage.getItem("savedUserToken"),
     };
   },
@@ -135,7 +136,7 @@ export default {
     },
   },
 
-  components: { FileUploadView },
+  // components: { FileUploadView },
 };
 </script>
 
