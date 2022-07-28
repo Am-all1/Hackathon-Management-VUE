@@ -13,13 +13,13 @@
   <nav>
     <router-link to="/home" class="links">Accueil</router-link> |
     <router-link to="/login" class="links">Connexion</router-link> |
-    <router-link to="/disconnected" class="links">Déconnexion</router-link> |
     <router-link to="/mon-profil" class="links">Mon profil</router-link> |
     <router-link to="/eventlist">Evènements</router-link> |
     <router-link to="/admin" class="links">Espace admin</router-link> |
     <router-link to="/slots" class="links">Espace staff</router-link> |
     <router-link to="/abilities" class="links">Mes compétences</router-link> |
     <router-link to="/qrgenerator" class="links">Qr Code</router-link> |
+    <router-link to="/home">Home</router-link> |
     <router-link to="/pageqrcode" class="links">Page avec QR Code</router-link>
   </nav>
   <div>
