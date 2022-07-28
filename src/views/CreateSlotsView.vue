@@ -7,7 +7,7 @@
       <CreateSlots />
     </div>
   </div>
-</template>
+</template> 
 
 <script>
 import CreateSlots from "@/components/CreateSlots.vue";
