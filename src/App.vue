@@ -25,6 +25,8 @@
       <router-link to="/modifications">Modifier mon profil</router-link>|
       <router-link to="/abilities">Mes compétences</router-link> |
       <router-link to="/qrgenerator">Qr Code</router-link> |
+      <router-link to="/home">Home</router-link> |
+
       <router-link to="/pageqrcode">Page avec QR Code</router-link>
     </div>
   </nav>

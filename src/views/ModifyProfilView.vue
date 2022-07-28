@@ -8,7 +8,7 @@
           type="text"
           name="firstname"
           id="firstname"
-          :placeholder="user.firstname"
+          placeholder="user.firstname"
           v-model="firstname"
         />
       </div>

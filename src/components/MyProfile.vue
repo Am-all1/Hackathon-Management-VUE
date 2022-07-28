@@ -14,12 +14,14 @@
   <p>GitHub: {{ user.github }}</p>
 
   <button>Modifer le profil</button>
+  <input type="button" @click="redirectionBadge" value="Générer un badge" />
 </template>
 
 <script>
 export default {
   mounted() {
     this.getUserById();
+    this.saveUrl();
   },
 
   data() {
@@ -46,6 +48,13 @@ export default {
 
       const data = await response.json();
       this.user = data.user;
+    },
+    redirectionBadge() {
+      window.location.href = "/#/pageqrcode";
+    },
+    saveUrl() {
+      console.log(window.location);
+      localStorage.setItem("@currentUrl", window.location.href);
     },
   },
 };

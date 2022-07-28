@@ -15,6 +15,7 @@ import Abilities from "../components/Abilities.vue"; // A laisser pour tester l'
 import GroupUniqueView from "../views/GroupUniqueView.vue";
 import QrGenerator from "../components/QrGenerator.vue";
 import PageQrCodeView from "../views/PageQrCodeView.vue";
+import TestHomeView from "../views/TestHomeView.vue";
 
 const routes = [
   {
@@ -22,6 +23,12 @@ const routes = [
     name: "qr code",
     component: QrGenerator,
   },
+  {
+    path: "/home",
+    name: "home",
+    component: TestHomeView,
+  },
+
   {
     path: "/pageqrcode",
     name: "pageqrcode",

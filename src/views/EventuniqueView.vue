@@ -15,7 +15,7 @@
   <div class="groupFormDisplay">
     <CreateGroup :event_id="event.id" @groupCreated="getGroupUnique" />
   </div>
-  @/components/Even@/components/EventUnique.vue
+  <!-- @/components/Even@/components/EventUnique.vue -->
 
   <!-- APPEL DU COMPOSANT GroupUnique AVEC UN v-for AFIN D'AFFICHER LA LISTE DES GROUPES LIES A CET EVENEMENT -->
   <div class="allGroupsIn@/components/EventUnique.vue">
@@ -46,7 +46,7 @@ export default {
   },
   data() {
     return {
-      event: {},
+      event: [],
       groups: [], // à vérifier : le type "tableau" est-il le plus approprié ?
     };
   },
