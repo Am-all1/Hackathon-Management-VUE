@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-sm-12" id="blup">
+    <div class="col-sm-12">
       <div class="card text-bg-light mb-3" style="max-width: 30rem">
         <div class="card-header">{{ name }}</div>
         <div class="card-body">

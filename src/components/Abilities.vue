@@ -6,28 +6,72 @@
       <br />
 
       <form>
-        <div id="formStyle">
-          <p>Développeur</p>
-          <input type="checkbox" name="dev" v-model="dev" />
-
-          <p>UI/UX</p>
-          <input type="checkbox" name="design" v-model="design" />
-          <p>Maker</p>
-          <input type="checkbox" name="maker" v-model="maker" />
-          <p>Management</p>
-          <input type="checkbox" name="management" v-model="management" />
-          <p>Commercial</p>
-          <input type="checkbox" name="commercial" v-model="commercial" />
-          <p>Communication</p>
-          <input type="checkbox" name="communication" v-model="communication" />
-          <p>OPS</p>
-          <input type="checkbox" name="ops" v-model="ops" />
-          <p>design graphique</p>
-          <input type="checkbox" name="desiGraph" v-model="designGraphique" />
-          <br />
-          <input type="submit" value="Valider" id="button" />
+        <div class="container">
+          <div class="row g-2">
+            <div class="col-6">
+              <div class="p-3 border bg-light">
+                <p>Développeur</p>
+                <input type="checkbox" name="dev" v-model="dev" />
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="p-3 border bg-light">
+                <p>UI/UX</p>
+                <input type="checkbox" name="design" v-model="design" />
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="p-3 border bg-light">
+                <p>Maker</p>
+                <input type="checkbox" name="maker" v-model="maker" />
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="p-3 border bg-light">
+                <p>Management</p>
+                <input type="checkbox" name="management" v-model="management" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row g-2">
+            <div class="col-6">
+              <div class="p-3 border bg-light">
+                <p>Commercial</p>
+                <input type="checkbox" name="commercial" v-model="commercial" />
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="p-3 border bg-light">
+                <p>OPS</p>
+                <input type="checkbox" name="ops" v-model="ops" />
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="p-3 border bg-light">
+                <p>Communication</p>
+                <input
+                  type="checkbox"
+                  name="communication"
+                  v-model="communication"
+                />
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="p-3 border bg-light">
+                <p>design graphique</p>
+                <input
+                  type="checkbox"
+                  name="desiGraph"
+                  v-model="designGraphique"
+                />
+              </div>
+            </div>
+          </div>
         </div>
         <br />
+        <input type="submit" value="Valider" id="button" />
       </form>
     </div>
   </section>
@@ -105,6 +149,10 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  margin-top: 0.5em;
+}
+
 h1 {
   font-size: 2em;
 }
@@ -138,7 +186,7 @@ p {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  position: fixed;
+
   top: 600px;
 }
 

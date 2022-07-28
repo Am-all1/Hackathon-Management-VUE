@@ -111,6 +111,7 @@
 
 <script>
 import CreateEvents from "@/components/CreateEvents.vue";
+
 export default {
   data() {
     return {

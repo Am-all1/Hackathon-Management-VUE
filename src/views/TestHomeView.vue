@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="event">
     <TestHome
       v-for="event in events"
       :key="event.id"
@@ -45,4 +45,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.event {
+  margin-left: 16rem;
+}
+</style>
