@@ -1,5 +1,4 @@
 <template>
-  <hr />
   <div id="mainContainer">
     <h1>Créer un créneau horaire</h1>
 
