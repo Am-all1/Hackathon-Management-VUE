@@ -25,16 +25,17 @@
     <router-link to="/qrgenerator" class="links">Qr Code</router-link> |
     <router-link to="/pageqrcode" class="links">Page avec QR Code</router-link>
   </nav>
-  <div>
-    <router-view />
-  </div>
 
-  
+  <router-view />
+  <div>
+    <Footer></Footer>
+  </div>
 </template>
 
 <script>
 import "bootstrap/dist/css/bootstrap.min.css";
 import HomeView from "./views/HomeView.vue";
+import Footer from "@/components/Footer.vue";
 
 export default {
   name: "App",
@@ -45,6 +46,7 @@ export default {
       token: localStorage.getItem("savedUserToken"),
     };
   },
+  components: { Footer },
 };
 </script>
 
@@ -119,5 +121,4 @@ nav {
 #navLink {
   text-decoration: none;
 }
-
 </style>
