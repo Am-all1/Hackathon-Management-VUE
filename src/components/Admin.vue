@@ -16,13 +16,10 @@
         </option>
       </select>
     </div>
-    {{ selectedEvent_id }}
+    <!-- {{ selectedEvent_id }} -->
 
     <!-- ICI LA LISTE DE TOUS LES UTILISATEURS -->
-    <div
-      class="filteredUsers"
-      v-if="selectedEvent_id == null ? getUsers() : null"
-    >
+    <div class="filteredUsers">
       <br />
       <h3>Liste de tous les utilisateurs</h3>
       <br />
@@ -46,51 +43,27 @@
               <td class="td">Nom</td>
               <td class="td">Email</td>
               <td class="td">Role</td>
+              <td class="td">Autorisatiton</td>
             </tr>
 
             <tr v-for="user in filterByName" :key="user.id">
               <td>{{ user.firstname }}</td>
               <td>{{ user.lastname }}</td>
               <td>{{ user.email }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- ***************  ICI LA LISTE DES UTILISATEURS D'UN EVENEMENT *************** -->
-    <div
-      class="filteredUsers"
-      v-if="selectedEvent_id != null ? getUsersOfEvents() : false"
-    >
-      <h1>Liste des utilisateurs de l'événement séléctionné :</h1>
-      <br />
-      <label for="">Recherche de participant : </label>
-      <input
-        type="text"
-        v-model="searchTerm"
-        class=""
-        placeholder="Entrez un participant"
-      />
-      <div class="tableau">
-        <table>
-          <thead>
-            <tr>
-              <th>Utilisateurs</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="td">Prénom</td>
-              <td class="td">Nom</td>
-              <td class="td">Email</td>
-              <td class="td">Role</td>
-            </tr>
-
-            <tr v-for="user in filterByName" :key="user.id">
-              <td>{{ user.firstname }}</td>
-              <td>{{ user.lastname }}</td>
-              <td>{{ user.email }}</td>
+              <td></td>
+              <td>
+                <div v-if="selectedEvent_id != null">
+                  <select
+                    v-model="user.role.Authorization"
+                    @change="updateRole(user.role)"
+                  >
+                    <option value="none">Select</option>
+                    <option value="3">Admin - 3</option>
+                    <option value="2">Staff - 2</option>
+                    <option value="1">User - 1</option>
+                  </select>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -108,6 +81,7 @@ export default {
       searchTerm: "",
       events: [],
       selectedEvent_id: null,
+      seclectRole_id: null,
     };
   },
   components: {
@@ -129,6 +103,16 @@ export default {
           user.lastname.toLowerCase().includes(this.searchTerm.toLowerCase())
         );
       });
+    },
+  },
+
+  watch: {
+    selectedEvent_id(id) {
+      if (id === null) {
+        this.getUsers();
+      } else {
+        this.getUsersOfEvents();
+      }
     },
   },
 
@@ -173,6 +157,30 @@ export default {
       });
       const data = await response.json();
       this.events = data.events;
+    },
+
+    /* AUTHORIZATION D UN USER */
+    async authorization() {
+      const body = {
+        title: this.title,
+      };
+
+      const response = await fetch("http://127.0.0.1:8000/api/slots", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+
+      const data = await response.json();
+
+      this.feedbackMessage = data.message;
+
+      this.getSlots();
+
+      // vider les inputs
     },
   },
 };

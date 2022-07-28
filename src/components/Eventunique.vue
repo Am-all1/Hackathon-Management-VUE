@@ -9,6 +9,7 @@
 
     <div id="styleButton">
       <router-link
+        v-if="!viewing"
         :to="{
           name: 'EventUnique',
           params: {
@@ -16,7 +17,9 @@
           },
         }"
       >
-        <button>Voir l'évènement</button></router-link
+        <button class="test" @click="showEvent">
+          Montrer l'évènement
+        </button></router-link
       >
 
       <button @click="deleteEvent">Supprimer</button>
@@ -27,18 +30,32 @@
 
 <script>
 export default {
+  data() {
+    return {
+      message: "",
+    };
+  },
   props: {
     name: String,
     start: String,
     end: String,
     location: String,
     event_id: Number,
+    viewing: Boolean,
   },
 
   methods: {
-    async deleteEvent(event) {
+    showEvent() {
+      console.log("Entrée showEvent");
+      this.$emit("showing");
+    },
+
+    async deleteEvent() {
+      console.log(
+        "entrée dans méthode delete avec event_id : " + this.event_id
+      );
       const response = await fetch(
-        "http://127.0.0.1:8000/api/events/" + this.$route.params.event_id,
+        "http://127.0.0.1:8000/api/events/" + this.event_id,
 
         {
           method: "DELETE",
@@ -50,8 +67,9 @@ export default {
       );
 
       const data = await response.json();
-      this.events = data.events;
-      this.events.splice(this.events.indexOf(event), 1);
+      this.message = data.message;
+
+      this.$emit("eventDeleted");
     },
   },
 };

@@ -2,17 +2,12 @@
   <hr />
   <div>
     <h1>Modifier mon profil</h1>
-    <form @submit.prevent="ModifyProfil" :token="this.token">
+    <form @submit.prevent="ModifyProfil">
       <div id="formStyle">
         <div id="formStyleLeftContainer">
           <label for="bio">Biographie :</label>
           <br />
-          <textarea
-            name="bio"
-            id="bio"
-            :placeholder="user.bio"
-            v-model="bio"
-          ></textarea>
+          <textarea name="bio" id="bio" v-model="bio"></textarea>
         </div>
 
         <div id="formStyleCenterContainer">
@@ -21,8 +16,7 @@
             type="text"
             name="firstname"
             id="firstname"
-            :placeholder="user.firstname"
-            v-model="firstname"
+            v-model="user.firstname"
           />
           <br />
           <label for="lastname">Nom : </label>
@@ -30,26 +24,18 @@
             type="text"
             name="lastname"
             id="lastname"
-            :placeholder="user.lastname"
-            v-model="lastname"
+            v-model="user.lastname"
           />
           <br />
           <label for="email">Email: </label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            :placeholder="user.email"
-            v-model="email"
-          />
+          <input type="email" name="email" id="email" v-model="user.email" />
           <br />
           <label for="password">Mot de passe : </label>
           <input
             type="password"
             name="password"
             id="password"
-            :placeholder="user.password"
-            v-model="password"
+            v-model="user.password"
           />
           <br />
         </div>
@@ -59,26 +45,18 @@
             type="text"
             name="linkedin"
             id="linkedin"
-            :placeholder="user.linkedIn"
-            v-model="linkedin"
+            v-model="user.linkedIn"
           />
           <br />
           <label for="github">Github :</label>
-          <input
-            type="text"
-            name="github"
-            id="github"
-            :placeholder="user.github"
-            v-model="github"
-          />
+          <input type="text" name="github" id="github" v-model="user.github" />
           <br />
           <label for="website">Website :</label>
           <input
             type="text"
             name="website"
             id="website"
-            :placeholder="user.website"
-            v-model="website"
+            v-model="user.website"
           />
           <br />
           <label for="portfolio">Portfolio :</label>
@@ -86,11 +64,10 @@
             type="text"
             name="portfolio"
             id="portfolio"
-            :placeholder="user.portfolio"
-            v-model="portfolio"
+            v-model="user.portfolio"
           />
         </div>
-        <input type="submit" value="Valider" id="button" />
+        <input type="submit" @click="profilBack" value="Valider" id="button" />
       </div>
       <br />
     </form>
@@ -139,19 +116,9 @@ export default {
 
     /* UPDATE PROFIL */
     async ModifyProfil() {
-      const body = {
-        firstname: this.firstname,
-        lastname: this.lastname,
-        email: this.email,
-        password: this.password,
-        linkedIn: this.linkedIn,
-        github: this.github,
-        website: this.website,
-        portfolio: this.portfolio,
-        bio: this.bio,
-        picture: this.picture,
-      };
-      const response = await fetch("http://127.0.0.1:8000/api/my-profile", {
+      const body = this.user;
+
+      const response = await fetch("http://127.0.0.1:8000/api/update-profile", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -165,6 +132,9 @@ export default {
       this.feedbackMessage = data.message;
 
       this.getUserById();
+    },
+    profilBack() {
+      window.location.href = "/#/mon-profil";
     },
   },
 

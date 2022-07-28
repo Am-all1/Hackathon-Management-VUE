@@ -10,6 +10,7 @@
       :abilities="group.abilities"
       :group_id="group.id"
       :event_id="group.event_id"
+      :viewing="true"
     />
   </div>
   <hr />
