@@ -4,7 +4,6 @@ import DisconnectedView from "../views/DisconnectedView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
 import EventListView from "../views/EventListView.vue";
 import EventUniqueView from "../views/EventUniqueView.vue";
-import ProfilView from "../views/ProfilView.vue";
 import MyProfileView from "../views/MyProfileView.vue";
 import CreateSlotsView from "../views/CreateSlotsView.vue";
 import CreateUserView from "../views/CreateUserView.vue";
@@ -31,8 +30,8 @@ const routes = [
     component: QrGenerator,
   },
   {
-    path: "/home",
-    name: "home",
+    path: "/testhome",
+    name: "testhome",
     component: TestHomeView,
   },
 
@@ -77,12 +76,6 @@ const routes = [
     path: "/modifications",
     name: "Modification de profil",
     component: ModifyProfilView,
-  },
-
-  {
-    path: "/profil/:user_id",
-    name: "Profil",
-    component: ProfilView,
   },
 
   {
