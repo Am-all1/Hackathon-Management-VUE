@@ -24,6 +24,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      message: "",
+    };
+  },
   props: {
     name: String,
     start: String,
@@ -33,9 +38,9 @@ export default {
   },
 
   methods: {
-    async deleteEvent(event) {
+    async deleteEvent() {
       const response = await fetch(
-        "http://127.0.0.1:8000/api/events/" + this.$route.params.event_id,
+        "http://127.0.0.1:8000/api/events/" + this.event_id,
 
         {
           method: "DELETE",
@@ -47,8 +52,9 @@ export default {
       );
 
       const data = await response.json();
-      this.events = data.events;
-      this.events.splice(this.events.indexOf(event), 1);
+      this.message = data.message;
+
+      this.$emit("eventDeleted");
     },
   },
 };

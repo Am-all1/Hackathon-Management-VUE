@@ -1,116 +1,117 @@
 <template>
   <div>
     <h1>Modifier votre profil</h1>
+
     <form @submit.prevent="ModifyProfil">
       <div>
-        <label for="firstname">Prénom : </label>
+        <label for="firstname">Prénom: </label>
+        <br />
         <input
           type="text"
           name="firstname"
           id="firstname"
-          :placeholder="user.firstname"
-          v-model="firstname"
+          v-model="user.firstname"
         />
       </div>
+
       <br />
+
       <div>
-        <label for="lastname">Nom : </label>
+        <label for="lastname">Nom: </label>
+        <br />
         <input
           type="text"
           name="lasttname"
           id="lastname"
-          placeholder="{{lastname}}"
-          v-model="lastname"
+          v-model="user.lastname"
         />
       </div>
+
       <br />
+
       <div>
         <label for="email">Email: </label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="{{email}}"
-          v-model="email"
-        />
+        <br />
+        <input type="email" name="email" id="email" v-model="user.email" />
       </div>
+
       <br />
+
       <div>
-        <label for="password">Mot de passe : </label>
+        <label for="password">Mot de passe: </label>
+        <br />
         <input
           type="password"
           name="password"
           id="password"
-          placeholder="{{password}}"
-          v-model="password"
+          v-model="user.password"
         />
       </div>
+
       <br />
+
       <div>
-        <label for="firstname">linkedIn : </label>
+        <label for="linkedIn">Linkedin: </label>
+        <br />
         <input
           type="text"
-          name="linkedin"
-          id="linkedin"
-          placeholder="{{linkedIn}}"
-          v-model="linkedin"
+          name="linkedIn"
+          id="linkedIn"
+          v-model="user.linkedIn"
         />
       </div>
+
       <br />
+
       <div>
-        <label for="firstname">Github </label>
-        <input
-          type="text"
-          name="linkedin"
-          id="linkedin"
-          placeholder="{{github}}"
-          v-model="github"
-        />
+        <label for="github">Github: </label>
+        <br />
+        <input type="text" name="github" id="github" v-model="user.github" />
       </div>
+
       <br />
+
       <div>
-        <label for="firstname">Website :</label>
-        <input
-          type="text"
-          name="website"
-          id="website"
-          placeholder="{{website}}"
-          v-model="website"
-        />
+        <label for="website">Website: </label>
+        <br />
+        <input type="text" name="website" id="website" v-model="user.website" />
       </div>
+
       <br />
+
       <div>
-        <label for="firstname">Portfolio :</label>
+        <label for="portfolio">Portfolio: </label>
+        <br />
         <input
           type="text"
           name="portfolio"
           id="portfolio"
-          placeholder="{{portfolio}}"
-          v-model="portfolio"
+          v-model="user.portfolio"
         />
       </div>
+
       <br />
+
       <div>
-        <label for="firstname">Bio :</label>
-        <textarea
-          name="bio"
-          id="bio"
-          placeholder="{{bio}}"
-          v-model="bio"
-        ></textarea>
+        <label for="bio">Bio: </label>
+        <br />
+        <textarea name="bio" id="bio" v-model="user.bio"></textarea>
       </div>
+
       <br />
-      <div>
-        <label for="firstname">Photo :</label>
+
+      <!-- <div>
+        <label for="picture">Photo: </label>
+        <br />
         <input
           type="image"
+          alt="image"
           name="picture"
           id="picture"
-          placeholder="{{picture}}"
-          v-model="picture"
+          v-model="user.picture"
         />
         <FileUploadView></FileUploadView>
-      </div>
+      </div> -->
 
       <input type="submit" value="Valider les modifications" />
     </form>
@@ -123,70 +124,55 @@
 // import FileUpload from './FileUploadView.vue';
 import FileUploadView from "./FileUploadView.vue";
 export default {
+  mounted() {
+    this.getUserById();
+  },
+
   data() {
     return {
-      users: [],
-      firstname: "",
-      lastname: "",
-      email: "",
-      password: "",
-      linkedin: "",
-      github: "",
-      website: "",
-      portfolio: "",
-      bio: "",
-      picture: "",
+      user: {},
       feedBackmessage: "",
+      token: localStorage.getItem("savedUserToken"),
     };
   },
   methods: {
-    /* Récupération */
-    async getModifyProfil() {
-      const response = await fetch("http://127.0.0.1:8000/api/users", {
+    /* Récupération des infos du profil */
+    async getUserById() {
+      const response = await fetch("http://127.0.0.1:8000/api/my-profile/", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
+          Authorization: `Bearer ${localStorage.getItem("savedUserToken")}`,
         },
       });
 
       const data = await response.json();
-      this.events = data.events;
+      this.user = data.user;
     },
-    /* Création des modifs */
-    async createModifyProfil() {
-      const body = {
-        firstname: this.firstname,
-        lastname: this.lastname,
-        email: this.email,
-        password: this.password,
-        linkedin: this.linkedin,
-        github: this.github,
-        website: this.website,
-        portfolio: this.portfolio,
-        bio: this.bio,
-        picture: this.picture,
-      };
-      const response = await fetch("http://127.0.0.1:8000/api/users", {
-        method: "POST",
+
+    /* UPDATE PROFIL */
+    async ModifyProfil() {
+      const body = this.user;
+      console.log(body);
+
+      const response = await fetch("http://127.0.0.1:8000/api/update-profile", {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
+          Authorization: `Bearer ${localStorage.getItem("savedUserToken")}`,
         },
         body: JSON.stringify(body),
       });
       const data = await response.json();
+
       this.feedbackMessage = data.message;
-      this.getModifyProfil();
-      // firstname: this.firstname,
-      // lastname: this.lastname,
-      // email: this.email,
-      // password: this.password,
+
+      this.getUserById();
     },
   },
-  mounted() {
-    this.getModifyProfil();
-  },
+
   components: { FileUploadView },
 };
 </script>
