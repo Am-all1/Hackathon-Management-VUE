@@ -62,42 +62,15 @@
 </template>
 
 <script>
+import CreateUser from "@/components/CreateUser.vue";
+
 export default {
   data() {
-    return {
-      status: null,
-      message: "",
-      users: [],
-      firstname: "",
-      lastname: "",
-      email: "",
-      password: "",
-    };
+    return {};
   },
-  methods: {
-    /* Création d'un user */
-    async createUser() {
-      const body = {
-        firstname: this.firstname,
-        lastname: this.lastname,
-        email: this.email,
-        password: this.password,
-      };
 
-      const response = await fetch("http://127.0.0.1:8000/api/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(body),
-      });
-      const data = await response.json();
-
-      console.log(data);
-      this.message = data.message;
-      this.status = data.status;
-    },
+  components: {
+    CreateUser,
   },
 };
 </script>

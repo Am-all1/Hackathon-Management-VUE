@@ -9,13 +9,24 @@
       :location="event.location"
       :event_id="event.id"
     />
+    <router-link
+      :to="{
+        name: 'creation de compte',
+        params: {
+          event_id: this.event.id,
+        },
+      }"
+    >
+      <button class="">inscription à l'event</button></router-link
+    >
   </div>
+  <hr />
 
   <!-- APPEL DU COMPOSANT CreateGroup AFIN D'AFFICHER LE FORMULAIRE DE CREATION DE GROUPE -->
   <div class="groupFormDisplay">
     <CreateGroup :event_id="event.id" @groupCreated="getGroupUnique" />
   </div>
-  @/components/Even@/components/EventUnique.vue
+  <!-- @/components/Even@/components/EventUnique.vue -->
 
   <!-- APPEL DU COMPOSANT GroupUnique AVEC UN v-for AFIN D'AFFICHER LA LISTE DES GROUPES LIES A CET EVENEMENT -->
   <div class="allGroupsIn@/components/EventUnique.vue">
@@ -50,21 +61,29 @@ export default {
   },
   data() {
     return {
-      event: {},
+      event: [],
       groups: [], // à vérifier : le type "tableau" est-il le plus approprié ?
+      /* event_id: this.event.id, */ // UTILISATION POUR LE PROVIDE
     };
   },
+  /*   provide() {
+    return {
+      event_id: computed(() => this.event_id),
+    };
+  }, */
 
   components: {
     EventUnique,
     CreateGroup,
     GroupUnique,
     QrGenerator,
+    CreateUser /*a voir si c'est à garder */,
   },
 
   methods: {
     /* Récupération des données de l'event unique sur lequel on se trouve */
     async getEventUnique() {
+      console.log("entrée fetch " + this.$route.params.event_id);
       const response = await fetch(
         "http://127.0.0.1:8000/api/events/" + this.$route.params.event_id,
         {
@@ -75,6 +94,8 @@ export default {
           },
         }
       );
+      console.log("sortie fetch");
+
       const data = await response.json();
       this.event = data.event;
     },

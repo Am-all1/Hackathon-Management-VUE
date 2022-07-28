@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import LoginView from "../views/LoginView.vue";
 import DisconnectedView from "../views/DisconnectedView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
-import CreateEventsView from "../views/CreateEventsView.vue";
+import EventListView from "../views/EventListView.vue";
 import EventUniqueView from "../views/EventUniqueView.vue";
 import ProfilView from "../views/ProfilView.vue";
 import MyProfileView from "../views/MyProfileView.vue";
@@ -52,7 +52,7 @@ const routes = [
   },
 
   {
-    path: "/create-user",
+    path: "/create-user/:event_id",
     name: "creation de compte",
     component: CreateUserView,
   },
@@ -92,9 +92,9 @@ const routes = [
   },
 
   {
-    path: "/create-event",
-    name: "createEventAdmin",
-    component: CreateEventsView,
+    path: "/eventlist",
+    name: "eventlist",
+    component: EventListView,
   },
 
   {

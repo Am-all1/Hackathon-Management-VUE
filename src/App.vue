@@ -129,11 +129,12 @@ nav {
   text-decoration: none;
 }
 
-// .footerDiv{
-//   background-color: black;
+// .footer{
+//   background-color: rgba(0, 0, 0, 0.815);
 //     position:absolute;
-//    bottom:0;  /* on le colle en bas */
+//    bottom:0;
 //    width:100%;
-//    height:100px;   /* Hauteur du pied de page */
+//    height:100px;
+//    color: white;
 // }
 </style>

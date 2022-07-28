@@ -10,6 +10,7 @@ export default {
       token: localStorage.getItem("savedUserToken"),
     };
   },
+
   components: {
     MyProfile,
   },
