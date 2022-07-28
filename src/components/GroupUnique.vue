@@ -15,6 +15,7 @@
     </p>
 
     <router-link
+      v-if="!viewing"
       :to="{
         name: 'GroupUniqueShow',
         params: {
@@ -37,6 +38,7 @@ export default {
     abilities: String,
     group_id: Number,
     event_id: Number,
+    viewing: Boolean,
   },
 };
 </script>

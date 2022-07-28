@@ -8,16 +8,18 @@
       :end="event.end"
       :location="event.location"
       :event_id="event.id"
+      :viewing="true"
     />
     <router-link
       :to="{
         name: 'creation de compte',
         params: {
-          event_id: this.event.id,
+          event_id: $route.params.event_id,
         },
       }"
     >
-      <button class="">inscription à l'event</button></router-link
+      <br />
+      <button class="">S'inscrire</button></router-link
     >
   </div>
   <hr />
@@ -66,8 +68,8 @@ export default {
   },
   data() {
     return {
-      event: [],
-      groups: [], // à vérifier : le type "tableau" est-il le plus approprié ?
+      event: {},
+      groups: [],
       /* event_id: this.event.id, */ // UTILISATION POUR LE PROVIDE
     };
   },
@@ -88,7 +90,6 @@ export default {
   methods: {
     /* Récupération des données de l'event unique sur lequel on se trouve */
     async getEventUnique() {
-      console.log("entrée fetch " + this.$route.params.event_id);
       const response = await fetch(
         "http://127.0.0.1:8000/api/events/" + this.$route.params.event_id,
         {
@@ -99,8 +100,6 @@ export default {
           },
         }
       );
-      console.log("sortie fetch");
-
       const data = await response.json();
       this.event = data.event;
     },
@@ -126,4 +125,27 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+button {
+  border: 2px solid GREY;
+  background-color: white;
+  color: grey;
+  height: 30px;
+  width: 180px;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 16px;
+  display: inline-flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+button:hover {
+  border: 2px solid rgb(219, 117, 117);
+  background-color: rgb(219, 117, 117);
+  color: white;
+  font-weight: bold;
+}
+</style>

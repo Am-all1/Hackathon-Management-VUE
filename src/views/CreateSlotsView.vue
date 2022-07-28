@@ -23,7 +23,6 @@ export default {
 
 <style scoped>
 .components {
-  display: flex;
   justify-content: center;
   gap: 12%;
 }

@@ -20,10 +20,12 @@
           DE L'AJOUT D'UN PARTICIPANT
          -->
         <br />
-        <p>Compétences => L'input ci-dessous devra dégager</p>
-        <input type="text" name="abilities" v-model="abilities" />
-        <input type="hidden" name="event_id" />
-        <input type="submit" value="s'inscrire" />
+        <div>
+          <p>Compétences => L'input ci-dessous devra dégager</p>
+          <input type="text" name="abilities" v-model="abilities" />
+          <input type="hidden" name="event_id" />
+          <input type="submit" value="Créer le groupe" id="button" />
+        </div>
       </form>
       <br />
       <p>{{ feedbackMessage }}</p>
@@ -108,6 +110,34 @@ export default {
 </script>
 
 <style scoped>
+h1,
+p {
+  color: rgb(86, 82, 82);
+}
+
+#button {
+  border: 2px solid GREY;
+  background-color: white;
+  color: grey;
+  height: 30px;
+  width: 180px;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 16px;
+  display: inline-flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+#button:hover {
+  border: 2px solid rgb(219, 117, 117);
+  background-color: rgb(219, 117, 117);
+  color: white;
+  font-weight: bold;
+}
+
 li {
   list-style-type: none;
 }

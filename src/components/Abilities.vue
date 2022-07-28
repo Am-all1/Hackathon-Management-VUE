@@ -70,6 +70,7 @@
             </div>
           </div>
         </div>
+        <input type="submit" value="Valider" id="button" />
         <br />
         <input type="submit" value="Valider" id="button" />
       </form>
@@ -168,8 +169,15 @@ p {
   margin-left: 20px;
 }
 
+input {
+  margin-left: 10px;
+  top: -7px;
+  position: relative;
+}
+
 #formStyle {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
