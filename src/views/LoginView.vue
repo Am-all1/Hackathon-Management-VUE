@@ -116,7 +116,7 @@ label {
   cursor: pointer;
   padding: 10px;
   font-size: 20px;
-  position: fixed;
+  position:static;
   top: 600px;
 }
 
