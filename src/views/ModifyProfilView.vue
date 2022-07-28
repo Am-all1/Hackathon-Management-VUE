@@ -67,7 +67,7 @@
             v-model="user.portfolio"
           />
         </div>
-        <input type="submit" value="Valider" id="button" />
+        <input type="submit" @click="profilBack" value="Valider" id="button" />
       </div>
       <br />
     </form>
@@ -133,6 +133,9 @@ export default {
       this.feedbackMessage = data.message;
 
       this.getUserById();
+    },
+    profilBack() {
+      window.location.href = "/#/mon-profil";
     },
   },
 
