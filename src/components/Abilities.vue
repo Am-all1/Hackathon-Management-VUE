@@ -1,6 +1,6 @@
 <template>
   <hr />
-  <section>
+  <section id="container">
     <div>
       <h1>Mes compétences</h1>
       <br />
@@ -115,6 +115,10 @@ p {
   margin-left: 20px;
 }
 
+#container {
+  height: 100%;
+}
+
 input {
   margin-left: 10px;
   top: -7px;
@@ -125,6 +129,7 @@ input {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 40px;
 }
 
 #button {
@@ -140,6 +145,8 @@ input {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 #button:hover {

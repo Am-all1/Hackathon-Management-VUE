@@ -1,7 +1,6 @@
 <template>
-  <div id="mainContainer">
-    <h1>Créer un créneau horaire</h1>
-
+  <h1>Créer un créneau horaire</h1>
+  <div id="container">
     <form @submit.prevent="createSlot">
       <div>
         <label for="title">Titre:</label>
@@ -45,7 +44,7 @@
     <p>{{ feedbackMessage }}</p>
 
     <h2>Liste des créneaux:</h2>
-    <ul>
+    <ul id="slots">
       <li v-for="slot in slots" :key="slot.id">
         <p>Nom: {{ slot.title }}</p>
         <p>Date de début: {{ slot.start }}</p>
@@ -138,6 +137,10 @@ li {
   color: rgb(86, 82, 82);
 }
 
+#container {
+  margin: 40px;
+}
+
 #button {
   border: 2px solid GREY;
   background-color: white;
@@ -158,5 +161,9 @@ li {
   background-color: rgb(219, 117, 117);
   color: white;
   font-weight: bold;
+}
+
+#slots {
+  margin-bottom: 5%;
 }
 </style>

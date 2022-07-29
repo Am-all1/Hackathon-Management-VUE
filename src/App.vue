@@ -1,37 +1,43 @@
 <template>
   <body>
-    <header>
-      <div id="logoBloc">
-        <a href="https://lebocal.academy/"
-          ><img src="./assets/logo_bocal.png" alt="" class="logo"
-        /></a>
-        <h1>HACKATHON MANAGER</h1>
-        <a href="https://www.nicestartsup.com/"
-          ><img src="./assets/logo_nicestartup.png" alt="" class="logo"
-        /></a>
+    <div id="container">
+      <div id="main">
+        <header>
+          <div id="logoBloc">
+            <a href="https://lebocal.academy/"
+              ><img src="./assets/logo_bocal.png" alt="" class="logo"
+            /></a>
+            <h1>HACKATHON MANAGER</h1>
+            <a href="https://www.nicestartsup.com/"
+              ><img src="./assets/logo_nicestartup.png" alt="" class="logo"
+            /></a>
+          </div>
+        </header>
+
+        <section class="stickyNav">
+          <nav>
+            <router-link to="/home" class="links">Accueil</router-link>
+            <router-link to="/login" class="links">Connexion</router-link>
+            <router-link to="/mon-profil" class="links">Mon profil</router-link>
+            <router-link to="/eventlist">Evènements</router-link>
+            <router-link to="/admin" class="links">Espace admin</router-link>
+            <router-link to="/slots" class="links">Espace staff</router-link>
+            <router-link to="/abilities" class="links"
+              >Mes compétences</router-link
+            >
+            <router-link to="/qrgenerator" class="links">Qr Code</router-link>
+            <router-link to="/testhome">Home</router-link>
+            <router-link to="/pageqrcode" class="links"
+              >Page avec QR Code</router-link
+            >
+          </nav>
+        </section>
+        <router-view />
       </div>
-    </header>
 
-    <section class="stickyNav">
-      <nav>
-        <router-link to="/home" class="links">Accueil</router-link>
-        <router-link to="/login" class="links">Connexion</router-link>
-        <router-link to="/mon-profil" class="links">Mon profil</router-link>
-        <router-link to="/eventlist">Evènements</router-link>
-        <router-link to="/admin" class="links">Espace admin</router-link>
-        <router-link to="/slots" class="links">Espace staff</router-link>
-        <router-link to="/abilities" class="links">Mes compétences</router-link>
-        <router-link to="/qrgenerator" class="links">Qr Code</router-link>
-        <router-link to="/testhome">Home</router-link>
-        <router-link to="/pageqrcode" class="links"
-          >Page avec QR Code</router-link
-        >
-      </nav>
-    </section>
-    <router-view />
-
-    <div>
-      <Footer />
+      <div class="footer">
+        <Footer />
+      </div>
     </div>
   </body>
 </template>
@@ -62,15 +68,6 @@ export default {
   text-align: center;
 
   // color: #2c3e50;
-}
-
-#routerViewStyle {
-  margin-top: 20px;
-}
-
-body {
-  height: 100%;
-  position: relative;
 }
 
 header {
@@ -113,24 +110,6 @@ a:hover {
   background-color: white;
   color: rgb(219, 117, 117);
   font-size: 16px;
-}
-span {
-  color: white;
-}
-
-nav {
-  p {
-    font-size: 60px;
-    font-weight: bold;
-  }
-  a {
-    font-weight: bold;
-    color: white;
-
-    &.router-link-exact-active {
-      color: rgb(219, 117, 117);
-    }
-  }
 }
 
 #logoBloc {

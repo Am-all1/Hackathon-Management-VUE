@@ -1,14 +1,17 @@
 <template>
-  <h1>Badge</h1>
-
-  <p>Prénom: {{ user.firstname }}</p>
-  <p>Nom: {{ user.lastname }}</p>
-  <p>Email: {{ user.email }}</p>
-  {{ currentUrl }}
-  <form>
-    <input type="hidden" v-model="currentUrl" />
-  </form>
-  <qrcode-vue v-if="currentUrl" :value="currentUrl" :size="size" level="H" />
+  <div id="container">
+    <h1>Badge</h1>
+    <div id="stylePara">
+      <p>Prénom: {{ user.firstname }}</p>
+      <p>Nom: {{ user.lastname }}</p>
+      <p>Email: {{ user.email }}</p>
+      {{ currentUrl }}
+    </div>
+    <form>
+      <input type="hidden" v-model="currentUrl" />
+    </form>
+    <qrcode-vue v-if="currentUrl" :value="currentUrl" :size="size" level="H" />
+  </div>
 </template>
 
 <script>
@@ -53,3 +56,12 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+#container {
+  margin: 20px;
+}
+#stylePara {
+  margin: 50px;
+}
+</style>

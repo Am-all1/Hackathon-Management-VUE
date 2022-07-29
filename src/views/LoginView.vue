@@ -1,12 +1,10 @@
 <template>
-  <hr />
   <div id="mainContainer">
     <h1>Espace connexion</h1>
     <!-- CreateGroup de connexion -->
-    <form @submit.prevent="login" id="formStyle">
-      <div class="input-container">
+    <div class="input-container">
+      <form @submit.prevent="login" id="formStyle">
         <label for="emailInput" class="labelWidth">Email :</label>
-        <br />
         <input
           type="email"
           id="emailInput"
@@ -14,11 +12,7 @@
           placeholder="nom@domaine.com"
           required
         />
-      </div>
-      <br />
-      <div>
         <label for="password" class="labelWidth">Password : </label>
-        <br />
         <input
           type="password"
           id="password"
@@ -26,12 +20,9 @@
           placeholder="1234"
           required
         />
-      </div>
-      <br />
-      <br />
-      <input type="submit" value="Se connecter" id="button" />
-    </form>
-    <br />
+        <input type="submit" value="Se connecter" id="button" />
+      </form>
+    </div>
     <p v-if="status == true">Connexion réussie</p>
     <p v-else-if="status == false">Connexion échouée</p>
   </div>
@@ -94,7 +85,10 @@ label {
 }
 
 #mainContainer {
-  flex-direction: column;
+  max-width: 1280px;
+  min-height: 100%;
+  margin: 0 auto;
+  position: relative;
 }
 
 #formStyle {
@@ -104,6 +98,12 @@ label {
   align-content: center;
   justify-content: center;
   align-items: center;
+  margin-bottom: 30px;
+}
+
+.input-container {
+  min-height: 50vh;
+  margin: 40px;
 }
 
 #button {
@@ -111,13 +111,15 @@ label {
   background-color: white;
   color: grey;
   height: 60px;
-  width: 180px;
+  width: 240px;
   cursor: pointer;
   padding: 10px;
   font-size: 20px;
-  position: static;
-  top: 600px;
-  padding-bottom: 5%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 60px;
 }
 
 #button:hover {

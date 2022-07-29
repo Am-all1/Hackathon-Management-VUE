@@ -1,5 +1,5 @@
 <template>
-  <div class="inputStyle">
+  <div class="inputStyle" id="container">
     <form>
       <input type="text" v-model="QRValue" />
     </form>
@@ -60,5 +60,9 @@ export default {
 <style scoped>
 .inputStyle {
   margin-top: 80px;
+}
+
+#container {
+  height: 100%;
 }
 </style>
