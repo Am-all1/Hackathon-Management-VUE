@@ -100,5 +100,6 @@ button:hover {
   background-color: rgb(219, 117, 117);
   color: white;
   font-weight: bold;
+  font-size: 0.95em;
 }
 </style>
