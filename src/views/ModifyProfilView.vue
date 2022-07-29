@@ -67,9 +67,9 @@
             v-model="user.portfolio"
           />
         </div>
-        <input type="submit" value="Valider" id="button" />
-        <input type="hidden" />
       </div>
+
+      <input type="submit" value="Valider" id="button" />
       <br />
     </form>
     <p>{{ feedBackmessage }}</p>
