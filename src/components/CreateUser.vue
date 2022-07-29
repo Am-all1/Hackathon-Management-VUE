@@ -46,9 +46,9 @@
         />
       </div>
       <br />
-      <input type="submit" value="Valider" />
+      <input id="validate" type="submit" value="Valider" />
     </form>
-    <p>event_id : {{ this.$route.params.event_id }}</p>
+    <!-- <p>event_id : {{ this.$route.params.event_id }}</p> -->
 
     <p v-if="status == true">
       Création de compte réussie
@@ -124,3 +124,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+#validate {
+  margin-bottom: 13%;
+}
+</style>

@@ -47,7 +47,7 @@
         <button @click="$router.push('/modifications')">Modifier</button>
       </div>
       <div>
-        <button @click="disconnect">Se déconnecter</button>
+        <button class="" @click="disconnect">Se déconnecter</button>
       </div>
     </div>
   </div>
@@ -161,6 +161,6 @@ button:hover {
   display: flex;
   justify-content: center;
   position: relative;
-  margin: 60px;
+  margin: 8%;
 }
 </style>
