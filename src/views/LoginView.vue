@@ -116,7 +116,7 @@ label {
   align-items: center;
 }
 
-#button {
+button {
   border: 2px solid GREY;
   background-color: white;
   color: grey;
@@ -125,12 +125,10 @@ label {
   cursor: pointer;
   padding: 10px;
   font-size: 20px;
-  position: static;
-  top: 600px;
-  padding-bottom: 5%;
+  font-weight: bold;
 }
 
-#button:hover {
+button:hover {
   border: 2px solid rgb(219, 117, 117);
   background-color: rgb(219, 117, 117);
   color: white;
