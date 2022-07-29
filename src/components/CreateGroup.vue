@@ -2,6 +2,17 @@
 <template>
   <section>
     <div class="groupe">
+      <h3>Choix de l'évènement:</h3>
+
+      <!-- liste des events dans un select  -->
+      <select v-model="selectedEvent_id">
+        <option :value="null">Tous les événements</option>
+        <option v-for="event in events" :key="event.id" :value="event.id">
+          {{ event.name }}
+          {{ event.location }}
+          {{ event.id }}
+        </option>
+      </select>
       <h1>Créer un groupe</h1>
       <br />
 
@@ -39,18 +50,20 @@
 
 <script>
 export default {
-  mounted() {
-    //this.getGroup();
+  beforeMount() {
+    this.getEvents();
   },
   data() {
     return {
       groups: [],
+      events: [],
       subject: "",
       name: "",
       room: "",
       members: "",
       abilities: "",
       feedbackMessage: "",
+      selectedEvent_id: null,
     };
   },
   props: {
@@ -72,7 +85,7 @@ export default {
         room: this.room,
         members: this.members,
         abilities: this.abilities,
-        event_id: this.event_id,
+        event_id: this.selectedEvent_id,
       };
 
       const response = await fetch("http://127.0.0.1:8000/api/groups", {
@@ -97,18 +110,43 @@ export default {
       this.abilities = "";
     },
 
-    /* async getGroup() {
-      const response = await fetch("http://127.0.0.1:8000/api/groups", {
+    /* Récupération des events */
+    async getEvents() {
+      const response = await fetch("http://127.0.0.1:8000/api/events", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
       });
+      const data = await response.json();
+      this.events = data.events;
+    },
+
+    async getGroup() {
+      const response = await fetch(
+        "http://127.0.0.1:8000/api/groups/" + this.selectedEvent_id,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      );
 
       const data = await response.json();
       this.groups = data.groups;
-    }, */
+    },
+    watch: {
+      selectedEvent_id(id) {
+        if (id === null) {
+          this.getEvents();
+        } else {
+          this.getGroup();
+        }
+      },
+    },
   },
 };
 </script>
