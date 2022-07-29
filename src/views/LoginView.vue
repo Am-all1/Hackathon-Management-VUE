@@ -1,7 +1,7 @@
 <template>
   <div class="card text-bg-$rouge-200 mb-3" style="max-width: 30rem">
     <div class="card-header">
-      <h2>Connexion</h2>
+      <h2 style="color: rgb(219, 117, 117)">Connexion</h2>
     </div>
     <form
       @submit.prevent="login"
@@ -35,9 +35,7 @@
       <br />
 
       <div class="input">
-        <button type="submit" class="btn btn-primary btn-lg">
-          Se connecter
-        </button>
+        <button type="submit" id="button">Se connecter</button>
       </div>
     </form>
     <p v-if="status == true">Connexion réussie</p>
@@ -63,7 +61,6 @@ export default {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
-          // Authorization: `Bearer ${localStorage.getItem("savedUserToken")}`,
         },
         body: JSON.stringify({
           email: this.email,
@@ -97,7 +94,9 @@ export default {
 
 <style scoped>
 .card {
-  margin-left: 16rem;
+  margin-top: 8em;
+  margin-left: 28em;
+  border: 2px solid red;
 }
 h1,
 label {

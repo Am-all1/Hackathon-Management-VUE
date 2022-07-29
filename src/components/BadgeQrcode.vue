@@ -61,7 +61,10 @@ export default {
 </script>
 
 <style scoped>
-#qrcode {
-  margin-left: 16rem;
+.card {
+  border: 2px solid red;
+  margin-left: 26rem;
+  margin-top: 10rem;
+  margin-bottom: 10rem;
 }
 </style>

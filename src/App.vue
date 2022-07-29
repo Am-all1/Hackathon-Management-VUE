@@ -22,7 +22,6 @@
         <router-link to="/slots" class="links">Espace staff</router-link>
         <router-link to="/abilities" class="links">Mes compétences</router-link>
         <router-link to="/qrgenerator" class="links">Qr Code</router-link>
-        <router-link to="/testhome">Home</router-link>
         <router-link to="/pageqrcode" class="links"
           >Page avec QR Code</router-link
         >
@@ -113,9 +112,6 @@ a:hover {
   background-color: white;
   color: rgb(219, 117, 117);
   font-size: 16px;
-}
-span {
-  color: white;
 }
 
 nav {
