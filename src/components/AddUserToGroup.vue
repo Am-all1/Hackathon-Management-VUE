@@ -1,5 +1,5 @@
 <template>
-  <h1>VOICI LE event_id : {{ event_id }}</h1>
+  <!-- <h1>VOICI LE event_id : {{ event_id }}</h1> -->
   <div>
     <label for="">Recherche de participant : </label>
     <input

@@ -126,6 +126,7 @@
           v-model="user.bio"
         ></textarea>
       </div>
+
       <br />
       <button type="submit">Valider</button>
     </form>

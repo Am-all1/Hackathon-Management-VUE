@@ -104,7 +104,10 @@ label {
 }
 
 #mainContainer {
-  flex-direction: column;
+  max-width: 1280px;
+  min-height: 100%;
+  margin: 0 auto;
+  position: relative;
 }
 
 #formStyle {
@@ -114,6 +117,12 @@ label {
   align-content: center;
   justify-content: center;
   align-items: center;
+  margin-bottom: 30px;
+}
+
+.input-container {
+  min-height: 50vh;
+  margin: 40px;
 }
 
 button {
@@ -121,10 +130,15 @@ button {
   background-color: white;
   color: grey;
   height: 60px;
-  width: 180px;
+  width: 240px;
   cursor: pointer;
   padding: 10px;
   font-size: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 60px;
   font-weight: bold;
 }
 

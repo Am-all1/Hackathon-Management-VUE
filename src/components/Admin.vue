@@ -230,6 +230,7 @@ thead {
   display: flex;
   justify-content: center;
   margin-top: 2%;
+  margin-bottom: 5%;
 }
 
 .allPageEvent {

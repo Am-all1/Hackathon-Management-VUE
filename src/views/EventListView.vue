@@ -1,6 +1,6 @@
 <template>
   <hr />
-  <div>
+  <div id="container">
     <h1>Liste des évènements</h1>
     <div>
       <form>
@@ -57,5 +57,9 @@ export default {
 <style scoped>
 h1 {
   color: rgb(86, 82, 82);
+}
+
+#container {
+  height: 100%;
 }
 </style>
