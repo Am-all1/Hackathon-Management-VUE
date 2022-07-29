@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="linkTitlePage">Modification de l'évènement:</h1>
+    <h3 class="linkTitlePage">Modification de l'évènement:</h3>
 
     <form @submit.prevent="modifyEvent">
       <div>
@@ -46,10 +46,6 @@
 export default {
   data() {
     return {
-      name: "",
-      start: "",
-      end: "",
-      location: "",
       feedbackMessage: "",
       //   token: localStorage.getItem("savedUserToken"),
     };
@@ -57,6 +53,10 @@ export default {
 
   props: {
     event_id: Number,
+    name: String,
+    start: String,
+    end: String,
+    location: String,
   },
 
   methods: {
@@ -116,5 +116,8 @@ li {
   background-color: rgb(219, 117, 117);
   color: white;
   font-weight: bold;
+}
+h3 {
+  color: rgb(86, 82, 82);
 }
 </style>
