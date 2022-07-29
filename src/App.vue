@@ -119,9 +119,6 @@ a:hover {
   color: rgb(219, 117, 117);
   font-size: 16px;
 }
-span {
-  color: white;
-}
 
 nav {
   p {
