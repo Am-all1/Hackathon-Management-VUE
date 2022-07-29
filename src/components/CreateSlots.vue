@@ -161,10 +161,6 @@ li {
   padding-right: 20px;
   cursor: pointer;
   padding: 10px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 
 #button:hover {

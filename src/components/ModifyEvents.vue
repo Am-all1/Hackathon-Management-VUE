@@ -35,7 +35,7 @@
 
       <br />
 
-      <input type="submit" value="Modifier" />
+      <input type="submit" class="button" value="Modifier" />
     </form>
 
     <p>{{ feedbackMessage }}</p>
@@ -99,5 +99,22 @@ export default {
 <style scoped>
 li {
   list-style-type: none;
+}
+
+.button {
+  border: 2px solid GREY;
+  background-color: white;
+  color: grey;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.button:hover {
+  border: 2px solid rgb(219, 117, 117);
+  background-color: rgb(219, 117, 117);
+  color: white;
+  font-weight: bold;
 }
 </style>
