@@ -222,7 +222,7 @@ table,
 }
 
 thead {
-  background-color: #333;
+  background-color: rgb(219, 117, 117);
   color: #fff;
 }
 
