@@ -84,7 +84,7 @@ export default {
 
     disconnect() {
       localStorage.removeItem("savedUserToken");
-      window.location.reload();
+      window.location.href = "/#/home";
     },
     redirectionBadge() {
       window.location.href = "/#/pageqrcode";
