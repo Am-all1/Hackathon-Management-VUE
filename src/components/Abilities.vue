@@ -6,27 +6,71 @@
       <br />
 
       <form>
-        <div id="formStyle">
-          <p>Développeur</p>
-          <input type="checkbox" name="dev" v-model="dev" />
-          <p>UI/UX</p>
-          <input type="checkbox" name="design" v-model="design" />
-          <p>Maker</p>
-          <input type="checkbox" name="maker" v-model="maker" />
-          <p>Management</p>
-          <input type="checkbox" name="management" v-model="management" />
-          <p>Commercial</p>
-          <input type="checkbox" name="commercial" v-model="commercial" />
-          <p>Communication</p>
-          <input type="checkbox" name="communication" v-model="communication" />
-          <p>OPS</p>
-          <input type="checkbox" name="ops" v-model="ops" />
-          <p>design graphique</p>
-          <input type="checkbox" name="desiGraph" v-model="designGraphique" />
-          <br />
+        <div class="container">
+          <div class="row g-2">
+            <div class="abilities col-6">
+              <div class="p-3 bg-light">
+                <p>Développeur</p>
+                <input type="checkbox" name="dev" v-model="dev" />
+              </div>
+            </div>
+            <div class="abilities col-6">
+              <div class="p-3 bg-light">
+                <p>UI/UX</p>
+                <input type="checkbox" name="design" v-model="design" />
+              </div>
+            </div>
+            <div class="abilities col-6">
+              <div class="p-3 bg-light">
+                <p>Maker</p>
+                <input type="checkbox" name="maker" v-model="maker" />
+              </div>
+            </div>
+            <div class="abilities col-6">
+              <div class="p-3 bg-light">
+                <p>Management</p>
+                <input type="checkbox" name="management" v-model="management" />
+              </div>
+            </div>
+          </div>
         </div>
-        <input type="submit" value="Valider" id="button" />
-        <br />
+        <button type="submit" value="Valider" id="button">Valider</button>
+        <div class="container">
+          <div class="row g-2">
+            <div class="abilities col-6">
+              <div class="p-3 bg-light">
+                <p>Commercial</p>
+                <input type="checkbox" name="commercial" v-model="commercial" />
+              </div>
+            </div>
+            <div class="abilities col-6">
+              <div class="p-3 bg-light">
+                <p>OPS</p>
+                <input type="checkbox" name="ops" v-model="ops" />
+              </div>
+            </div>
+            <div class="abilities col-6">
+              <div class="p-3 bg-light">
+                <p>Communication</p>
+                <input
+                  type="checkbox"
+                  name="communication"
+                  v-model="communication"
+                />
+              </div>
+            </div>
+            <div class="abilities col-6">
+              <div class="p-3 bg-light">
+                <p>design graphique</p>
+                <input
+                  type="checkbox"
+                  name="desiGraph"
+                  v-model="designGraphique"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </form>
     </div>
   </section>
@@ -104,6 +148,15 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  font-size: 2em;
+}
+
 h1,
 p,
 label {
@@ -154,5 +207,9 @@ input {
   background-color: rgb(219, 117, 117);
   color: white;
   font-weight: bold;
+}
+
+.abilities {
+  border: 2px solid red;
 }
 </style>

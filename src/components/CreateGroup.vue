@@ -1,6 +1,7 @@
+<!--******* ESPACE STAFF *******-->
 <template>
   <section>
-    <div>
+    <div class="groupe">
       <h1>Créer un groupe</h1>
       <br />
 
@@ -21,9 +22,12 @@
          -->
         <br />
         <div>
-          <p>Compétences => L'input ci-dessous devra dégager</p>
+          <p>Compétences</p>
           <input type="text" name="abilities" v-model="abilities" />
           <input type="hidden" name="event_id" />
+        </div>
+        <br />
+        <div>
           <input type="submit" value="Créer le groupe" id="button" />
         </div>
       </form>
@@ -113,14 +117,13 @@ export default {
 h1,
 p {
   color: rgb(86, 82, 82);
+  font-weight: bold;
 }
 
 #button {
   border: 2px solid GREY;
   background-color: white;
   color: grey;
-  height: 30px;
-  width: 180px;
   cursor: pointer;
   padding: 10px;
   font-size: 16px;

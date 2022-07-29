@@ -1,75 +1,140 @@
 <template>
-  <hr />
-  <div>
-    <h1>Modifier mon profil</h1>
+  <h1>Modifier mon profil</h1>
+  <div class="modifProfil">
     <form @submit.prevent="ModifyProfil">
-      <div id="formStyle">
-        <div id="formStyleLeftContainer">
-          <label for="bio">Biographie :</label>
-          <br />
-          <textarea name="bio" id="bio" v-model="bio"></textarea>
-        </div>
-
-        <div id="formStyleCenterContainer">
-          <label for="firstname">Prénom : </label>
-          <input
-            type="text"
-            name="firstname"
-            id="firstname"
-            v-model="user.firstname"
-          />
-          <br />
-          <label for="lastname">Nom : </label>
-          <input
-            type="text"
-            name="lastname"
-            id="lastname"
-            v-model="user.lastname"
-          />
-          <br />
-          <label for="email">Email: </label>
-          <input type="email" name="email" id="email" v-model="user.email" />
-          <br />
-          <label for="password">Mot de passe : </label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            v-model="user.password"
-          />
-          <br />
-        </div>
-        <div id="formStyleRightContainer">
-          <label for="firstname">LinkedIn :</label>
-          <input
-            type="text"
-            name="linkedin"
-            id="linkedin"
-            v-model="user.linkedIn"
-          />
-          <br />
-          <label for="github">Github :</label>
-          <input type="text" name="github" id="github" v-model="user.github" />
-          <br />
-          <label for="website">Website :</label>
-          <input
-            type="text"
-            name="website"
-            id="website"
-            v-model="user.website"
-          />
-          <br />
-          <label for="portfolio">Portfolio :</label>
-          <input
-            type="text"
-            name="portfolio"
-            id="portfolio"
-            v-model="user.portfolio"
-          />
-        </div>
-        <input type="submit" @click="profilBack" value="Valider" id="button" />
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          name="firstname"
+          id="firstname"
+          v-model="user.firstname"
+        />
+        <span
+          style="background-color: rgb(219, 117, 117)"
+          class="input-group-text"
+          id="basic-addon2"
+          >Nom</span
+        >
       </div>
+      <div class="input-group mb-3">
+        <span
+          style="background-color: rgb(219, 117, 117)"
+          class="input-group-text"
+          id="basic-addon1"
+          >Prénom</span
+        >
+        <input
+          type="text"
+          class="form-control"
+          name="lastname"
+          id="lastname"
+          v-model="user.lastname"
+        />
+      </div>
+
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Nom d'utilisateur"
+          aria-label="Nom d'utilisateur"
+        />
+        <span
+          style="background-color: rgb(219, 117, 117)"
+          class="input-group-text"
+          >@</span
+        >
+        <input
+          type="text"
+          class="form-control"
+          placeholder="domaine.example"
+          aria-label="Server"
+        />
+      </div>
+
+      <div class="input-group mb-3">
+        <input
+          type="email"
+          class="form-control"
+          name="password"
+          id="password"
+          placeholder="Votre nouveau Mot de passe"
+        />
+        <span
+          style="background-color: rgb(219, 117, 117)"
+          class="input-group-text"
+          id="basic-addon2"
+          >Mot de passe</span
+        >
+      </div>
+
+      <label for="basic-url" class="form-label">Autres informations</label>
+      <div class="input-group mb-3">
+        <span
+          style="background-color: rgb(219, 117, 117)"
+          class="input-group-text"
+          id="basic-addon3"
+          >Profil LinkedIn</span
+        >
+        <input
+          type="text"
+          class="form-control"
+          name="linkedin"
+          id="linkedin"
+          v-model="user.linkedIn"
+        />
+      </div>
+
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          name="website"
+          id="website"
+          v-model="user.website"
+        />
+        <span
+          style="background-color: rgb(219, 117, 117)"
+          class="input-group-text"
+          >Website</span
+        >
+      </div>
+
+      <div class="input-group mb-3">
+        <span
+          style="background-color: rgb(219, 117, 117)"
+          class="input-group-text"
+          id="basic-addon3"
+          >Portfolio</span
+        >
+        <input
+          type="text"
+          class="form-control"
+          name="portfolio"
+          id="portfolio"
+          v-model="user.portfolio"
+        />
+      </div>
+
+      <div class="input-group">
+        <textarea
+          class="form-control"
+          aria-label="With textarea"
+          name="bio"
+          id="bio"
+          v-model="user.bio"
+        ></textarea>
+        <span
+          style="background-color: rgb(219, 117, 117)"
+          class="input-group-text"
+          >Bio</span
+        >
+      </div>
+
+      <input type="submit" value="Valider" id="button" />
       <br />
+      <input type="submit" @click="profilBack" value="Valider" id="button" />
     </form>
     <p>{{ feedBackmessage }}</p>
   </div>
@@ -77,7 +142,7 @@
 
 <script>
 // import FileUpload from './FileUploadView.vue';
-import FileUploadView from "./FileUploadView.vue";
+// import FileUploadView from "./FileUploadView.vue";
 export default {
   mounted() {
     this.getUserById();
@@ -94,7 +159,9 @@ export default {
       github: "",
       website: "",
       portfolio: "",
+      bio: "",
       feedBackmessage: "",
+      bio: "",
       token: localStorage.getItem("savedUserToken"),
     };
   },
@@ -132,17 +199,26 @@ export default {
       this.feedbackMessage = data.message;
 
       this.getUserById();
-    },
-    profilBack() {
+
+      // redirection vers la page profil
       window.location.href = "/#/mon-profil";
     },
   },
 
-  components: { FileUploadView },
+  // components: { FileUploadView },
 };
 </script>
 
 <style scoped>
+.modifProfil {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  margin-left: 14rem;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
 h1,
 label {
   color: rgb(86, 82, 82);
@@ -169,17 +245,16 @@ label {
   border: 2px solid GREY;
   background-color: white;
   color: grey;
-  height: 60px;
-  width: 180px;
+
   cursor: pointer;
   padding: 10px;
   font-size: 20px;
-  display: inline-flex;
-  align-items: center;
+}
+
+#btnBloc {
+  display: flex;
   justify-content: center;
-  flex-direction: column;
-  position: fixed;
-  top: 600px;
+  gap: 1%;
 }
 
 #button:hover {

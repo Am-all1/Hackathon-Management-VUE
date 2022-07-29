@@ -12,30 +12,30 @@
       </div>
       <div id="centerContainer" class="container">
         <p>
-          Prénom: <span>{{ user.firstname }}</span>
+          Prénom: <span class="info">{{ user.firstname }}</span>
         </p>
         <p>
-          Nom: <span>{{ user.lastname }}</span>
+          Nom: <span class="info">{{ user.lastname }}</span>
         </p>
         <p>
-          Email: <span>{{ user.email }}</span>
+          Email: <span class="info">{{ user.email }}</span>
         </p>
         <p>
-          Mot de passe: <span>{{ user.password }}</span>
+          Mot de passe: <span class="info">{{ user.password }}</span>
         </p>
       </div>
       <div id="rightContainer" class="container">
         <p>
-          LinkedIn: <span>{{ user.linkedIn }}</span>
+          LinkedIn: <span class="info">{{ user.linkedIn }}</span>
         </p>
         <p>
-          GitHub: <span>{{ user.github }}</span>
+          GitHub: <span class="info">{{ user.github }}</span>
         </p>
         <p>
-          Website: <span>{{ user.website }}</span>
+          Website: <span class="info">{{ user.website }}</span>
         </p>
         <p>
-          PortFolio: <span>{{ user.portfolio }}</span>
+          PortFolio: <span class="info">{{ user.portfolio }}</span>
         </p>
       </div>
     </div>
@@ -100,6 +100,7 @@ export default {
 h1,
 p {
   color: rgb(86, 82, 82);
+  font-weight: bold;
 }
 
 label {
@@ -111,6 +112,9 @@ label {
   min-height: 100%;
   margin: 0 auto;
   position: relative;
+}
+.info {
+  color: rgb(219, 117, 117);
 }
 
 #blocContainer {
@@ -143,6 +147,7 @@ button {
   padding: 10px;
   font-size: 20px;
   margin-bottom: 5%;
+  font-weight: bold;
 }
 
 button:hover {

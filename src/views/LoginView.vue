@@ -1,28 +1,43 @@
 <template>
-  <div id="mainContainer">
-    <h1>Espace connexion</h1>
-    <!-- CreateGroup de connexion -->
-    <div class="input-container">
-      <form @submit.prevent="login" id="formStyle">
-        <label for="emailInput" class="labelWidth">Email :</label>
+  <div class="card text-bg-$rouge-200 mb-3" style="max-width: 30rem">
+    <div class="card-header">
+      <h2 style="color: rgb(219, 117, 117)">Connexion</h2>
+    </div>
+    <form
+      @submit.prevent="login"
+      class="card-body"
+      action="connection_user.php"
+      method="POST"
+    >
+      <div class="form-floating mb-3">
         <input
           type="email"
+          class="form-control"
           id="emailInput"
           v-model="email"
-          placeholder="nom@domaine.com"
+          placeholder="nom@exemple.com"
           required
         />
-        <label for="password" class="labelWidth">Password : </label>
+        <label for="emailInput">Adresse email</label>
+      </div>
+
+      <div class="form-floating">
         <input
           type="password"
+          class="form-control"
           id="password"
           v-model="password"
           placeholder="1234"
           required
         />
-        <input type="submit" value="Se connecter" id="button" />
-      </form>
-    </div>
+        <label for="password">Mot de passe</label>
+      </div>
+      <br />
+
+      <div class="input">
+        <button type="submit" id="button">Se connecter</button>
+      </div>
+    </form>
     <p v-if="status == true">Connexion réussie</p>
     <p v-else-if="status == false">Connexion échouée</p>
   </div>
@@ -46,7 +61,6 @@ export default {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
-          // Authorization: `Bearer ${localStorage.getItem("savedUserToken")}`,
         },
         body: JSON.stringify({
           email: this.email,
@@ -79,6 +93,11 @@ export default {
 </script>
 
 <style scoped>
+.card {
+  margin-top: 8em;
+  margin-left: 28em;
+  border: 2px solid red;
+}
 h1,
 label {
   color: rgb(86, 82, 82);

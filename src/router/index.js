@@ -15,7 +15,6 @@ import GroupUniqueView from "../views/GroupUniqueView.vue";
 import HomeView from "../views/HomeView.vue";
 import QrCodeReader from "../components/QrCodeReader.vue";
 import PageQrCodeView from "../views/PageQrCodeView.vue";
-import TestHomeView from "../views/TestHomeView.vue";
 
 const routes = [
   {
@@ -28,11 +27,6 @@ const routes = [
     path: "/qrgenerator",
     name: "qr code",
     component: QrCodeReader,
-  },
-  {
-    path: "/testhome",
-    name: "testhome",
-    component: TestHomeView,
   },
 
   {
@@ -83,6 +77,9 @@ const routes = [
     name: "mon-profil",
     component: MyProfileView,
     props: true,
+    // meta: {
+    //   needsAuth: false,
+    // },
   },
 
   {
@@ -134,5 +131,11 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes,
 });
-
+// router.beforeEach((to, from, next) => {
+//   if (to.meta.needsAuth == false) {
+//     next("/login");
+//   } else {
+//     next("/mon-profil");
+//   }
+// });
 export default router;
