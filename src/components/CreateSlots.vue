@@ -47,12 +47,26 @@
     <h2>Liste des créneaux:</h2>
     <ul>
       <li v-for="slot in slots" :key="slot.id">
-        <p>Nom: {{ slot.title }}</p>
-        <p>Date de début: {{ slot.start }}</p>
-        <p>Date de fin: {{ slot.duration }}</p>
-        <p>Lieu: {{ slot.teams }}</p>
-        <button>Voir</button>
-        <button>Supprimer</button>
+        <p>
+          Nom: <span>{{ slot.title }}</span>
+        </p>
+        <p>
+          Date de début: <span>{{ slot.start }}</span>
+        </p>
+        <p>
+          Date de fin: <span>{{ slot.duration }}</span>
+        </p>
+        <p>
+          Lieu: <span>{{ slot.teams }}</span>
+        </p>
+        <div class="voirsuppr">
+          <div>
+            <button id="button">Voir</button>
+          </div>
+          <div>
+            <button id="button">Supprimer</button>
+          </div>
+        </div>
         <hr />
       </li>
     </ul>
@@ -136,21 +150,17 @@ label,
 h2,
 li {
   color: rgb(86, 82, 82);
+  font-weight: bold;
 }
 
 #button {
   border: 2px solid GREY;
   background-color: white;
   color: grey;
-  height: 60px;
-  width: 180px;
+  padding-left: 20px;
+  padding-right: 20px;
   cursor: pointer;
   padding: 10px;
-  font-size: 20px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 
 #button:hover {
@@ -158,5 +168,15 @@ li {
   background-color: rgb(219, 117, 117);
   color: white;
   font-weight: bold;
+}
+
+span {
+  font-weight: normal;
+  color: rgb(219, 117, 117);
+}
+.voirsuppr {
+  display: flex;
+  justify-content: center;
+  gap: 1%;
 }
 </style>

@@ -123,7 +123,7 @@
           aria-label="With textarea"
           name="bio"
           id="bio"
-          v-model="bio"
+          v-model="user.bio"
         ></textarea>
         <span
           style="background-color: rgb(219, 117, 117)"
@@ -131,6 +131,8 @@
           >Bio</span
         >
       </div>
+
+      <input type="submit" value="Valider" id="button" />
       <br />
       <input type="submit" @click="profilBack" value="Valider" id="button" />
     </form>
@@ -140,7 +142,7 @@
 
 <script>
 // import FileUpload from './FileUploadView.vue';
-import FileUploadView from "./FileUploadView.vue";
+// import FileUploadView from "./FileUploadView.vue";
 export default {
   mounted() {
     this.getUserById();
@@ -159,6 +161,7 @@ export default {
       portfolio: "",
       bio: "",
       feedBackmessage: "",
+      bio: "",
       token: localStorage.getItem("savedUserToken"),
     };
   },
@@ -196,13 +199,13 @@ export default {
       this.feedbackMessage = data.message;
 
       this.getUserById();
-    },
-    profilBack() {
+
+      // redirection vers la page profil
       window.location.href = "/#/mon-profil";
     },
   },
 
-  components: { FileUploadView },
+  // components: { FileUploadView },
 };
 </script>
 

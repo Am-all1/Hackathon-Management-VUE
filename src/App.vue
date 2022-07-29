@@ -5,7 +5,12 @@
         <a href="https://lebocal.academy/"
           ><img src="./assets/logo_bocal.png" alt="" class="logo"
         /></a>
-        <h1>HACKATHON MANAGER</h1>
+        <div class="hackTitle">
+          <div>
+            <h1>HACKATHON <span>(s)</span></h1>
+          </div>
+          <h1>MANAGER</h1>
+        </div>
         <a href="https://www.nicestartsup.com/"
           ><img src="./assets/logo_nicestartup.png" alt="" class="logo"
         /></a>
@@ -143,5 +148,31 @@ nav {
 
 .links {
   text-decoration-line: none;
+}
+
+nav {
+  margin-bottom: 20px;
+}
+#navBar {
+  background-color: whitesmoke;
+  padding: 4%;
+}
+
+#navLink {
+  text-decoration: none;
+}
+
+.hackTitle {
+  display: flex;
+}
+
+.hackTitle span {
+  color: #e4111e;
+  font-size: 50px;
+}
+
+.hackTitle h1 {
+  display: flex;
+  color: black;
 }
 </style>
