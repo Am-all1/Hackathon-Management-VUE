@@ -3,6 +3,12 @@
   <div class="modifProfil">
     <form @submit.prevent="ModifyProfil">
       <div class="input-group mb-3">
+        <span
+          style="background-color: rgb(219, 117, 117)"
+          class="modif input-group-text"
+          id="basic-addon2"
+          >Nom</span
+        >
         <input
           type="text"
           class="form-control"
@@ -10,17 +16,11 @@
           id="firstname"
           v-model="user.firstname"
         />
-        <span
-          style="background-color: rgb(219, 117, 117)"
-          class="input-group-text"
-          id="basic-addon2"
-          >Nom</span
-        >
       </div>
       <div class="input-group mb-3">
         <span
           style="background-color: rgb(219, 117, 117)"
-          class="input-group-text"
+          class="modif input-group-text"
           id="basic-addon1"
           >Prénom</span
         >
@@ -32,28 +32,29 @@
           v-model="user.lastname"
         />
       </div>
-
       <div class="input-group mb-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Nom d'utilisateur"
-          aria-label="Nom d'utilisateur"
-        />
         <span
           style="background-color: rgb(219, 117, 117)"
-          class="input-group-text"
-          >@</span
+          class="modif input-group-text"
+          id="basic-addon1"
+          >Email</span
         >
         <input
           type="text"
           class="form-control"
-          placeholder="domaine.example"
-          aria-label="Server"
+          name="email"
+          id="email"
+          v-model="user.email"
         />
       </div>
 
       <div class="input-group mb-3">
+        <span
+          style="background-color: rgb(219, 117, 117)"
+          class="modif input-group-text"
+          id="basic-addon2"
+          >Mot de passe</span
+        >
         <input
           type="email"
           class="form-control"
@@ -61,19 +62,13 @@
           id="password"
           placeholder="Votre nouveau Mot de passe"
         />
-        <span
-          style="background-color: rgb(219, 117, 117)"
-          class="input-group-text"
-          id="basic-addon2"
-          >Mot de passe</span
-        >
       </div>
 
       <label for="basic-url" class="form-label">Autres informations</label>
       <div class="input-group mb-3">
         <span
           style="background-color: rgb(219, 117, 117)"
-          class="input-group-text"
+          class="modif input-group-text"
           id="basic-addon3"
           >Profil LinkedIn</span
         >
@@ -87,6 +82,11 @@
       </div>
 
       <div class="input-group mb-3">
+        <span
+          style="background-color: rgb(219, 117, 117)"
+          class="modif input-group-text"
+          >Website</span
+        >
         <input
           type="text"
           class="form-control"
@@ -94,17 +94,12 @@
           id="website"
           v-model="user.website"
         />
-        <span
-          style="background-color: rgb(219, 117, 117)"
-          class="input-group-text"
-          >Website</span
-        >
       </div>
 
       <div class="input-group mb-3">
         <span
           style="background-color: rgb(219, 117, 117)"
-          class="input-group-text"
+          class="modif input-group-text"
           id="basic-addon3"
           >Portfolio</span
         >
@@ -118,6 +113,11 @@
       </div>
 
       <div class="input-group">
+        <span
+          style="background-color: rgb(219, 117, 117)"
+          class="modif input-group-text"
+          >Bio</span
+        >
         <textarea
           class="form-control"
           aria-label="With textarea"
@@ -125,15 +125,10 @@
           id="bio"
           v-model="user.bio"
         ></textarea>
-        <span
-          style="background-color: rgb(219, 117, 117)"
-          class="input-group-text"
-          >Bio</span
-        >
       </div>
 
       <br />
-      <input type="submit" @click="profilBack" value="Valider" id="button" />
+      <button type="submit">Valider</button>
     </form>
     <p>{{ feedBackmessage }}</p>
   </div>
@@ -209,11 +204,12 @@ export default {
 </script>
 
 <style scoped>
+.modif {
+  width: 8rem;
+}
 .modifProfil {
-  width: 70%;
   display: flex;
   justify-content: center;
-  margin-left: 14rem;
   margin-top: 2rem;
   margin-bottom: 4rem;
 }
@@ -240,26 +236,28 @@ label {
   margin: 10px;
 }
 
-#button {
+button {
   border: 2px solid GREY;
   background-color: white;
   color: grey;
-
+  height: 60px;
+  width: 180px;
   cursor: pointer;
   padding: 10px;
   font-size: 20px;
+  font-weight: bold;
+}
+
+button:hover {
+  border: 2px solid rgb(219, 117, 117);
+  background-color: rgb(219, 117, 117);
+  color: white;
+  font-weight: bold;
 }
 
 #btnBloc {
   display: flex;
   justify-content: center;
   gap: 1%;
-}
-
-#button:hover {
-  border: 2px solid rgb(219, 117, 117);
-  background-color: rgb(219, 117, 117);
-  color: white;
-  font-weight: bold;
 }
 </style>

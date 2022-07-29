@@ -7,7 +7,7 @@
       <div id="leftContainer" class="container">
         <div>
           <p>Biographie:</p>
-          <p>{{ user.bio }}</p>
+          <p class="info">{{ user.bio }}</p>
         </div>
       </div>
       <div id="centerContainer" class="container">

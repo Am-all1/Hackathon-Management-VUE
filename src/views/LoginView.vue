@@ -125,7 +125,7 @@ label {
   margin: 40px;
 }
 
-#button {
+button {
   border: 2px solid GREY;
   background-color: white;
   color: grey;
@@ -139,9 +139,10 @@ label {
   justify-content: center;
   flex-direction: column;
   margin: 60px;
+  font-weight: bold;
 }
 
-#button:hover {
+button:hover {
   border: 2px solid rgb(219, 117, 117);
   background-color: rgb(219, 117, 117);
   color: white;
