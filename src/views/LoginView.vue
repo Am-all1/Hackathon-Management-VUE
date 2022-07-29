@@ -1,5 +1,9 @@
 <template>
-  <div class="card text-bg-$rouge-200 mb-3" style="max-width: 30rem">
+  <div
+    id="connexion"
+    class="card text-bg-$rouge-200 mb-3"
+    style="max-width: 30rem"
+  >
     <div class="card-header">
       <h2 style="color: rgb(219, 117, 117)">Connexion</h2>
     </div>
@@ -151,5 +155,9 @@ button:hover {
 
 .labelWidth {
   margin: 10px;
+}
+
+#connexion {
+  margin-left: 36%;
 }
 </style>

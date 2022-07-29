@@ -26,7 +26,6 @@
               >Mes compétences</router-link
             >
             <router-link to="/qrgenerator" class="links">Qr Code</router-link>
-            <router-link to="/testhome">Home</router-link>
             <router-link to="/pageqrcode" class="links"
               >Page avec QR Code</router-link
             >
