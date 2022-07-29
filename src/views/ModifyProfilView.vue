@@ -7,7 +7,7 @@
         <div id="formStyleLeftContainer">
           <label for="bio">Biographie :</label>
           <br />
-          <textarea name="bio" id="bio" v-model="bio"></textarea>
+          <textarea name="bio" id="bio" v-model="user.bio"></textarea>
         </div>
 
         <div id="formStyleCenterContainer">
@@ -67,7 +67,8 @@
             v-model="user.portfolio"
           />
         </div>
-        <input type="submit" @click="profilBack" value="Valider" id="button" />
+        <input type="submit" value="Valider" id="button" />
+        <input type="hidden" />
       </div>
       <br />
     </form>
@@ -77,7 +78,7 @@
 
 <script>
 // import FileUpload from './FileUploadView.vue';
-import FileUploadView from "./FileUploadView.vue";
+// import FileUploadView from "./FileUploadView.vue";
 export default {
   mounted() {
     this.getUserById();
@@ -133,8 +134,8 @@ export default {
       this.feedbackMessage = data.message;
 
       this.getUserById();
-    },
-    profilBack() {
+
+      // redirection vers la page profil
       window.location.href = "/#/mon-profil";
     },
   },
