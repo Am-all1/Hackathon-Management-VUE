@@ -1,8 +1,10 @@
 <template>
   <div class="row">
-    <div class="col-sm-12" id="blup">
+    <div class="col-sm-12">
       <div class="card text-bg-light mb-3" style="max-width: 30rem">
-        <div class="card-header">{{ name }}</div>
+        <div class="card-header h1">
+          {{ name }}
+        </div>
         <div class="card-body">
           <h5 class="card-title">Light card title</h5>
           <h5 class="card-title">{{ event_id }}</h5>
@@ -20,7 +22,7 @@
               },
             }"
           >
-            <button class="btn btn-primary">Montrer l'évènement</button>
+            <button>Montrer l'évènement</button>
           </router-link>
         </div>
       </div>
@@ -61,4 +63,29 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+button {
+  border: 2px solid GREY;
+  background-color: white;
+  color: grey;
+  height: 80px;
+  width: 180px;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+button:hover {
+  border: 2px solid rgb(219, 117, 117);
+  background-color: rgb(219, 117, 117);
+  color: white;
+  font-weight: bold;
+}
+
+.card {
+  margin-right: 2rem;
+  margin-top: 2rem;
+  border: 2px solid red;
+}
+</style>

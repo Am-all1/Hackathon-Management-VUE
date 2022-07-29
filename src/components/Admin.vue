@@ -1,72 +1,88 @@
 <template>
   <section>
-    <div>
-      <h1>Mon espace administrateur</h1>
-      <br />
+    <h1>Mon espace administrateur</h1>
+    <br />
+    <div class="allPageEvent">
+      <div class="createEvent">
+        <CreateEvents @created="getEvents" />
+        <div class="modify">
+          <ModifyEvents
+            :name="eventUnique.name"
+            :start="eventUnique.start"
+            :end="eventUnique.end"
+            :location="eventUnique.location"
+            :event_id="eventUnique.id"
+            @eventModified="getEventUnique"
+          />
+        </div>
+      </div>
 
-      <CreateEvents @created="getEvents" />
-      <h3>Choix de l'évènement:</h3>
+      <div class="eventChoiceAndTableUsers">
+        <h3>Choix de l'évènement:</h3>
 
-      <select v-model="selectedEvent_id">
-        <option :value="null">Tous les événements</option>
-        <option v-for="event in events" :key="event.id" :value="event.id">
-          {{ event.name }}
-          {{ event.location }}
-          {{ event.id }}
-        </option>
-      </select>
-    </div>
-    <!-- {{ selectedEvent_id }} -->
+        <!-- liste des events dans un select  -->
+        <select v-model="selectedEvent_id">
+          <option :value="null">Tous les événements</option>
+          <option v-for="event in events" :key="event.id" :value="event.id">
+            {{ event.name }}
+            {{ event.location }}
+            {{ event.id }}
+          </option>
+        </select>
 
-    <!-- ICI LA LISTE DE TOUS LES UTILISATEURS -->
-    <div class="filteredUsers">
-      <br />
-      <h3>Liste de tous les utilisateurs</h3>
-      <br />
-      <label for="">Recherche de participant : </label>
-      <input
-        type="text"
-        v-model="searchTerm"
-        class=""
-        placeholder="Entrez un participant"
-      />
-      <div class="tableau">
-        <table>
-          <thead>
-            <tr>
-              <th>Utilisateurs</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="td">Prénom</td>
-              <td class="td">Nom</td>
-              <td class="td">Email</td>
-              <td class="td">Role</td>
-              <td class="td">Autorisatiton</td>
-            </tr>
+        <!-- {{ selectedEvent_id }} -->
 
-            <tr v-for="user in filterByName" :key="user.id">
-              <td>{{ user.firstname }}</td>
-              <td>{{ user.lastname }}</td>
-              <td>{{ user.email }}</td>
-              <td></td>
-              <td>
-                <div v-if="selectedEvent_id != null">
-                  <select
-                    v-model="user.role.Authorization"
-                    @change="updateRole(user.role)"
-                  >
-                    <option value="none">Select</option>
-                    <option value="3">Admin - 3</option>
-                    <option value="2">Staff - 2</option>
-                    <option value="1">User - 1</option>
-                  </select>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <!-- ICI LA LISTE DE TOUS LES UTILISATEURS -->
+        <div class="filteredUsers">
+          <br />
+          <h3>Liste de tous les utilisateurs</h3>
+          <br />
+          <label for="">Recherche de participant : </label>
+          <input
+            type="text"
+            v-model="searchTerm"
+            class=""
+            placeholder="Entrez un participant"
+          />
+          <div class="tableau">
+            <table>
+              <thead>
+                <tr>
+                  <th>Utilisateurs</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="td">Prénom</td>
+                  <td class="td">Nom</td>
+                  <td class="td">Email</td>
+                  <td class="td">Role</td>
+                  <td class="td">Autorisatiton</td>
+                </tr>
+
+                <tr v-for="user in filterByName" :key="user.id">
+                  <td>{{ user.firstname }}</td>
+                  <td>{{ user.lastname }}</td>
+                  <td>{{ user.email }}</td>
+                  <td></td>
+                  <td>
+                    <div v-if="selectedEvent_id != null">
+                      <select
+                        v-model="user.role.Authorization"
+                        @change="updateRole(user.role)"
+                      >
+                        <option value="none">Select</option>
+                        <option value="3">Admin - 3</option>
+                        <option value="2">Staff - 2</option>
+                        <option value="1">User - 1</option>
+                      </select>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -74,18 +90,22 @@
 
 <script>
 import CreateEvents from "@/components/CreateEvents.vue";
+import ModifyEvents from "@/components/ModifyEvents.vue";
+
 export default {
   data() {
     return {
       users: [],
       searchTerm: "",
       events: [],
+      eventUnique: [],
       selectedEvent_id: null,
       seclectRole_id: null,
     };
   },
   components: {
     CreateEvents,
+    ModifyEvents,
   },
 
   beforeMount() {
@@ -143,6 +163,7 @@ export default {
         }
       );
       const data = await response.json();
+      this.eventUnique = data.event;
       this.users = data.users;
     },
 
@@ -189,16 +210,19 @@ export default {
 <style scoped>
 h1,
 h2,
+h3,
+td,
 table {
   color: rgb(86, 82, 82);
 }
+
 table,
 .td {
   border: 1px solid #333;
 }
 
 thead {
-  background-color: #333;
+  background-color: rgb(219, 117, 117);
   color: #fff;
 }
 
@@ -206,5 +230,30 @@ thead {
   display: flex;
   justify-content: center;
   margin-top: 2%;
+  margin-bottom: 5%;
+}
+
+.allPageEvent {
+  display: flex;
+  justify-content: center;
+  gap: 6%;
+}
+
+.eventChoiceAndTableUsers {
+  display: flex;
+  flex-direction: column;
+}
+
+.filteredUsers {
+  margin-top: 4em;
+}
+
+.createEvent {
+  display: flex;
+  flex-direction: column;
+}
+
+.modify {
+  margin-top: 10%;
 }
 </style>

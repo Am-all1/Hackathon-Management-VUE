@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <h1>Liste des évènements:</h1>
+  <hr />
+  <div id="container">
+    <h1>Liste des évènements</h1>
     <div>
       <form>
         <EventUnique
@@ -53,4 +54,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+h1 {
+  color: rgb(86, 82, 82);
+}
+
+#container {
+  height: 100%;
+}
+</style>

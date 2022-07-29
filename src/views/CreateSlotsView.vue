@@ -1,9 +1,14 @@
 <template>
+<<<<<<< HEAD
   <div class="slotsPage">
+=======
+  <hr />
+  <div class="componenterinos">
+>>>>>>> baabe8279716ca74288c5f78fd04d6adf7961ef2
     <div>
       <CreateGroup />
     </div>
-    <div class="s">
+    <div>
       <CreateSlots />
     </div>
   </div>
@@ -21,8 +26,9 @@ export default {
 </script>
 
 <style scoped>
-.slotsPage {
-  display: flex;
+.componenterinos {
+  /* display: flex;
   justify-content: center;
+  gap: 12%; */
 }
 </style>

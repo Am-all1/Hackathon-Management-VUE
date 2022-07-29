@@ -20,7 +20,8 @@
         },
       }"
     >
-      <button class="">Inscription à l'event</button></router-link
+      <br />
+      <button class="">S'inscrire</button></router-link
     >
     <!-- CAS D'UN UTILISATEUR NON CONNECTE -->
 
@@ -28,16 +29,16 @@
   </div>
   <hr />
 
-  <!-- ICI LE FEEDBACK MESSAGE D'INSCRIPTION EventUnique -->
-
-  <div>
+  <!-- ESPACE ADMIN  -->
+  <!-- <div>
     <ModifyEvents :event_id="event.id" @eventModified="getEventUnique" />
-  </div>
+  </div> -->
 
+  <!-- ESPACE STAFF -->
   <!-- APPEL DU COMPOSANT CreateGroup AFIN D'AFFICHER LE FORMULAIRE DE CREATION DE GROUPE -->
-  <div class="groupFormDisplay">
+  <!-- <div class="groupFormDisplay">
     <CreateGroup :event_id="event.id" @groupCreated="getGroupUnique" />
-  </div>
+  </div> -->
 
   <!-- APPEL DU COMPOSANT GroupUnique AVEC UN v-for AFIN D'AFFICHER LA LISTE DES GROUPES LIES A CET EVENEMENT -->
   <div class="allGroupsIn@/components/EventUnique.vue">
@@ -153,4 +154,27 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+button {
+  border: 2px solid GREY;
+  background-color: white;
+  color: grey;
+  height: 30px;
+  width: 180px;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 16px;
+  display: inline-flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+button:hover {
+  border: 2px solid rgb(219, 117, 117);
+  background-color: rgb(219, 117, 117);
+  color: white;
+  font-weight: bold;
+}
+</style>
