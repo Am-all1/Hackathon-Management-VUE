@@ -80,6 +80,7 @@ export default {
         lastname: this.lastname,
         email: this.email,
         password: this.password,
+        event_id: this.$route.params.event_id,
       };
 
       const response = await fetch("http://127.0.0.1:8000/api/auth/register", {
@@ -91,34 +92,15 @@ export default {
         body: JSON.stringify(body),
       });
       const data = await response.json();
-
-      console.log(data);
       this.message = data.message;
       this.status = data.status;
 
       if (data.status === true) {
         localStorage.setItem("savedUserToken", data.token);
-        this.addUserToEvent(data.token);
+
+        //REDIRECTION VERS LA PAGE DE L'EVENEMENT APRES INSCRIPTION
+        window.location.href = "/#/eventunique/" + this.$route.params.event_id;
       }
-    },
-
-    async addUserToEvent(token) {
-      const body = {
-        event_id: this.$route.params.event_id,
-      };
-
-      const response = await fetch("http://127.0.0.1:8000/api/event-users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(body),
-      });
-      const data = await response.json();
-
-      this.feedbackMessage = data.message;
     },
   },
 };

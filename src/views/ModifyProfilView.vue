@@ -95,7 +95,6 @@ export default {
       website: "",
       portfolio: "",
       feedBackmessage: "",
-      token: localStorage.getItem("savedUserToken"),
     };
   },
   methods: {

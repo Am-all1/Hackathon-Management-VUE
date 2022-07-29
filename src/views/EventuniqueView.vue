@@ -10,7 +10,9 @@
       :event_id="event.id"
       :viewing="true"
     />
+    <!-- CAS D'UN UTILISATEUR NON CONNECTE -->
     <router-link
+      v-if="token == null"
       :to="{
         name: 'creation de compte',
         params: {
@@ -18,10 +20,15 @@
         },
       }"
     >
-      <button class="">inscription à l'event</button></router-link
+      <button class="">Inscription à l'event</button></router-link
     >
+    <!-- CAS D'UN UTILISATEUR NON CONNECTE -->
+
+    <button v-if="token != null" @click="addUserToEvent">M'inscrire !</button>
   </div>
   <hr />
+
+  <!-- ICI LE FEEDBACK MESSAGE D'INSCRIPTION EventUnique -->
 
   <div>
     <ModifyEvents :event_id="event.id" @eventModified="getEventUnique" />
@@ -65,10 +72,12 @@ export default {
     this.getEventUnique();
     this.getGroupUnique();
   },
+
   data() {
     return {
       event: {},
       groups: [],
+      token: localStorage.getItem("savedUserToken"),
       /* event_id: this.event.id, */ // UTILISATION POUR LE PROVIDE
     };
   },
@@ -119,6 +128,26 @@ export default {
       );
       const data = await response.json();
       this.groups = data.groups;
+    },
+
+    async addUserToEvent() {
+      alert("entrée dans addUserToEvent");
+      const body = {
+        event_id: this.$route.params.event_id,
+      };
+
+      const response = await fetch("http://127.0.0.1:8000/api/event-users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${localStorage.getItem("savedUserToken")}`,
+        },
+        body: JSON.stringify(body),
+      });
+      const data = await response.json();
+
+      this.feedbackMessage = data.message;
     },
   },
 };

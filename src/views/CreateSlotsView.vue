@@ -1,6 +1,5 @@
 <template>
-  <hr />
-  <div class="components">
+  <div class="slotsPage">
     <div>
       <CreateGroup />
     </div>
@@ -22,9 +21,8 @@ export default {
 </script>
 
 <style scoped>
-.components {
+.slotsPage {
   display: flex;
   justify-content: center;
-  gap: 12%;
 }
 </style>

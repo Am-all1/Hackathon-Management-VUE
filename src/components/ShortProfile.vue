@@ -6,7 +6,7 @@
           <td>{{ firstname }}</td>
           <td>{{ lastname }}</td>
           <td>{{ email }}</td>
-          <td>
+          <!-- <td>
             <router-link
               :to="{
                 name: 'Profil',
@@ -17,7 +17,7 @@
             >
               <button class="showBtn">Profil</button>
             </router-link>
-          </td>
+          </td> -->
         </tr>
       </tbody>
     </table>
