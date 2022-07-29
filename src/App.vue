@@ -7,7 +7,7 @@
             <a href="https://lebocal.academy/"
               ><img src="./assets/logo_bocal.png" alt="" class="logo"
             /></a>
-            <h1>HACKATHON MANAGER<span>(s)</span></h1>
+            <h1>HACKATHON<span>(s)</span> MANAGER</h1>
             <a href="https://www.nicestartsup.com/"
               ><img src="./assets/logo_nicestartup.png" alt="" class="logo"
             /></a>
@@ -77,6 +77,10 @@ header {
     color: rgb(86, 82, 82);
     margin: 20px;
   }
+}
+
+span {
+  color: #e4111e;
 }
 
 .stickyNav {

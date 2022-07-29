@@ -132,7 +132,6 @@
         >
       </div>
 
-      <input type="submit" value="Valider" id="button" />
       <br />
       <input type="submit" @click="profilBack" value="Valider" id="button" />
     </form>
