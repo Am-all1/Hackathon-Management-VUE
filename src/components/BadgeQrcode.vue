@@ -1,14 +1,20 @@
 <template>
-  <h1>Badge</h1>
-
-  <p>Prénom: {{ user.firstname }}</p>
-  <p>Nom: {{ user.lastname }}</p>
-  <p>Email: {{ user.email }}</p>
-  {{ currentUrl }}
-  <form>
-    <input type="hidden" v-model="currentUrl" />
-  </form>
-  <qrcode-vue v-if="currentUrl" :value="currentUrl" :size="size" level="H" />
+  <div class="card text-bg-light mb-12" id="qrcode" style="max-width: 32rem">
+    <div class="card-header h1">Badge</div>
+    <div class="card-body">
+      <h5 class="card-title h3">{{ user.firstname }} {{ user.lastname }}</h5>
+      <p class="card-text h4">Email: {{ user.email }}</p>
+      <form>
+        <input type="hidden" v-model="currentUrl" />
+      </form>
+      <qrcode-vue
+        v-if="currentUrl"
+        :value="currentUrl"
+        :size="size"
+        level="H"
+      />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -53,3 +59,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+#qrcode {
+  margin-left: 16rem;
+}
+</style>

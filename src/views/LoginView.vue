@@ -1,37 +1,45 @@
 <template>
-  <hr />
-  <div id="mainContainer">
-    <h1>Espace connexion</h1>
-    <!-- CreateGroup de connexion -->
-    <form @submit.prevent="login" id="formStyle">
-      <div class="input-container">
-        <label for="emailInput" class="labelWidth">Email :</label>
-        <br />
+  <div class="card text-bg-$rouge-200 mb-3" style="max-width: 30rem">
+    <div class="card-header">
+      <h2>Connexion</h2>
+    </div>
+    <form
+      @submit.prevent="login"
+      class="card-body"
+      action="connection_user.php"
+      method="POST"
+    >
+      <div class="form-floating mb-3">
         <input
           type="email"
+          class="form-control"
           id="emailInput"
           v-model="email"
-          placeholder="nom@domaine.com"
+          placeholder="nom@exemple.com"
           required
         />
+        <label for="emailInput">Adresse email</label>
       </div>
-      <br />
-      <div>
-        <label for="password" class="labelWidth">Password : </label>
-        <br />
+
+      <div class="form-floating">
         <input
           type="password"
+          class="form-control"
           id="password"
           v-model="password"
           placeholder="1234"
           required
         />
+        <label for="password">Mot de passe</label>
       </div>
       <br />
-      <br />
-      <input type="submit" value="Se connecter" id="button" />
+
+      <div class="input">
+        <button type="submit" class="btn btn-primary btn-lg">
+          Se connecter
+        </button>
+      </div>
     </form>
-    <br />
     <p v-if="status == true">Connexion réussie</p>
     <p v-else-if="status == false">Connexion échouée</p>
   </div>
@@ -88,13 +96,15 @@ export default {
 </script>
 
 <style scoped>
+.card {
+  margin-left: 16rem;
+}
 h1,
 label {
   color: rgb(86, 82, 82);
 }
 
 #mainContainer {
-  display: flex;
   flex-direction: column;
 }
 
@@ -116,8 +126,9 @@ label {
   cursor: pointer;
   padding: 10px;
   font-size: 20px;
-  position: fixed;
+  position: static;
   top: 600px;
+  padding-bottom: 5%;
 }
 
 #button:hover {

@@ -1,44 +1,54 @@
 <template>
-  <header>
-    <div id="logoBloc">
-      <a href="https://lebocal.academy/"
-        ><img src="./assets/logo_bocal.png" alt="" class="logo"
-      /></a>
-      <div class="hackTitle">
-        <div>
-          <h1>HACKATHON <span>(s)</span></h1>
+  <body>
+    <header>
+      <div id="logoBloc">
+        <a href="https://lebocal.academy/"
+          ><img src="./assets/logo_bocal.png" alt="" class="logo"
+        /></a>
+        <div class="hackTitle">
+          <div>
+            <h1>HACKATHON <span>(s)</span></h1>
+          </div>
+          <h1>MANAGER</h1>
         </div>
-        <h1>MANAGER</h1>
+        <a href="https://www.nicestartsup.com/"
+          ><img src="./assets/logo_nicestartup.png" alt="" class="logo"
+        /></a>
       </div>
-      <a href="https://www.nicestartsup.com/"
-        ><img src="./assets/logo_nicestartup.png" alt="" class="logo"
-      /></a>
-    </div>
-  </header>
-  <nav>
-    <router-link to="/home" class="links">Accueil</router-link> |
-    <router-link to="/login" class="links">Connexion</router-link> |
-    <router-link to="/mon-profil" class="links">Mon profil</router-link> |
-    <router-link to="/eventlist">Evènements</router-link> |
-    <router-link to="/admin" class="links">Espace admin</router-link> |
-    <router-link to="/slots" class="links">Espace staff</router-link> |
-    <router-link to="/abilities" class="links">Mes compétences</router-link> |
-    <router-link to="/qrgenerator" class="links">Qr Code</router-link> |
-    <router-link to="/testhome">Home</router-link> |
-    <router-link to="/pageqrcode" class="links">Page avec QR Code</router-link>
-  </nav>
-  <div>
+    </header>
+
+    <section class="stickyNav">
+      <nav>
+        <router-link to="/home" class="links">Accueil</router-link>
+        <router-link to="/login" class="links">Connexion</router-link>
+        <router-link to="/mon-profil" class="links">Mon profil</router-link>
+        <router-link to="/eventlist">Evènements</router-link>
+        <router-link to="/admin" class="links">Espace admin</router-link>
+        <router-link to="/slots" class="links">Espace staff</router-link>
+        <router-link to="/abilities" class="links">Mes compétences</router-link>
+        <router-link to="/qrgenerator" class="links">Qr Code</router-link>
+        <router-link to="/testhome">Home</router-link>
+        <router-link to="/pageqrcode" class="links"
+          >Page avec QR Code</router-link
+        >
+      </nav>
+    </section>
     <router-view />
-  </div>
+
+    <div>
+      <Footer />
+    </div>
+  </body>
 </template>
 
 <script>
 import "bootstrap/dist/css/bootstrap.min.css";
 import HomeView from "./views/HomeView.vue";
+import Footer from "@/components/Footer.vue";
 
 export default {
   name: "App",
-  components: { HomeView },
+  components: { HomeView, Footer },
 
   data() {
     return {
@@ -59,6 +69,15 @@ export default {
   // color: #2c3e50;
 }
 
+#routerViewStyle {
+  margin-top: 20px;
+}
+
+body {
+  height: 100%;
+  position: relative;
+}
+
 header {
   h1 {
     font-size: 60px;
@@ -68,6 +87,42 @@ header {
   }
 }
 
+.stickyNav {
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: rgb(86, 82, 82);
+  float: left;
+  top: 0px;
+  width: 100%;
+  z-index: 1;
+  height: 60px;
+}
+
+a {
+  text-decoration-line: none;
+  color: white;
+  padding: 15px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  height: 60px;
+  display: inline-flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+a:hover {
+  text-decoration-line: none;
+  color: white;
+  background-color: white;
+  color: rgb(219, 117, 117);
+  font-size: 16px;
+}
+span {
+  color: white;
+}
+
 nav {
   p {
     font-size: 60px;
@@ -75,20 +130,11 @@ nav {
   }
   a {
     font-weight: bold;
-    color: grey;
+    color: white;
 
     &.router-link-exact-active {
-      color: GREY;
+      color: rgb(219, 117, 117);
     }
-  }
-
-  a:hover {
-    background-color: rgb(219, 117, 117);
-    color: white;
-    cursor: pointer;
-    margin: 5px;
-    padding: 5px;
-    text-decoration-line: underline;
   }
 }
 
