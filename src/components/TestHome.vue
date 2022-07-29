@@ -22,7 +22,7 @@
               },
             }"
           >
-            <button id="button">Montrer l'évènement</button>
+            <button>Montrer l'évènement</button>
           </router-link>
         </div>
       </div>
@@ -64,24 +64,19 @@ export default {
 </script>
 
 <style scoped>
-#button {
+button {
   border: 2px solid GREY;
   background-color: white;
   color: grey;
-  height: 60px;
+  height: 80px;
   width: 180px;
   cursor: pointer;
   padding: 10px;
   font-size: 20px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-
-  top: 600px;
+  font-weight: bold;
 }
 
-#button:hover {
+button:hover {
   border: 2px solid rgb(219, 117, 117);
   background-color: rgb(219, 117, 117);
   color: white;

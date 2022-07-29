@@ -104,7 +104,10 @@ label {
 }
 
 #mainContainer {
-  flex-direction: column;
+  max-width: 1280px;
+  min-height: 100%;
+  margin: 0 auto;
+  position: relative;
 }
 
 #formStyle {
@@ -114,23 +117,32 @@ label {
   align-content: center;
   justify-content: center;
   align-items: center;
+  margin-bottom: 30px;
 }
 
-#button {
+.input-container {
+  min-height: 50vh;
+  margin: 40px;
+}
+
+button {
   border: 2px solid GREY;
   background-color: white;
   color: grey;
   height: 60px;
-  width: 180px;
+  width: 240px;
   cursor: pointer;
   padding: 10px;
   font-size: 20px;
-  position: static;
-  top: 600px;
-  padding-bottom: 5%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 60px;
+  font-weight: bold;
 }
 
-#button:hover {
+button:hover {
   border: 2px solid rgb(219, 117, 117);
   background-color: rgb(219, 117, 117);
   color: white;
