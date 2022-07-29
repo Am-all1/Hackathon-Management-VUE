@@ -1,10 +1,6 @@
 <template>
-<<<<<<< HEAD
-  <div class="slotsPage">
-=======
   <hr />
   <div class="componenterinos">
->>>>>>> baabe8279716ca74288c5f78fd04d6adf7961ef2
     <div>
       <CreateGroup />
     </div>
