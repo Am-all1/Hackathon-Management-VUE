@@ -1,72 +1,76 @@
 <template>
   <section>
-    <div>
-      <h1>Mon espace administrateur</h1>
-      <br />
+    <h1>Mon espace administrateur</h1>
+    <br />
+    <div class="allPageEvent">
+      <div class="createEvent">
+        <CreateEvents @created="getEvents" />
+      </div>
+      <div class="eventChoiceAndTableUsers">
+        <h3>Choix de l'évènement:</h3>
 
-      <CreateEvents @created="getEvents" />
-      <h3>Choix de l'évènement:</h3>
+        <select v-model="selectedEvent_id">
+          <option :value="null">Tous les événements</option>
+          <option v-for="event in events" :key="event.id" :value="event.id">
+            {{ event.name }}
+            {{ event.location }}
+            {{ event.id }}
+          </option>
+        </select>
 
-      <select v-model="selectedEvent_id">
-        <option :value="null">Tous les événements</option>
-        <option v-for="event in events" :key="event.id" :value="event.id">
-          {{ event.name }}
-          {{ event.location }}
-          {{ event.id }}
-        </option>
-      </select>
-    </div>
-    <!-- {{ selectedEvent_id }} -->
+        <!-- {{ selectedEvent_id }} -->
 
-    <!-- ICI LA LISTE DE TOUS LES UTILISATEURS -->
-    <div class="filteredUsers">
-      <br />
-      <h3>Liste de tous les utilisateurs</h3>
-      <br />
-      <label for="">Recherche de participant : </label>
-      <input
-        type="text"
-        v-model="searchTerm"
-        class=""
-        placeholder="Entrez un participant"
-      />
-      <div class="tableau">
-        <table>
-          <thead>
-            <tr>
-              <th>Utilisateurs</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="td">Prénom</td>
-              <td class="td">Nom</td>
-              <td class="td">Email</td>
-              <td class="td">Role</td>
-              <td class="td">Autorisatiton</td>
-            </tr>
+        <!-- ICI LA LISTE DE TOUS LES UTILISATEURS -->
+        <div class="filteredUsers">
+          <br />
+          <h3>Liste de tous les utilisateurs</h3>
+          <br />
+          <label for="">Recherche de participant : </label>
+          <input
+            type="text"
+            v-model="searchTerm"
+            class=""
+            placeholder="Entrez un participant"
+          />
+          <div class="tableau">
+            <table>
+              <thead>
+                <tr>
+                  <th>Utilisateurs</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="td">Prénom</td>
+                  <td class="td">Nom</td>
+                  <td class="td">Email</td>
+                  <td class="td">Role</td>
+                  <td class="td">Autorisatiton</td>
+                </tr>
 
-            <tr v-for="user in filterByName" :key="user.id">
-              <td>{{ user.firstname }}</td>
-              <td>{{ user.lastname }}</td>
-              <td>{{ user.email }}</td>
-              <td></td>
-              <td>
-                <div v-if="selectedEvent_id != null">
-                  <select
-                    v-model="user.role.Authorization"
-                    @change="updateRole(user.role)"
-                  >
-                    <option value="none">Select</option>
-                    <option value="3">Admin - 3</option>
-                    <option value="2">Staff - 2</option>
-                    <option value="1">User - 1</option>
-                  </select>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                <tr v-for="user in filterByName" :key="user.id">
+                  <td>{{ user.firstname }}</td>
+                  <td>{{ user.lastname }}</td>
+                  <td>{{ user.email }}</td>
+                  <td></td>
+                  <td>
+                    <div v-if="selectedEvent_id != null">
+                      <select
+                        v-model="user.role.Authorization"
+                        @change="updateRole(user.role)"
+                      >
+                        <option value="none">Select</option>
+                        <option value="3">Admin - 3</option>
+                        <option value="2">Staff - 2</option>
+                        <option value="1">User - 1</option>
+                      </select>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -210,5 +214,20 @@ thead {
   display: flex;
   justify-content: center;
   margin-top: 2%;
+}
+
+.allPageEvent {
+  display: flex;
+  justify-content: center;
+  gap: 12%;
+}
+
+.eventChoiceAndTableUsers {
+  display: flex;
+  flex-direction: column;
+}
+
+.filteredUsers {
+  margin-top: 4em;
 }
 </style>
