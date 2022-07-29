@@ -5,10 +5,22 @@
     <div class="allPageEvent">
       <div class="createEvent">
         <CreateEvents @created="getEvents" />
+        <div class="modify">
+          <ModifyEvents
+            :name="eventUnique.name"
+            :start="eventUnique.start"
+            :end="eventUnique.end"
+            :location="eventUnique.location"
+            :event_id="eventUnique.id"
+            @eventModified="getEventUnique"
+          />
+        </div>
       </div>
+
       <div class="eventChoiceAndTableUsers">
         <h3>Choix de l'évènement:</h3>
 
+        <!-- liste des events dans un select  -->
         <select v-model="selectedEvent_id">
           <option :value="null">Tous les événements</option>
           <option v-for="event in events" :key="event.id" :value="event.id">
@@ -78,6 +90,7 @@
 
 <script>
 import CreateEvents from "@/components/CreateEvents.vue";
+import ModifyEvents from "@/components/ModifyEvents.vue";
 
 export default {
   data() {
@@ -85,12 +98,14 @@ export default {
       users: [],
       searchTerm: "",
       events: [],
+      eventUnique: [],
       selectedEvent_id: null,
       seclectRole_id: null,
     };
   },
   components: {
     CreateEvents,
+    ModifyEvents,
   },
 
   beforeMount() {
@@ -148,6 +163,7 @@ export default {
         }
       );
       const data = await response.json();
+      this.eventUnique = data.event;
       this.users = data.users;
     },
 
@@ -219,7 +235,7 @@ thead {
 .allPageEvent {
   display: flex;
   justify-content: center;
-  gap: 12%;
+  gap: 6%;
 }
 
 .eventChoiceAndTableUsers {
@@ -229,5 +245,14 @@ thead {
 
 .filteredUsers {
   margin-top: 4em;
+}
+
+.createEvent {
+  display: flex;
+  flex-direction: column;
+}
+
+.modify {
+  margin-top: 10%;
 }
 </style>

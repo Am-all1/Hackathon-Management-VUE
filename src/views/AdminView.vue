@@ -14,6 +14,23 @@ export default {
   components: {
     Admin,
   },
+  methods: {
+    /* Récupération des données de l'event unique sur lequel on se trouve */
+    async getEventUnique() {
+      const response = await fetch(
+        "http://127.0.0.1:8000/api/events/" + this.$route.params.event_id,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      this.event = data.event;
+    },
+  },
 };
 </script>
 
