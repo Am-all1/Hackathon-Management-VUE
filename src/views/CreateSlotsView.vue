@@ -1,6 +1,6 @@
 <template>
   <hr />
-  <div class="components">
+  <div class="componenterinos">
     <div>
       <CreateGroup />
     </div>
@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style scoped>
-.components {
+.componenterinos {
   /* display: flex;
   justify-content: center;
   gap: 12%; */
