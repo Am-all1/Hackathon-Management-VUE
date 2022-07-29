@@ -4,7 +4,7 @@
     <div>
       <CreateGroup />
     </div>
-    <div class="s">
+    <div>
       <CreateSlots />
     </div>
   </div>
@@ -23,7 +23,8 @@ export default {
 
 <style scoped>
 .components {
+  /* display: flex;
   justify-content: center;
-  gap: 12%;
+  gap: 12%; */
 }
 </style>
