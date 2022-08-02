@@ -38,9 +38,7 @@
 
 <script>
 export default {
-  /* inject: ["event_id"], */
   beforeMount() {
-    /* console.log(this.event_id); */
     this.getUsers();
   },
   data() {
@@ -123,8 +121,6 @@ export default {
       this.$emit("UserAdded");
 
       this.feedbackMessage = data.message;
-
-      // this.getSlots(); // relancer inventaire du grp
     },
   },
 };

@@ -10,7 +10,6 @@
 </template>
 
 <script>
-// import Generique from "./Generique.vue";
 import CreateGroup from "./CreateGroup.vue";
 
 export default {

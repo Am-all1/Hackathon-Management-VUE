@@ -135,11 +135,6 @@ export default {
       this.feedbackMessage = data.message;
 
       this.getAbilities();
-
-      // firstname: this.firstname,
-      // lastname: this.lastname,
-      // email: this.email,
-      // password: this.password,
     },
   },
 

@@ -2,7 +2,10 @@
   <hr />
   <div>
     <h1>Mon profil</h1>
+
+    <!-- FUTUR IMAGE DE PROFIL -->
     <!-- <span>{{ picture }}</span> -->
+
     <div id="blocContainer">
       <div id="leftContainer" class="container">
         <div>

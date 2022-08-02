@@ -10,7 +10,7 @@ import CreateUserView from "../views/CreateUserView.vue";
 import AdminView from "../views/AdminView.vue";
 import GroupView from "../views/GroupView.vue";
 import ModifyProfilView from "../views/ModifyProfilView.vue";
-import Abilities from "../components/Abilities.vue"; // A laisser pour tester l'affichage
+import Abilities from "../components/Abilities.vue";
 import GroupUniqueView from "../views/GroupUniqueView.vue";
 import HomeView from "../views/HomeView.vue";
 import QrCodeReader from "../components/QrCodeReader.vue";
@@ -62,15 +62,6 @@ const routes = [
     name: "creation de compte",
     component: CreateUserView,
   },
-  // {
-  //   path: "/about",
-  //   name: "about",
-  //   component: () =>
-  //     import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
-  //   meta: {
-  //     title: "A propos",
-  //   },
-  // },
 
   {
     path: "/modifications",

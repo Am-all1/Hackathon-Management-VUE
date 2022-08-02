@@ -9,11 +9,6 @@
       {{ abilities }}
     </p>
 
-    <!-- <p>
-      POUR VERIFICATION : ce groupe appartient à l'événement event_id =
-      {{ event_id }} et a pour group_id : {{ group_id }}
-    </p> -->
-
     <router-link
       v-if="!viewing"
       :to="{

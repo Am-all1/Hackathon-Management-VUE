@@ -184,8 +184,6 @@ export default {
       this.feedbackMessage = data.message;
 
       this.getSlots();
-
-      // vider les inputs
     },
   },
 };

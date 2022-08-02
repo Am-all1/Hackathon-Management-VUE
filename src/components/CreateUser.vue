@@ -75,7 +75,6 @@ export default {
     /* Création d'un user */
 
     async createUser() {
-      // console.log("test id" + this.$route.params.event_id);
       const body = {
         firstname: this.firstname,
         lastname: this.lastname,
@@ -98,7 +97,6 @@ export default {
       this.status = data.status;
 
       if (data.status === true) {
-        // localStorage.setItem("savedUserToken", data.token);
         this.addUserToEvent(data.token);
       }
     },
@@ -113,7 +111,6 @@ export default {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
-          // Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(body),
       });

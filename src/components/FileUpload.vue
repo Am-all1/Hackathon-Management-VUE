@@ -1,4 +1,6 @@
 <template>
+  <!-- // FUTUR UPLOAD DE PHOTO DANS LA BDD A FAIRE // -->
+
   <div class="container mt-5">
     <form>
       <div class="custom-file">

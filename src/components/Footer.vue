@@ -24,7 +24,6 @@
   font-weight: normal;
   justify-content: space-between;
   align-items: center;
-  /* position: fixed; */
 }
 
 #homeMadeLogo {

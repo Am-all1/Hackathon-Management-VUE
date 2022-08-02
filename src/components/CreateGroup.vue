@@ -39,9 +39,7 @@
 
 <script>
 export default {
-  mounted() {
-    //this.getGroup();
-  },
+  mounted() {},
   data() {
     return {
       groups: [],
@@ -96,19 +94,6 @@ export default {
       this.members = "";
       this.abilities = "";
     },
-
-    /* async getGroup() {
-      const response = await fetch("http://127.0.0.1:8000/api/groups", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
-
-      const data = await response.json();
-      this.groups = data.groups;
-    }, */
   },
 };
 </script>
