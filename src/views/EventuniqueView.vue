@@ -8,25 +8,37 @@
       :end="event.end"
       :location="event.location"
       :event_id="event.id"
+      :viewing="true"
     />
+    <!-- CAS D'UN UTILISATEUR NON CONNECTE -->
     <router-link
+      v-if="token == null"
       :to="{
         name: 'creation de compte',
         params: {
-          event_id: this.event.id,
+          event_id: $route.params.event_id,
         },
       }"
     >
-      <button class="">inscription à l'event</button></router-link
+      <br />
+      <button class="">S'inscrire</button></router-link
     >
+    <!-- CAS D'UN UTILISATEUR NON CONNECTE -->
+
+    <button v-if="token != null" @click="addUserToEvent">M'inscrire !</button>
   </div>
   <hr />
 
+  <!-- ESPACE ADMIN  -->
+  <!-- <div>
+    <ModifyEvents :event_id="event.id" @eventModified="getEventUnique" />
+  </div> -->
+
+  <!-- ESPACE STAFF -->
   <!-- APPEL DU COMPOSANT CreateGroup AFIN D'AFFICHER LE FORMULAIRE DE CREATION DE GROUPE -->
-  <div class="groupFormDisplay">
+  <!-- <div class="groupFormDisplay">
     <CreateGroup :event_id="event.id" @groupCreated="getGroupUnique" />
-  </div>
-  <!-- @/components/Even@/components/EventUnique.vue -->
+  </div> -->
 
   <!-- APPEL DU COMPOSANT GroupUnique AVEC UN v-for AFIN D'AFFICHER LA LISTE DES GROUPES LIES A CET EVENEMENT -->
   <div class="allGroupsIn@/components/EventUnique.vue">
@@ -52,7 +64,8 @@
 import EventUnique from "@/components/EventUnique.vue";
 import CreateGroup from "@/components/CreateGroup.vue";
 import GroupUnique from "@/components/GroupUnique.vue";
-import QrGenerator from "@/components/QrGenerator.vue";
+import ModifyEvents from "@/components/ModifyEvents.vue";
+
 import CreateUser from "@/components/CreateUser.vue";
 
 export default {
@@ -60,10 +73,12 @@ export default {
     this.getEventUnique();
     this.getGroupUnique();
   },
+
   data() {
     return {
-      event: [],
-      groups: [], // à vérifier : le type "tableau" est-il le plus approprié ?
+      event: {},
+      groups: [],
+      token: localStorage.getItem("savedUserToken"),
       /* event_id: this.event.id, */ // UTILISATION POUR LE PROVIDE
     };
   },
@@ -77,14 +92,13 @@ export default {
     EventUnique,
     CreateGroup,
     GroupUnique,
-    QrGenerator,
+    ModifyEvents,
     CreateUser,
   },
 
   methods: {
     /* Récupération des données de l'event unique sur lequel on se trouve */
     async getEventUnique() {
-      console.log("entrée fetch " + this.$route.params.event_id);
       const response = await fetch(
         "http://127.0.0.1:8000/api/events/" + this.$route.params.event_id,
         {
@@ -95,8 +109,6 @@ export default {
           },
         }
       );
-      console.log("sortie fetch");
-
       const data = await response.json();
       this.event = data.event;
     },
@@ -118,8 +130,51 @@ export default {
       const data = await response.json();
       this.groups = data.groups;
     },
+
+    async addUserToEvent() {
+      alert("entrée dans addUserToEvent");
+      const body = {
+        event_id: this.$route.params.event_id,
+      };
+
+      const response = await fetch("http://127.0.0.1:8000/api/event-users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${localStorage.getItem("savedUserToken")}`,
+        },
+        body: JSON.stringify(body),
+      });
+      const data = await response.json();
+
+      this.feedbackMessage = data.message;
+    },
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+button {
+  border: 2px solid GREY;
+  background-color: white;
+  color: grey;
+  height: 30px;
+  width: 180px;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 16px;
+  display: inline-flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+button:hover {
+  border: 2px solid rgb(219, 117, 117);
+  background-color: rgb(219, 117, 117);
+  color: white;
+  font-weight: bold;
+}
+</style>

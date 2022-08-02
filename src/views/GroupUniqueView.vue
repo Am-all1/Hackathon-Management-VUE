@@ -10,6 +10,7 @@
       :abilities="group.abilities"
       :group_id="group.id"
       :event_id="group.event_id"
+      :viewing="true"
     />
   </div>
   <hr />
@@ -71,6 +72,10 @@ export default {
      *
      * */
     async getGroupUniqueWithUsers() {
+      console.log(
+        "Entrée dans getGroupUniqueWithUsers avec group_id = " +
+          this.$route.params.group_id
+      );
       const response = await fetch(
         "http://127.0.0.1:8000/api/groups/" + this.$route.params.group_id,
         {

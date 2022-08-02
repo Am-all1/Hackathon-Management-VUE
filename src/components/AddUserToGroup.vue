@@ -1,5 +1,5 @@
 <template>
-  <h1>VOICI LE event_id : {{ event_id }}</h1>
+  <h1>event_id : {{ event_id }}</h1>
   <div>
     <label for="">Recherche de participant : </label>
     <input
@@ -38,9 +38,7 @@
 
 <script>
 export default {
-  /* inject: ["event_id"], */
   beforeMount() {
-    /* console.log(this.event_id); */
     this.getUsers();
   },
   data() {
@@ -66,6 +64,7 @@ export default {
   methods: {
     /* Recherche de tous les utilisateurs inscrits */
     async getUsers() {
+      console.log();
       const response = await fetch("http://127.0.0.1:8000/api/showusers", {
         method: "GET",
         headers: {
@@ -77,25 +76,6 @@ export default {
       this.users = data.users;
     },
 
-    /*  A FAIRE FONCTIONNER AVEC LE PROVIDE Recherche de tous les utilisateurs inscrits dans l'event */
-    /* async getUsersOfEvent() {
-      alert("Entrée dans getUsersOfEvent avec event_id " + this.event_id);
-      const response = await fetch("http://127.0.0.1:8000/api/events/1", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
-      
-      alert("Sortie de getUsersOfEvent, affichage de data :");
-      console.log(data.users);
-
-      const data = await response.json();
-      this.users = data.users;
-    }, */
-
-    /* add un user dans un group */
     async addToGroup(userId) {
       console.log(
         "entrée dans addToGroup avec les valeurs user_id = " +
@@ -123,8 +103,6 @@ export default {
       this.$emit("UserAdded");
 
       this.feedbackMessage = data.message;
-
-      // this.getSlots(); // relancer inventaire du grp
     },
   },
 };

@@ -1,10 +1,10 @@
 <template>
   <hr />
-  <div class="components">
+  <div class="componenterinos">
     <div>
       <CreateGroup />
     </div>
-    <div class="s">
+    <div>
       <CreateSlots />
     </div>
   </div>
@@ -22,9 +22,9 @@ export default {
 </script>
 
 <style scoped>
-.components {
-  display: flex;
+.componenterinos {
+  /* display: flex;
   justify-content: center;
-  gap: 12%;
+  gap: 12%; */
 }
 </style>

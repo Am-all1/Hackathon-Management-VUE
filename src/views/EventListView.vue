@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <h1>Liste des évènements:</h1>
+  <hr />
+  <div id="container">
+    <h1>Liste des évènements</h1>
     <div>
       <form>
         <EventUnique
@@ -11,6 +12,7 @@
           :end="event.end"
           :location="event.location"
           :event_id="event.id"
+          @eventDeleted="getEvents"
         />
       </form>
     </div>
@@ -52,4 +54,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+h1 {
+  color: rgb(86, 82, 82);
+}
+
+#container {
+  height: 100%;
+}
+</style>

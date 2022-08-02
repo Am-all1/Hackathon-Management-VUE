@@ -1,54 +1,54 @@
 <template>
-  <header>
-    <div id="logoBloc">
-      <a href="https://lebocal.academy/"
-        ><img src="./assets/logo_bocal.png" alt="" class="logo"
-      /></a>
-      <h1>HACKATHON</h1>
-      <a href="https://www.nicestartsup.com/"
-        ><img src="./assets/logo_nicestartup.png" alt="" class="logo"
-      /></a>
-    </div>
-  </header>
-  <nav>
-    <router-link to="/home" class="links">Accueil</router-link> |
-    <router-link to="/login" class="links">Connexion</router-link> |
-    <router-link to="/disconnected" class="links">Déconnexion</router-link> |
-    <router-link to="/mon-profil" class="links">Mon profil</router-link> |
-    <router-link to="/modifications" class="links"
-      >Modifier mon profil</router-link
-    >
-    | <router-link to="/eventlist">Evènements</router-link> |
-    <router-link to="/admin" class="links">Espace admin</router-link> |
-    <router-link to="/slots" class="links">Espace staff</router-link> |
-    <router-link to="/abilities" class="links">Mes compétences</router-link> |
-    <router-link to="/qrgenerator" class="links">Qr Code</router-link> |
-    <router-link to="/pageqrcode" class="links">Page avec QR Code</router-link>
-  </nav>
-  <div>
-    <router-view />
+  <body>
     <div id="container">
-      <footer class="footer">
-        <div id="homeMadeLogo">Hackathon<span id="letter">(s)</span> manager</div>
-        <div class="copyright">© 2022 Copyright: Nice Start(s) Up</div>
-        <div class="footerMentions">
-          Mentions légales
-          <br />
-          A propos de Nice Start(s) Up
-        </div>
-        
-      </footer>
+      <div id="main">
+        <header>
+          <div id="logoBloc">
+            <a href="https://lebocal.academy/"
+              ><img src="./assets/logo_bocal.png" alt="" class="logo"
+            /></a>
+            <h1>HACKATHON<span>(s)</span> MANAGER</h1>
+            <a href="https://www.nicestartsup.com/"
+              ><img src="./assets/logo_nicestartup.png" alt="" class="logo"
+            /></a>
+          </div>
+        </header>
+
+        <section class="stickyNav">
+          <nav>
+            <router-link to="/home" class="links">Accueil</router-link>
+            <router-link to="/login" class="links">Connexion</router-link>
+            <router-link to="/mon-profil" class="links">Mon profil</router-link>
+            <router-link to="/eventlist">Evènements</router-link>
+            <router-link to="/admin" class="links">Espace admin</router-link>
+            <router-link to="/slots" class="links">Espace staff</router-link>
+            <router-link to="/abilities" class="links"
+              >Mes compétences</router-link
+            >
+            <router-link to="/qrgenerator" class="links">Qr Code</router-link>
+            <router-link to="/pageqrcode" class="links"
+              >Page avec QR Code</router-link
+            >
+          </nav>
+        </section>
+        <router-view />
+      </div>
+
+      <div class="footer">
+        <Footer />
+      </div>
     </div>
-  </div>
+  </body>
 </template>
 
 <script>
 import "bootstrap/dist/css/bootstrap.min.css";
 import HomeView from "./views/HomeView.vue";
+import Footer from "@/components/Footer.vue";
 
 export default {
   name: "App",
-  components: { HomeView },
+  components: { HomeView, Footer },
 
   data() {
     return {
@@ -65,8 +65,16 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+}
 
-  // color: #2c3e50;
+#routerViewStyle {
+  margin-top: 20px;
+}
+
+// Déplacer le style à partir d'ici pour le mettre dans des components.
+body {
+  height: 100%;
+  position: relative;
 }
 
 header {
@@ -78,28 +86,41 @@ header {
   }
 }
 
-nav {
-  p {
-    font-size: 60px;
-    font-weight: bold;
-  }
-  a {
-    font-weight: bold;
-    color: grey;
+span {
+  color: #e4111e;
+}
 
-    &.router-link-exact-active {
-      color: GREY;
-    }
-  }
+.stickyNav {
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: rgb(86, 82, 82);
+  float: left;
+  top: 0px;
+  width: 100%;
+  z-index: 1;
+  height: 60px;
+}
 
-  a:hover {
-    background-color: rgb(219, 117, 117);
-    color: white;
-    cursor: pointer;
-    margin: 5px;
-    padding: 5px;
-    text-decoration-line: underline;
-  }
+a {
+  text-decoration-line: none;
+  color: white;
+  padding: 15px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  height: 60px;
+  display: inline-flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+a:hover {
+  text-decoration-line: none;
+  color: white;
+  background-color: white;
+  color: rgb(219, 117, 117);
+  font-size: 16px;
 }
 
 #logoBloc {
@@ -140,36 +161,17 @@ nav {
   text-decoration: none;
 }
 
-.footer {
-  background-color: rgba(0, 0, 0, 0.815);
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 100px;
-  color: #969696;
-  font-family: "Work Sans", Arial;
-  font-size: 14px;
-  font-weight: normal;
-  // padding: 20px 0 0;
+.hackTitle {
+  display: flex;
 }
-.footerMentions {
-  text-align: initial;
-  padding-left: 10%;
-}
-// body {
-//    display: flex;
-//   flex-direction: column;
-//   justify-content: space-between;
-//   height: 100vh;
-//   font-family: Arial, Helvetica, sans-serif;
-//   margin: 0;
-// }
-#container {
-  position: relative;
-  min-height: 100%;
-  padding-bottom: 20px;
-  padding-top: 50px;
 
-  height: 50px;
+.hackTitle span {
+  color: #e4111e;
+  font-size: 50px;
+}
+
+.hackTitle h1 {
+  display: flex;
+  color: black;
 }
 </style>

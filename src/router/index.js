@@ -4,17 +4,16 @@ import DisconnectedView from "../views/DisconnectedView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
 import EventListView from "../views/EventListView.vue";
 import EventUniqueView from "../views/EventUniqueView.vue";
-import ProfilView from "../views/ProfilView.vue";
 import MyProfileView from "../views/MyProfileView.vue";
 import CreateSlotsView from "../views/CreateSlotsView.vue";
 import CreateUserView from "../views/CreateUserView.vue";
 import AdminView from "../views/AdminView.vue";
 import GroupView from "../views/GroupView.vue";
 import ModifyProfilView from "../views/ModifyProfilView.vue";
-import Abilities from "../components/Abilities.vue"; // A laisser pour tester l'affichage
+import Abilities from "../components/Abilities.vue";
 import GroupUniqueView from "../views/GroupUniqueView.vue";
 import HomeView from "../views/HomeView.vue";
-import QrGenerator from "../components/QrGenerator.vue";
+import QrCodeReader from "../components/QrCodeReader.vue";
 import PageQrCodeView from "../views/PageQrCodeView.vue";
 
 const routes = [
@@ -27,8 +26,9 @@ const routes = [
   {
     path: "/qrgenerator",
     name: "qr code",
-    component: QrGenerator,
+    component: QrCodeReader,
   },
+
   {
     path: "/pageqrcode",
     name: "pageqrcode",
@@ -56,15 +56,6 @@ const routes = [
     name: "creation de compte",
     component: CreateUserView,
   },
-  // {
-  //   path: "/about",
-  //   name: "about",
-  //   component: () =>
-  //     import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
-  //   meta: {
-  //     title: "A propos",
-  //   },
-  // },
 
   {
     path: "/modifications",
@@ -73,16 +64,13 @@ const routes = [
   },
 
   {
-    path: "/profil/:user_id",
-    name: "Profil",
-    component: ProfilView,
-  },
-
-  {
     path: "/mon-profil/",
     name: "mon-profil",
     component: MyProfileView,
     props: true,
+    // meta: {
+    //   needsAuth: false,
+    // },
   },
 
   {
@@ -134,5 +122,11 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes,
 });
-
+// router.beforeEach((to, from, next) => {
+//   if (to.meta.needsAuth == false) {
+//     next("/login");
+//   } else {
+//     next("/mon-profil");
+//   }
+// });
 export default router;

@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <h1>Créer un évènement</h1>
-
+  <h3>Créer un évènement</h3>
+  <div id="container">
     <form @submit.prevent="createEvent">
       <div>
         <label for="name">Nom:</label>
@@ -95,8 +94,13 @@ li {
 }
 
 h1,
+h3,
+p,
 label {
   color: rgb(86, 82, 82);
+}
+#container {
+  margin: 40px;
 }
 
 #button {

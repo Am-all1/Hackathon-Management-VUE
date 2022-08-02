@@ -1,44 +1,57 @@
 <template>
   <hr />
-  <div>
+  <div id="mainContainer">
     <h1>Mon profil</h1>
+
+    <!-- FUTUR IMAGE DE PROFIL -->
     <!-- <span>{{ picture }}</span> -->
+
     <div id="blocContainer">
       <div id="leftContainer" class="container">
         <div>
           <p>Biographie:</p>
-          <p>{{ user.bio }}</p>
+          <p class="info">{{ user.bio }}</p>
         </div>
       </div>
       <div id="centerContainer" class="container">
         <p>
-          Prénom: <span>{{ user.firstname }}</span>
+          Prénom: <span class="info">{{ user.firstname }}</span>
         </p>
         <p>
-          Nom: <span>{{ user.lastname }}</span>
+          Nom: <span class="info">{{ user.lastname }}</span>
         </p>
         <p>
-          Email: <span>{{ user.email }}</span>
+          Email: <span class="info">{{ user.email }}</span>
         </p>
         <p>
-          Mot de passe: <span>{{ user.password }}</span>
+          Mot de passe: <span class="info">{{ user.password }}</span>
         </p>
       </div>
       <div id="rightContainer" class="container">
         <p>
-          LinkedIn: <span>{{ user.linkedIn }}</span>
+          LinkedIn: <span class="info">{{ user.linkedIn }}</span>
         </p>
         <p>
-          GitHub: <span>{{ user.github }}</span>
+          GitHub: <span class="info">{{ user.github }}</span>
         </p>
         <p>
-          Website: <span>{{ user.website }}</span>
+          Website: <span class="info">{{ user.website }}</span>
         </p>
         <p>
-          PortFolio: <span>{{ user.portfolio }}</span>
+          PortFolio: <span class="info">{{ user.portfolio }}</span>
         </p>
       </div>
-      <button @click="$router.push('/modifications')">Modifier</button>
+    </div>
+    <div id="btnBloc">
+      <div>
+        <button @click="redirectionBadge">Badge</button>
+      </div>
+      <div>
+        <button @click="$router.push('/modifications')">Modifier</button>
+      </div>
+      <div>
+        <button class="" @click="disconnect">Se déconnecter</button>
+      </div>
     </div>
   </div>
 </template>
@@ -47,6 +60,7 @@
 export default {
   mounted() {
     this.getUserById();
+    this.saveUrl();
   },
   data() {
     return {
@@ -70,6 +84,18 @@ export default {
       const data = await response.json();
       this.user = data.user;
     },
+
+    disconnect() {
+      localStorage.removeItem("savedUserToken");
+      window.location.href = "/#/home";
+    },
+    redirectionBadge() {
+      window.location.href = "/#/pageqrcode";
+    },
+    saveUrl() {
+      console.log(window.location);
+      localStorage.setItem("@currentUrl", window.location.href);
+    },
   },
 };
 </script>
@@ -77,10 +103,21 @@ export default {
 h1,
 p {
   color: rgb(86, 82, 82);
+  font-weight: bold;
 }
 
 label {
   margin: 10px;
+}
+
+#mainContainer {
+  max-width: 1280px;
+  min-height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+.info {
+  color: rgb(219, 117, 117);
 }
 
 #blocContainer {
@@ -88,12 +125,7 @@ label {
   flex-direction: row;
   justify-content: center;
   text-align: left;
-  height: 280px;
-  margin-top: 50px;
-}
-
-#centerContainer {
-  margin: 0px 40px 20px 40px;
+  margin: 40px;
 }
 
 #leftContainer {
@@ -117,9 +149,8 @@ button {
   cursor: pointer;
   padding: 10px;
   font-size: 20px;
-  position: fixed;
-  top: 600px;
-  margin: auto;
+  margin-bottom: 5%;
+  font-weight: bold;
 }
 
 button:hover {
@@ -127,5 +158,12 @@ button:hover {
   background-color: rgb(219, 117, 117);
   color: white;
   font-weight: bold;
+}
+
+#btnBloc {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin: 8%;
 }
 </style>

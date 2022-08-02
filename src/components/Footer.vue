@@ -1,37 +1,57 @@
 <template>
-<footer class="footer">
-    <div class="copyright">© 2022 Copyright: Nice Start(s) Up</div>
-    <div class="footerMentions">
-      Mentions légales
-      <br>
-      A propos de Nice Start(s) Up
-    </div>
-  </footer>
+  <div id="footerContainer">
+    <footer class="footer">
+      <div class="copyright">© 2022 Copyright: Nice Start(s) Up</div>
+      <div id="homeMadeLogo">Hackathon<span id="letter">(s)</span> manager</div>
+      <div class="footerMentions">
+        <p>A propos de Nice Start(s) Up</p>
+        <p>Nous contacter</p>
+        <p>Mentions légales</p>
+      </div>
+    </footer>
+  </div>
 </template>
+
 <style>
+#footerContainer {
+  width: 100%;
+}
 .footer {
   background-color: rgba(0, 0, 0, 0.815);
-  position: absolute;
   bottom: 0;
-  width: 100%;
-  height: 100px;
   color: #969696;
-  font-family: "Work Sans", Arial;
+  font-family: revert;
   font-size: 14px;
   font-weight: normal;
-  padding: 20px 0 0;
+  justify-content: space-around;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  position: relative;
+  display: flex;
 }
-.footerMentions{
-  text-align: initial;
-    padding-left: 10%;
-    
+
+#homeMadeLogo {
+  color: whitesmoke;
+  letter-spacing: 1px;
+  font-size: x-large;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
-/* // body {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-between;
-//   height: 100vh;
-//   font-family: Arial, Helvetica, sans-serif;
-//   margin: 0;
-// } */
+
+#letter {
+  color: red;
+}
+
+.copyright {
+  margin-left: 10px;
+}
+
+.footerMentions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 5px 10px 5px 0;
+}
 </style>

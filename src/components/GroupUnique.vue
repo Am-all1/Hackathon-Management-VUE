@@ -5,16 +5,12 @@
     <p>Salle : {{ room }}</p>
     <p>Nombre de membres : {{ members }}</p>
     <p>
-      Compétences de qualité qualitative qualitantement parlant :
+      Compétences :
       {{ abilities }}
-    </p>
-    <p>*****************************</p>
-    <p>
-      POUR VERFICATION : ce groupe appartient à l'événement event_id =
-      {{ event_id }} et a pour group_id : {{ group_id }}
     </p>
 
     <router-link
+      v-if="!viewing"
       :to="{
         name: 'GroupUniqueShow',
         params: {
@@ -37,6 +33,26 @@ export default {
     abilities: String,
     group_id: Number,
     event_id: Number,
+    viewing: Boolean,
   },
 };
 </script>
+
+<style scoped>
+button {
+  border: 2px solid GREY;
+  background-color: white;
+  color: grey;
+  padding-left: 20px;
+  padding-right: 20px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+button:hover {
+  border: 2px solid rgb(219, 117, 117);
+  background-color: rgb(219, 117, 117);
+  color: white;
+  font-weight: bold;
+}
+</style>
