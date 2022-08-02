@@ -1,6 +1,6 @@
 <template>
   <hr />
-  <section>
+  <section id="container">
     <div>
       <h1>Mes compétences</h1>
       <br />
@@ -8,48 +8,49 @@
       <form>
         <div class="container">
           <div class="row g-2">
-            <div class="col-6">
-              <div class="p-3 border bg-light">
+            <div class="abilities col-6">
+              <div class="p-3 bg-light">
                 <p>Développeur</p>
                 <input type="checkbox" name="dev" v-model="dev" />
               </div>
             </div>
-            <div class="col-6">
-              <div class="p-3 border bg-light">
+            <div class="abilities col-6">
+              <div class="p-3 bg-light">
                 <p>UI/UX</p>
                 <input type="checkbox" name="design" v-model="design" />
               </div>
             </div>
-            <div class="col-6">
-              <div class="p-3 border bg-light">
+            <div class="abilities col-6">
+              <div class="p-3 bg-light">
                 <p>Maker</p>
                 <input type="checkbox" name="maker" v-model="maker" />
               </div>
             </div>
-            <div class="col-6">
-              <div class="p-3 border bg-light">
+            <div class="abilities col-6">
+              <div class="p-3 bg-light">
                 <p>Management</p>
                 <input type="checkbox" name="management" v-model="management" />
               </div>
             </div>
           </div>
         </div>
+        <button type="submit" value="Valider" id="button">Valider</button>
         <div class="container">
           <div class="row g-2">
-            <div class="col-6">
-              <div class="p-3 border bg-light">
+            <div class="abilities col-6">
+              <div class="p-3 bg-light">
                 <p>Commercial</p>
                 <input type="checkbox" name="commercial" v-model="commercial" />
               </div>
             </div>
-            <div class="col-6">
-              <div class="p-3 border bg-light">
+            <div class="abilities col-6">
+              <div class="p-3 bg-light">
                 <p>OPS</p>
                 <input type="checkbox" name="ops" v-model="ops" />
               </div>
             </div>
-            <div class="col-6">
-              <div class="p-3 border bg-light">
+            <div class="abilities col-6">
+              <div class="p-3 bg-light">
                 <p>Communication</p>
                 <input
                   type="checkbox"
@@ -58,8 +59,8 @@
                 />
               </div>
             </div>
-            <div class="col-6">
-              <div class="p-3 border bg-light">
+            <div class="abilities col-6">
+              <div class="p-3 bg-light">
                 <p>design graphique</p>
                 <input
                   type="checkbox"
@@ -70,9 +71,6 @@
             </div>
           </div>
         </div>
-        <input type="submit" value="Valider" id="button" />
-        <br />
-        <input type="submit" value="Valider" id="button" />
       </form>
     </div>
   </section>
@@ -147,6 +145,7 @@ export default {
 <style scoped>
 .container {
   margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 h1 {
@@ -164,6 +163,10 @@ p {
   margin-left: 20px;
 }
 
+#container {
+  height: 100%;
+}
+
 input {
   margin-left: 10px;
   top: -7px;
@@ -174,6 +177,7 @@ input {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 40px;
 }
 
 #button {
@@ -189,8 +193,8 @@ input {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
-  top: 600px;
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 #button:hover {
@@ -198,5 +202,9 @@ input {
   background-color: rgb(219, 117, 117);
   color: white;
   font-weight: bold;
+}
+
+.abilities {
+  border: 2px solid red;
 }
 </style>

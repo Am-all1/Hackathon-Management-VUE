@@ -10,7 +10,9 @@
       :event_id="event.id"
       :viewing="true"
     />
+    <!-- CAS D'UN UTILISATEUR NON CONNECTE -->
     <router-link
+      v-if="token == null"
       :to="{
         name: 'creation de compte',
         params: {
@@ -21,17 +23,22 @@
       <br />
       <button class="">S'inscrire</button></router-link
     >
+    <!-- CAS D'UN UTILISATEUR NON CONNECTE -->
+
+    <button v-if="token != null" @click="addUserToEvent">M'inscrire !</button>
   </div>
   <hr />
 
-  <div>
+  <!-- ESPACE ADMIN  -->
+  <!-- <div>
     <ModifyEvents :event_id="event.id" @eventModified="getEventUnique" />
-  </div>
+  </div> -->
 
+  <!-- ESPACE STAFF -->
   <!-- APPEL DU COMPOSANT CreateGroup AFIN D'AFFICHER LE FORMULAIRE DE CREATION DE GROUPE -->
-  <div class="groupFormDisplay">
+  <!-- <div class="groupFormDisplay">
     <CreateGroup :event_id="event.id" @groupCreated="getGroupUnique" />
-  </div>
+  </div> -->
 
   <!-- APPEL DU COMPOSANT GroupUnique AVEC UN v-for AFIN D'AFFICHER LA LISTE DES GROUPES LIES A CET EVENEMENT -->
   <div class="allGroupsIn@/components/EventUnique.vue">
@@ -66,10 +73,12 @@ export default {
     this.getEventUnique();
     this.getGroupUnique();
   },
+
   data() {
     return {
       event: {},
       groups: [],
+      token: localStorage.getItem("savedUserToken"),
       /* event_id: this.event.id, */ // UTILISATION POUR LE PROVIDE
     };
   },
@@ -120,6 +129,26 @@ export default {
       );
       const data = await response.json();
       this.groups = data.groups;
+    },
+
+    async addUserToEvent() {
+      alert("entrée dans addUserToEvent");
+      const body = {
+        event_id: this.$route.params.event_id,
+      };
+
+      const response = await fetch("http://127.0.0.1:8000/api/event-users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${localStorage.getItem("savedUserToken")}`,
+        },
+        body: JSON.stringify(body),
+      });
+      const data = await response.json();
+
+      this.feedbackMessage = data.message;
     },
   },
 };

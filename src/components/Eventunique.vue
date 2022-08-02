@@ -68,8 +68,8 @@ export default {
 
       const data = await response.json();
       this.message = data.message;
-
       this.$emit("eventDeleted");
+      window.location.href = "/#/eventlist";
     },
   },
 };

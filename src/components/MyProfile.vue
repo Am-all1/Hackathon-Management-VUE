@@ -1,6 +1,6 @@
 <template>
   <hr />
-  <div>
+  <div id="mainContainer">
     <h1>Mon profil</h1>
 
     <!-- FUTUR IMAGE DE PROFIL -->
@@ -10,7 +10,7 @@
       <div id="leftContainer" class="container">
         <div>
           <p>Biographie:</p>
-          <p>{{ user.bio }}</p>
+          <p class="info">{{ user.bio }}</p>
         </div>
       </div>
       <div id="centerContainer" class="container">
@@ -50,7 +50,7 @@
         <button @click="$router.push('/modifications')">Modifier</button>
       </div>
       <div>
-        <button @click="disconnect">Se déconnecter</button>
+        <button class="" @click="disconnect">Se déconnecter</button>
       </div>
     </div>
   </div>
@@ -87,7 +87,7 @@ export default {
 
     disconnect() {
       localStorage.removeItem("savedUserToken");
-      window.location.reload();
+      window.location.href = "/#/home";
     },
     redirectionBadge() {
       window.location.href = "/#/pageqrcode";
@@ -110,6 +110,12 @@ label {
   margin: 10px;
 }
 
+#mainContainer {
+  max-width: 1280px;
+  min-height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
 .info {
   color: rgb(219, 117, 117);
 }
@@ -119,12 +125,7 @@ label {
   flex-direction: row;
   justify-content: center;
   text-align: left;
-  height: 280px;
-  margin-top: 50px;
-}
-
-#centerContainer {
-  margin: 0px 40px 20px 40px;
+  margin: 40px;
 }
 
 #leftContainer {
@@ -148,6 +149,7 @@ button {
   cursor: pointer;
   padding: 10px;
   font-size: 20px;
+  margin-bottom: 5%;
   font-weight: bold;
 }
 
@@ -162,6 +164,6 @@ button:hover {
   display: flex;
   justify-content: center;
   position: relative;
-  padding-bottom: 5%;
+  margin: 8%;
 }
 </style>

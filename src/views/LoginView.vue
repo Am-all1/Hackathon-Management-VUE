@@ -1,7 +1,11 @@
 <template>
-  <div class="card text-bg-$rouge-200 mb-3" style="max-width: 30rem">
+  <div
+    id="connexion"
+    class="card text-bg-$rouge-200 mb-3"
+    style="max-width: 30rem"
+  >
     <div class="card-header">
-      <h2>Connexion</h2>
+      <h2 style="color: rgb(219, 117, 117)">Connexion</h2>
     </div>
     <form
       @submit.prevent="login"
@@ -35,9 +39,7 @@
       <br />
 
       <div class="input">
-        <button type="submit" class="btn btn-primary btn-lg">
-          Se connecter
-        </button>
+        <button type="submit" id="button">Se connecter</button>
       </div>
     </form>
     <p v-if="status == true">Connexion réussie</p>
@@ -63,7 +65,6 @@ export default {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
-          // Authorization: `Bearer ${localStorage.getItem("savedUserToken")}`,
         },
         body: JSON.stringify({
           email: this.email,
@@ -97,7 +98,9 @@ export default {
 
 <style scoped>
 .card {
-  margin-left: 16rem;
+  margin-top: 8em;
+  margin-left: 28em;
+  border: 2px solid red;
 }
 h1,
 label {
@@ -105,7 +108,10 @@ label {
 }
 
 #mainContainer {
-  flex-direction: column;
+  max-width: 1280px;
+  min-height: 100%;
+  margin: 0 auto;
+  position: relative;
 }
 
 #formStyle {
@@ -115,23 +121,32 @@ label {
   align-content: center;
   justify-content: center;
   align-items: center;
+  margin-bottom: 30px;
 }
 
-#button {
+.input-container {
+  min-height: 50vh;
+  margin: 40px;
+}
+
+button {
   border: 2px solid GREY;
   background-color: white;
   color: grey;
   height: 60px;
-  width: 180px;
+  width: 240px;
   cursor: pointer;
   padding: 10px;
   font-size: 20px;
-  position: static;
-  top: 600px;
-  padding-bottom: 5%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 60px;
+  font-weight: bold;
 }
 
-#button:hover {
+button:hover {
   border: 2px solid rgb(219, 117, 117);
   background-color: rgb(219, 117, 117);
   color: white;
@@ -140,5 +155,9 @@ label {
 
 .labelWidth {
   margin: 10px;
+}
+
+#connexion {
+  margin-left: 36%;
 }
 </style>

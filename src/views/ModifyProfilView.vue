@@ -1,76 +1,134 @@
 <template>
-  <hr />
-  <div>
-    <h1>Modifier mon profil</h1>
+  <h1>Modifier mon profil</h1>
+  <div class="modifProfil">
     <form @submit.prevent="ModifyProfil">
-      <div id="formStyle">
-        <div id="formStyleLeftContainer">
-          <label for="bio">Biographie :</label>
-          <br />
-          <textarea name="bio" id="bio" v-model="user.bio"></textarea>
-        </div>
-
-        <div id="formStyleCenterContainer">
-          <label for="firstname">Prénom : </label>
-          <input
-            type="text"
-            name="firstname"
-            id="firstname"
-            v-model="user.firstname"
-          />
-          <br />
-          <label for="lastname">Nom : </label>
-          <input
-            type="text"
-            name="lastname"
-            id="lastname"
-            v-model="user.lastname"
-          />
-          <br />
-          <label for="email">Email: </label>
-          <input type="email" name="email" id="email" v-model="user.email" />
-          <br />
-          <label for="password">Mot de passe : </label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            v-model="user.password"
-          />
-          <br />
-        </div>
-        <div id="formStyleRightContainer">
-          <label for="firstname">LinkedIn :</label>
-          <input
-            type="text"
-            name="linkedin"
-            id="linkedin"
-            v-model="user.linkedIn"
-          />
-          <br />
-          <label for="github">Github :</label>
-          <input type="text" name="github" id="github" v-model="user.github" />
-          <br />
-          <label for="website">Website :</label>
-          <input
-            type="text"
-            name="website"
-            id="website"
-            v-model="user.website"
-          />
-          <br />
-          <label for="portfolio">Portfolio :</label>
-          <input
-            type="text"
-            name="portfolio"
-            id="portfolio"
-            v-model="user.portfolio"
-          />
-        </div>
+      <div class="input-group mb-3">
+        <span
+          style="background-color: rgb(219, 117, 117)"
+          class="modif input-group-text"
+          id="basic-addon2"
+          >Nom</span
+        >
+        <input
+          type="text"
+          class="form-control"
+          name="firstname"
+          id="firstname"
+          v-model="user.firstname"
+        />
+      </div>
+      <div class="input-group mb-3">
+        <span
+          style="background-color: rgb(219, 117, 117)"
+          class="modif input-group-text"
+          id="basic-addon1"
+          >Prénom</span
+        >
+        <input
+          type="text"
+          class="form-control"
+          name="lastname"
+          id="lastname"
+          v-model="user.lastname"
+        />
+      </div>
+      <div class="input-group mb-3">
+        <span
+          style="background-color: rgb(219, 117, 117)"
+          class="modif input-group-text"
+          id="basic-addon1"
+          >Email</span
+        >
+        <input
+          type="text"
+          class="form-control"
+          name="email"
+          id="email"
+          v-model="user.email"
+        />
       </div>
 
-      <input type="submit" value="Valider" id="button" />
+      <div class="input-group mb-3">
+        <span
+          style="background-color: rgb(219, 117, 117)"
+          class="modif input-group-text"
+          id="basic-addon2"
+          >Mot de passe</span
+        >
+        <input
+          type="email"
+          class="form-control"
+          name="password"
+          id="password"
+          placeholder="Votre nouveau Mot de passe"
+        />
+      </div>
+
+      <label for="basic-url" class="form-label">Autres informations</label>
+      <div class="input-group mb-3">
+        <span
+          style="background-color: rgb(219, 117, 117)"
+          class="modif input-group-text"
+          id="basic-addon3"
+          >Profil LinkedIn</span
+        >
+        <input
+          type="text"
+          class="form-control"
+          name="linkedin"
+          id="linkedin"
+          v-model="user.linkedIn"
+        />
+      </div>
+
+      <div class="input-group mb-3">
+        <span
+          style="background-color: rgb(219, 117, 117)"
+          class="modif input-group-text"
+          >Website</span
+        >
+        <input
+          type="text"
+          class="form-control"
+          name="website"
+          id="website"
+          v-model="user.website"
+        />
+      </div>
+
+      <div class="input-group mb-3">
+        <span
+          style="background-color: rgb(219, 117, 117)"
+          class="modif input-group-text"
+          id="basic-addon3"
+          >Portfolio</span
+        >
+        <input
+          type="text"
+          class="form-control"
+          name="portfolio"
+          id="portfolio"
+          v-model="user.portfolio"
+        />
+      </div>
+
+      <div class="input-group">
+        <span
+          style="background-color: rgb(219, 117, 117)"
+          class="modif input-group-text"
+          >Bio</span
+        >
+        <textarea
+          class="form-control"
+          aria-label="With textarea"
+          name="bio"
+          id="bio"
+          v-model="user.bio"
+        ></textarea>
+      </div>
+
       <br />
+      <button type="submit">Valider</button>
     </form>
     <p>{{ feedBackmessage }}</p>
   </div>
@@ -95,6 +153,7 @@ export default {
       github: "",
       website: "",
       portfolio: "",
+      bio: "",
       feedBackmessage: "",
       bio: "",
       token: localStorage.getItem("savedUserToken"),
@@ -145,6 +204,16 @@ export default {
 </script>
 
 <style scoped>
+.modif {
+  width: 8rem;
+}
+.modifProfil {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
 h1,
 label {
   color: rgb(86, 82, 82);
@@ -167,7 +236,7 @@ label {
   margin: 10px;
 }
 
-#button {
+button {
   border: 2px solid GREY;
   background-color: white;
   color: grey;
@@ -176,18 +245,19 @@ label {
   cursor: pointer;
   padding: 10px;
   font-size: 20px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  position: fixed;
-  top: 600px;
+  font-weight: bold;
 }
 
-#button:hover {
+button:hover {
   border: 2px solid rgb(219, 117, 117);
   background-color: rgb(219, 117, 117);
   color: white;
   font-weight: bold;
+}
+
+#btnBloc {
+  display: flex;
+  justify-content: center;
+  gap: 1%;
 }
 </style>

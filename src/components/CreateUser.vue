@@ -46,9 +46,9 @@
         />
       </div>
       <br />
-      <input type="submit" value="Valider" />
+      <input id="validate" type="submit" value="Valider" />
     </form>
-    <p>event_id : {{ this.$route.params.event_id }}</p>
+    <!-- <p>event_id : {{ this.$route.params.event_id }}</p> -->
 
     <p v-if="status == true">
       Création de compte réussie
@@ -92,32 +92,22 @@ export default {
         body: JSON.stringify(body),
       });
       const data = await response.json();
-
       this.message = data.message;
       this.status = data.status;
 
       if (data.status === true) {
-        this.addUserToEvent(data.token);
+        localStorage.setItem("savedUserToken", data.token);
+
+        //REDIRECTION VERS LA PAGE DE L'EVENEMENT APRES INSCRIPTION
+        window.location.href = "/#/eventunique/" + this.$route.params.event_id;
       }
-    },
-
-    async addUserToEvent() {
-      const body = {
-        event_id: this.$route.params.event_id,
-      };
-
-      const response = await fetch("http://127.0.0.1:8000/api/event-users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(body),
-      });
-      const data = await response.json();
-
-      this.feedbackMessage = data.message;
     },
   },
 };
 </script>
+
+<style scoped>
+#validate {
+  margin-bottom: 13%;
+}
+</style>
