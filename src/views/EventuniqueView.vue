@@ -23,7 +23,7 @@
       <br />
       <button class="">S'inscrire</button></router-link
     >
-    <!-- CAS D'UN UTILISATEUR NON CONNECTE -->
+    <!-- CAS D'UN UTILISATEUR CONNECTE -->
 
     <button v-if="token != null" @click="addUserToEvent">M'inscrire !</button>
   </div>

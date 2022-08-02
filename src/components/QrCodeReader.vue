@@ -1,10 +1,4 @@
 <template>
-  <div class="inputStyle" id="container">
-    <form>
-      <input type="text" v-model="QRValue" />
-    </form>
-    <qrcode-vue v-if="QRValue" :value="value" :size="size" level="H" />
-  </div>
   <br />
   <div>
     <p>{{ error }}</p>
