@@ -66,6 +66,7 @@ export default {
   methods: {
     /* Recherche de tous les utilisateurs inscrits */
     async getUsers() {
+      console.log();
       const response = await fetch("http://127.0.0.1:8000/api/showusers", {
         method: "GET",
         headers: {
