@@ -39,7 +39,7 @@
   <!-- Disposition propice à la mise en place du "glisser-déposer" des groupes dans les cases de créneaux -->
   <div class="componenterinos">
     <!-- Colonne des groupes -->
-    <div class="col-6">
+    <div v-if="selectedEvent_id != null" class="col-6">
       <h3>Listes des groupes</h3>
       <GroupUnique
         v-for="group in groups"
@@ -56,7 +56,7 @@
       <br />
     </div>
     <!-- Colonne des créneaux -->
-    <div class="col-6">
+    <div v-if="selectedEvent_id != null" class="col-6">
       <h3>Listes des créneaux</h3>
       <SlotUnique
         v-for="slot in slots"
