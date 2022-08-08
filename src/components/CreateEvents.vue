@@ -1,6 +1,8 @@
 <template>
   <h3>Créer un évènement</h3>
-  <div id="container">
+  <!-- Bouton d'affichage du formulaire de création d'événement -->
+  <button @click="revealCreateForm">+</button>
+  <div v-if="showCreateForm" id="container">
     <form @submit.prevent="createEvent">
       <div>
         <label for="name">Nom:</label>
@@ -51,10 +53,19 @@ export default {
       location: "",
       feedbackMessage: "",
       token: localStorage.getItem("savedUserToken"),
+      showCreateForm: false,
     };
   },
 
   methods: {
+    /* Affichage du formulaire de création d'événement */
+    revealCreateForm() {
+      if (this.showCreateForm == false) {
+        this.showCreateForm = true;
+      } else {
+        this.showCreateForm = false;
+      }
+    },
     /* Création d'un event */
     async createEvent() {
       const body = {

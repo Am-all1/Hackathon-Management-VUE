@@ -45,11 +45,6 @@ export default {
   },
 
   methods: {
-    showEvent() {
-      console.log("Entrée showEvent");
-      this.$emit("showing");
-    },
-
     async deleteEvent() {
       console.log(
         "entrée dans méthode delete avec event_id : " + this.event_id

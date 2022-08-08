@@ -1,44 +1,47 @@
 <template>
   <div>
     <h3 class="linkTitlePage">Modification de l'évènement:</h3>
+    <!-- Bouton d'affichage du formulaire de modification d'événement -->
+    <button @click="revealModifyForm">+</button>
+    <div v-if="showModifyForm" id="container">
+      <form @submit.prevent="modifyEvent">
+        <div>
+          <label for="name">Nom:</label>
+          <br />
+          <input type="text" name="name" v-model="name" />
+        </div>
 
-    <form @submit.prevent="modifyEvent">
-      <div>
-        <label for="name">Nom:</label>
         <br />
-        <input type="text" name="name" v-model="name" />
-      </div>
 
-      <br />
+        <div>
+          <label for="start">Date et heure de début:</label>
+          <br />
+          <input type="datetime-local" name="start" v-model="start" />
+        </div>
 
-      <div>
-        <label for="start">Date et heure de début:</label>
         <br />
-        <input type="datetime-local" name="start" v-model="start" />
-      </div>
 
-      <br />
+        <div>
+          <label for="end">Date et heure de fin:</label>
+          <br />
+          <input type="datetime-local" name="end" v-model="end" />
+        </div>
 
-      <div>
-        <label for="end">Date et heure de fin:</label>
         <br />
-        <input type="datetime-local" name="end" v-model="end" />
-      </div>
 
-      <br />
+        <div>
+          <label for="location">Lieu:</label>
+          <br />
+          <input type="text" name="location" v-model="location" />
+        </div>
 
-      <div>
-        <label for="location">Lieu:</label>
         <br />
-        <input type="text" name="location" v-model="location" />
-      </div>
 
-      <br />
+        <input type="submit" class="button" value="Modifier" />
+      </form>
 
-      <input type="submit" class="button" value="Modifier" />
-    </form>
-
-    <p>{{ feedbackMessage }}</p>
+      <p>{{ feedbackMessage }}</p>
+    </div>
   </div>
 </template>
 
@@ -47,6 +50,7 @@ export default {
   data() {
     return {
       feedbackMessage: "",
+      showModifyForm: false,
       //   token: localStorage.getItem("savedUserToken"),
     };
   },
@@ -60,6 +64,14 @@ export default {
   },
 
   methods: {
+    /* Affichage du formulaire de modification d'événement */
+    revealModifyForm() {
+      if (this.showModifyForm == false) {
+        this.showModifyForm = true;
+      } else {
+        this.showModifyForm = false;
+      }
+    },
     /* Modification d'un event */
     async modifyEvent() {
       const body = {
