@@ -21,7 +21,9 @@
             <router-link to="/mon-profil" class="links">Mon profil</router-link>
             <router-link to="/eventlist">Evènements</router-link>
             <router-link to="/admin" class="links">Espace admin</router-link>
-            <router-link to="/slots" class="links">Espace staff</router-link>
+            <router-link to="/event-management" class="links"
+              >Espace staff</router-link
+            >
             <router-link to="/abilities" class="links"
               >Mes compétences</router-link
             >
@@ -134,14 +136,14 @@ a:hover {
   min-width: 40px;
   min-width: 100px;
 }
-#homeMadeLogo{
+#homeMadeLogo {
   color: whitesmoke;
   font-family: fantasy;
   letter-spacing: 1px;
   font-size: x-large;
 }
 
-#letter{
+#letter {
   color: red;
 }
 

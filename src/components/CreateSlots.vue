@@ -1,5 +1,5 @@
 <template>
-  <h1>Créer un créneau horaire</h1>
+  <h3>Nouveau créneau horaire</h3>
   <div id="container">
     <form @submit.prevent="createSlot">
       <div>
@@ -38,7 +38,7 @@
         </select>
       </div>
       <br />
-      <input type="submit" value="Valider" id="button" />
+      <input type="submit" value="Créer le créneau" id="button" />
     </form>
 
     <p>{{ feedbackMessage }}</p>
@@ -83,6 +83,10 @@ export default {
       teams: "",
       feedbackMessage: "",
     };
+  },
+
+  props: {
+    event_id: Number,
   },
 
   methods: {

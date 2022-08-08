@@ -6,6 +6,7 @@ import EventListView from "../views/EventListView.vue";
 import EventUniqueView from "../views/EventUniqueView.vue";
 import MyProfileView from "../views/MyProfileView.vue";
 import CreateSlotsView from "../views/CreateSlotsView.vue";
+import StaffEventManagementView from "../views/StaffEventManagementView.vue";
 import CreateUserView from "../views/CreateUserView.vue";
 import AdminView from "../views/AdminView.vue";
 import GroupView from "../views/GroupView.vue";
@@ -99,10 +100,15 @@ const routes = [
     props: true,
   },
 
-  {
+  /* {
     path: "/slots",
     name: "createSlots",
     component: CreateSlotsView,
+  }, */
+  {
+    path: "/event-management",
+    name: "EventManagement",
+    component: StaffEventManagementView,
   },
 
   {
